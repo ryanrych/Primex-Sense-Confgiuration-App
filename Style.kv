@@ -1,0 +1,61 @@
+WindowManager:
+    WelcomeScreen:
+
+
+<WelcomeInterface>:
+    userField: userField
+    passwordField: passwordField
+    loginButton: loginButton
+    createAccountButton: createAccountButton
+    loginFailed: loginFailed
+    loginPassed:
+
+    size_hint: None, None
+
+    RelativeLayout:
+        pos: self.parent.pos
+        size: self.parent.size
+
+        BoxLayout:
+            canvas.before:
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+            size: self.parent.size
+            orientation: "horizontal"
+
+            spacing: 5
+
+            Label:
+                size_hint: .05, 1
+                text: ""
+
+            GridLayout:
+                size_hint: .9, 1
+                cols:1
+                spacing: 7
+
+
+            Label:
+                size_hint: .05, 1
+                text: ""
+
+<WelcomeBackground>:
+    AnchorLayout:
+        canvas.before:
+            Rectangle:
+                pos: self.pos
+                size: self.size
+            Color:
+                rgba: 1,1,1,1
+        size: self.parent.size
+        anchor_x: 'center'
+        anchor_y: 'center'
+        WelcomeInterface:
+            size_hint: .9,.9
+
+<WelcomeScreen>:
+    name: "WelcomeScreen"
+    FloatLayout:
+        WelcomeBackground:
+            center: 0.5, 0.5
