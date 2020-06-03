@@ -1,5 +1,6 @@
 WindowManager:
     WelcomeScreen:
+    PackageSelectionScreen:
 
 
 <WelcomeInterface>:
@@ -211,6 +212,8 @@ WindowManager:
                     Button:
                         size_hint: .16, 1
                         text: "Next"
+                        on_release:
+                            app.root.current = "PackageSelectionScreen"
 
                     Label:
                         size_hint: .42, 1
@@ -244,5 +247,58 @@ WindowManager:
     name: "WelcomeScreen"
     FloatLayout:
         WelcomeBackground:
+            id: background
+            center: 0.5, 0.5
+
+
+
+<PackageSelectionInterface>:
+    size_hint: None, None
+
+    RelativeLayout:
+        pos: self.parent.pos
+        size: self.parent.size
+
+        BoxLayout:
+            canvas.before:
+                Color:
+                    rgba: 1,1,1,1
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+            size: self.parent.size
+            orientation: "horizontal"
+
+            spacing: 5
+
+            Label:
+                size_hint: .05, 1
+                text: ""
+
+
+
+            Label:
+                size_hint: .05, 1
+                text: ""
+
+<PackageSelectionBackground>:
+    AnchorLayout:
+        canvas.before:
+            Color:
+                rgba: 0.23921568627450981, 0.5137254901960784, 0.7254901960784313, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        size: self.parent.size
+        anchor_x: 'center'
+        anchor_y: 'center'
+        PackageSelectionInterface:
+            id: interface
+            size_hint: .9,.9
+
+<PackageSelectionScreen>:
+    name: "PackageSelectionScreen"
+    FloatLayout:
+        PackageSelectionBackground:
             id: background
             center: 0.5, 0.5
