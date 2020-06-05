@@ -1,3 +1,22 @@
+#:import NoTransition kivy.uix.screenmanager.NoTransition
+
+<RoundedButton@Button>:
+    background_color: (0,0,0,0)
+    background_normal: ""
+    background_active: ""
+    backgroundColorNormal: (0,0,1,1)
+    backgroundColorActive: (0,1,0,1)
+    border_radius: [18]
+    canvas.before:
+        Color:
+            rgba: self.backgroundColorNormal if self.state == "normal" else self.backgroundColorActive
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: self.border_radius
+
+
+
 WindowManager:
     WelcomeScreen:
     PackageSelectionScreen:
@@ -213,6 +232,7 @@ WindowManager:
                         size_hint: .16, 1
                         text: "Next"
                         on_release:
+                            app.root.transition = NoTransition()
                             app.root.current = "PackageSelectionScreen"
 
                     Label:
@@ -275,6 +295,97 @@ WindowManager:
                 size_hint: .05, 1
                 text: ""
 
+            BoxLayout:
+                size_hint: .9, 1
+                orientation: "vertical"
+
+                Label:
+                    size_hint: 1, .1
+                    text: "Package Selection"
+                    text_size: self.size
+                    halign: "left"
+                    color: 0,0,0,1
+
+                Label:
+                    size_hint: 1, .1
+                    text:""
+
+                BoxLayout:
+                    size_hint: 1, .1
+                    orientation: "horizontal"
+
+                    Button:
+                        size_hint: .5, 1
+                        text: "I'd like to answer some questions to select a plan"
+
+                    Label:
+                        size_hint: .5, 1
+                        text: ""
+
+                BoxLayout:
+                    size_hint: 1, .1
+                    orientation: "horizontal"
+
+                    Button:
+                        size_hint: .5, 1
+                        text: "I know what plan to propose already"
+
+                    Label:
+                        size_hint: .5, 1
+                        text: ""
+
+                BoxLayout:
+                    size_hint: 1, .25
+                    orientation: "horizontal"
+                    spacing: 5
+
+                    RoundedButton:
+                        size_hint: .25, None
+                        text_size : self.width, None
+                        height: self.texture_size[1]
+                        pos_hint: {'top': 1}
+                        halign: "center"
+                        valign: "center"
+                        backgroundColorNormal: 0.23921568627450981, 0.5137254901960784, 0.7254901960784313, 1
+                        backgroundColorActive: 0.13921568627450981, 0.4137254901960784, 0.6254901960784313, 1
+                        text: "ONE\nSimplest package - meets compliance needs, basic protection against loss with world-class solution"
+
+                    RoundedButton:
+                        size_hint: .25, 1
+                        text_size : self.width, None
+                        height: self.texture_size[1]
+                        pos_hint: {'top': 1}
+                        halign: "center"
+                        valign: "center"
+                        backgroundColorNormal: 0.23921568627450981, 0.5137254901960784, 0.7254901960784313, 1
+                        backgroundColorActive: 0.13921568627450981, 0.4137254901960784, 0.6254901960784313, 1
+                        text: "TWO\nPackage that requires greatest site expertise to manage flexibility of package. Adds phone/SMS, flexibility in reports and settings"
+
+                    RoundedButton:
+                        size_hint: .25, 1
+                        text_size : self.width, None
+                        height: self.texture_size[1]
+                        pos_hint: {'top': 1}
+                        halign: "center"
+                        valign: "center"
+                        backgroundColorNormal: 0.23921568627450981, 0.5137254901960784, 0.7254901960784313, 1
+                        backgroundColorActive: 0.13921568627450981, 0.4137254901960784, 0.6254901960784313, 1
+                        text: "CHOICE\nFull-service package with best customer experience, exclusive upgrades (like Active Directory), proactive service, and full customization"
+
+                    RoundedButton:
+                        size_hint: .25, 1
+                        text_size : self.width, None
+                        height: self.texture_size[1]
+                        pos_hint: {'top': 1}
+                        halign: "center"
+                        valign: "center"
+                        backgroundColorNormal: 0.23921568627450981, 0.5137254901960784, 0.7254901960784313, 1
+                        backgroundColorActive: 0.13921568627450981, 0.4137254901960784, 0.6254901960784313, 1
+                        text: "EXCLUSIVE\nEnterprise level packages are not supported in this app and need to be configured offline at this time"
+
+                Label:
+                    size_hint: 1, .35
+                    text: ""
 
 
             Label:
