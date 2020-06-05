@@ -275,6 +275,9 @@ WindowManager:
 <PackageSelectionInterface>:
     size_hint: None, None
 
+    options: options
+    spacer: spacer
+
     RelativeLayout:
         pos: self.parent.pos
         size: self.parent.size
@@ -291,9 +294,8 @@ WindowManager:
 
             spacing: 5
 
-            Label:
+            Widget:
                 size_hint: .05, 1
-                text: ""
 
             BoxLayout:
                 size_hint: .9, 1
@@ -304,50 +306,66 @@ WindowManager:
                     text: "Package Selection"
                     text_size: self.size
                     halign: "left"
+                    font_size: self.height * .5
                     color: 0,0,0,1
 
-                Label:
+                Widget:
                     size_hint: 1, .1
-                    text:""
 
                 BoxLayout:
-                    size_hint: 1, .1
+                    size_hint: 1, .06
                     orientation: "horizontal"
 
                     Button:
-                        size_hint: .5, 1
+                        size_hint: .54, 1
+                        font_size: self.height * .47
                         text: "I'd like to answer some questions to select a plan"
+                        background_normal: ""
+                        background_down: ""
+                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
 
-                    Label:
-                        size_hint: .5, 1
-                        text: ""
+                    Widget:
+                        size_hint: .48, 1
+
+                Widget:
+                    size_hint: 1, .02
 
                 BoxLayout:
-                    size_hint: 1, .1
+                    size_hint: 1, .06
                     orientation: "horizontal"
 
                     Button:
-                        size_hint: .5, 1
+                        size_hint: .4, 1
+                        font_size: self.height * .47
                         text: "I know what plan to propose already"
+                        background_normal: ""
+                        background_down: ""
+                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                        on_release:
+                            root.showOptions()
 
-                    Label:
-                        size_hint: .5, 1
-                        text: ""
+                    Widget:
+                        size_hint: .6, 1
+
+                Widget:
+                    size_hint: 1, .21
 
                 BoxLayout:
-                    size_hint: 1, .25
+                    id: options
+                    size_hint: 1, None
+                    height: 0
                     orientation: "horizontal"
                     spacing: 5
 
                     RoundedButton:
-                        size_hint: .25, None
+                        size_hint: .25, 1
                         text_size : self.width, None
                         height: self.texture_size[1]
                         pos_hint: {'top': 1}
                         halign: "center"
                         valign: "center"
-                        backgroundColorNormal: 0.23921568627450981, 0.5137254901960784, 0.7254901960784313, 1
-                        backgroundColorActive: 0.13921568627450981, 0.4137254901960784, 0.6254901960784313, 1
+                        backgroundColorNormal: 0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1
+                        backgroundColorActive: 0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1
                         text: "ONE\nSimplest package - meets compliance needs, basic protection against loss with world-class solution"
 
                     RoundedButton:
@@ -357,8 +375,8 @@ WindowManager:
                         pos_hint: {'top': 1}
                         halign: "center"
                         valign: "center"
-                        backgroundColorNormal: 0.23921568627450981, 0.5137254901960784, 0.7254901960784313, 1
-                        backgroundColorActive: 0.13921568627450981, 0.4137254901960784, 0.6254901960784313, 1
+                        backgroundColorNormal: 0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1
+                        backgroundColorActive: 0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1
                         text: "TWO\nPackage that requires greatest site expertise to manage flexibility of package. Adds phone/SMS, flexibility in reports and settings"
 
                     RoundedButton:
@@ -368,8 +386,8 @@ WindowManager:
                         pos_hint: {'top': 1}
                         halign: "center"
                         valign: "center"
-                        backgroundColorNormal: 0.23921568627450981, 0.5137254901960784, 0.7254901960784313, 1
-                        backgroundColorActive: 0.13921568627450981, 0.4137254901960784, 0.6254901960784313, 1
+                        backgroundColorNormal: 0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1
+                        backgroundColorActive: 0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1
                         text: "CHOICE\nFull-service package with best customer experience, exclusive upgrades (like Active Directory), proactive service, and full customization"
 
                     RoundedButton:
@@ -379,18 +397,17 @@ WindowManager:
                         pos_hint: {'top': 1}
                         halign: "center"
                         valign: "center"
-                        backgroundColorNormal: 0.23921568627450981, 0.5137254901960784, 0.7254901960784313, 1
+                        backgroundColorNormal: 0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1
                         backgroundColorActive: 0.13921568627450981, 0.4137254901960784, 0.6254901960784313, 1
                         text: "EXCLUSIVE\nEnterprise level packages are not supported in this app and need to be configured offline at this time"
 
-                Label:
-                    size_hint: 1, .35
-                    text: ""
+                Widget:
+                    id: spacer
+                    size_hint: 1, .45
 
 
-            Label:
+            Widget:
                 size_hint: .05, 1
-                text: ""
 
 <PackageSelectionBackground>:
     AnchorLayout:

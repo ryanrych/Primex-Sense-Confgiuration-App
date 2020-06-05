@@ -22,7 +22,9 @@ class WelcomeScreen(Screen):
 
 
 class PackageSelectionInterface(Widget):
-    pass
+    def showOptions(self):
+        self.spacer.size_hint_y = .2
+        self.options.size_hint_y = .25
 
 class PackageSelectionBackground(Widget):
     pass
