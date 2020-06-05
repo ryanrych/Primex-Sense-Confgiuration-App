@@ -25,6 +25,15 @@ WindowManager:
 <WelcomeInterface>:
     size_hint: None, None
 
+    facilities: facilities
+    biomed: biomed
+    clinicalServices: clinicalServices
+    pharmacy: pharmacy
+    nursing: nursing
+    lab: lab
+    it: it
+    cSuite: cSuite
+
     RelativeLayout:
         pos: self.parent.pos
         size: self.parent.size
@@ -131,89 +140,131 @@ WindowManager:
                     orientation: "horizontal"
 
                     GridLayout:
-                        size_hint: .2, 1
+                        size_hint: .45, 1
                         cols: 2
 
                         CheckBox:
-                            color: 0,0,0,1
-
-                        Label:
-                            text: "Facilties"
-                            text_size: self.size
-                            halign: "left"
-                            color: 0,0,0,1
-
-                        CheckBox:
+                            size_hint: .1, 1
                             id: facilities
                             color: 0,0,0,1
 
                         Label:
-                            text: "Biomed"
+                            size_hint: .9, 1
+                            markup: True
+                            text: "[ref=facilities]Facilties[/ref]"
                             text_size: self.size
                             halign: "left"
                             color: 0,0,0,1
+                            on_ref_press:
+                                root.facilitiesBox()
 
                         CheckBox:
+                            size_hint: .1, 1
                             id: biomed
                             color: 0,0,0,1
 
                         Label:
-                            text: "Clinical Services"
+                            size_hint: .9, 1
+                            markup: True
+                            text: "[ref=biomed]Biomed[/ref]"
                             text_size: self.size
                             halign: "left"
                             color: 0,0,0,1
+                            on_ref_press:
+                                root.biomedBox()
 
                         CheckBox:
+                            size_hint: .1, 1
                             id: clinicalServices
                             color: 0,0,0,1
 
                         Label:
-                            text: "Pharmacy"
+                            size_hint: .9, 1
+                            markup: True
+                            text: "[ref=cs]Clinical Services[/ref]"
                             text_size: self.size
                             halign: "left"
                             color: 0,0,0,1
+                            on_ref_press:
+                                root.clinicalServicesBox()
 
                         CheckBox:
+                            size_hint: .1, 1
                             id: pharmacy
                             color: 0,0,0,1
 
                         Label:
-                            text: "Nursing"
+                            size_hint: .9, 1
+                            markup: True
+                            text: "[ref=pharmacy]Pharmacy[/ref]"
                             text_size: self.size
                             halign: "left"
                             color: 0,0,0,1
+                            on_ref_press:
+                                root.pharmacyBox()
 
                         CheckBox:
+                            size_hint: .1, 1
                             id: nursing
                             color: 0,0,0,1
 
                         Label:
-                            text: "Lab"
+                            size_hint: .9, 1
+                            markup: True
+                            text: "[ref=nursing]Nursing[/ref]"
                             text_size: self.size
                             halign: "left"
                             color: 0,0,0,1
+                            on_ref_press:
+                                root.nursingBox()
 
                         CheckBox:
+                            size_hint: .1, 1
+                            id: lab
                             color: 0,0,0,1
 
                         Label:
-                            text: "IT"
+                            size_hint: .9, 1
+                            markup: True
+                            text: "[ref=lab]Lab[/ref]"
                             text_size: self.size
                             halign: "left"
                             color: 0,0,0,1
+                            on_ref_press:
+                                root.labBox()
 
                         CheckBox:
-                            id: IT
+                            size_hint: .1, 1
+                            id: it
                             color: 0,0,0,1
 
                         Label:
-                            text: "C-suite"
+                            size_hint: .9, 1
+                            markup: True
+                            text: "[ref=it]IT[/ref]"
                             text_size: self.size
                             halign: "left"
                             color: 0,0,0,1
+                            on_ref_press:
+                                root.itBox()
+
+                        CheckBox:
+                            size_hint: .1, 1
+                            id: cSuite
+                            color: 0,0,0,1
+
+                        Label:
+                            size_hint: .9, 1
+                            markup: True
+                            text: "[ref=suite]C-suite[/ref]"
+                            text_size: self.size
+                            halign: "left"
+                            color: 0,0,0,1
+                            on_ref_press:
+                                root.cSuiteBox()
 
                     Label:
-                        size_hint: .8, 1
+                        size_hint: .55, 1
                         text: ""
 
                 Label:
@@ -231,6 +282,9 @@ WindowManager:
                     Button:
                         size_hint: .16, 1
                         text: "Next"
+                        background_normal: ""
+                        background_down: ""
+                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
                         on_release:
                             app.root.transition = NoTransition()
                             app.root.current = "PackageSelectionScreen"

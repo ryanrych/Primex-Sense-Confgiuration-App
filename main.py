@@ -11,7 +11,54 @@ class WindowManager(ScreenManager):
 
 
 class WelcomeInterface(Widget):
-    pass
+
+    def facilitiesBox(self):
+        if self.facilities.active:
+            self.facilities.active = False
+        else:
+            self.facilities.active = True
+
+    def biomedBox(self):
+        if self.biomed.active:
+            self.biomed.active = False
+        else:
+            self.biomed.active = True
+
+    def clinicalServicesBox(self):
+        if self.clinicalServices.active:
+            self.clinicalServices.active = False
+        else:
+            self.clinicalServices.active = True
+
+    def pharmacyBox(self):
+        if self.pharmacy.active:
+            self.pharmacy.active = False
+        else:
+            self.pharmacy.active = True
+
+    def nursingBox(self):
+        if self.nursing.active:
+            self.nursing.active = False
+        else:
+            self.nursing.active = True
+
+    def labBox(self):
+        if self.lab.active:
+            self.lab.active = False
+        else:
+            self.lab.active = True
+
+    def itBox(self):
+        if self.it.active:
+            self.it.active = False
+        else:
+            self.it.active = True
+
+    def cSuiteBox(self):
+        if self.cSuite.active:
+            self.cSuite.active = False
+        else:
+            self.cSuite.active = True
 
 class WelcomeBackground(Widget):
     pass
