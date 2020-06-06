@@ -20,6 +20,7 @@
 WindowManager:
     WelcomeScreen:
     PackageSelectionScreen:
+    Package1Screen:
 
 
 <WelcomeInterface>:
@@ -421,6 +422,8 @@ WindowManager:
                         backgroundColorNormal: 0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1
                         backgroundColorActive: 0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1
                         text: "ONE\nSimplest package - meets compliance needs, basic protection against loss with world-class solution"
+                        on_release:
+                            app.root.current = "Package1Screen"
 
                     RoundedButton:
                         size_hint: .25, 1
@@ -482,5 +485,147 @@ WindowManager:
     name: "PackageSelectionScreen"
     FloatLayout:
         PackageSelectionBackground:
+            id: background
+            center: 0.5, 0.5
+
+
+
+<Package1Interface>:
+    size_hint: None, None
+
+    RelativeLayout:
+        pos: self.parent.pos
+        size: self.parent.size
+
+        BoxLayout:
+            canvas.before:
+                Color:
+                    rgba: 1,1,1,1
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+            size: self.parent.size
+            orientation: "horizontal"
+
+            spacing: 5
+
+            Widget:
+                size_hint: .05, 1
+
+            BoxLayout:
+                size_hint: .9, 1
+                orientation: "vertical"
+
+                Label:
+                    size_hint: 1, .1
+                    text_size: self.size
+                    halign: "left"
+                    markup: True
+                    text: "[b]Package ONE[/b]"
+                    font_size: self.height * .43
+                    color: 0,0,0,1
+
+                Label:
+                    size_hint: 1, .15
+                    text_size: self.size
+                    halign: "left"
+                    markup: True
+                    text: "Package ONE is a great selection for sites who are just starting out (i.e. replacing pen and paper recordings), who have minimal risk of compliance or loss events or who are very price sensitive."
+                    font_size: self.height * .2
+                    color: 0,0,0,1
+
+                Label:
+                    size_hint: 1, .1
+                    text_size: self.size
+                    halign: "left"
+                    markup: True
+                    text: "[b]Email Alerts[/b] let users know if a refrigerator, operating room, or equipment room is having a problem so[color=0000AA] users can act quickly to protect against spoiled vaccines or unsafe room conditions.[/color]"
+                    font_size: self.height * .29
+                    color: 0,0,0,1
+
+                Label:
+                    size_hint: 1, .1
+                    text_size: self.size
+                    halign: "left"
+                    markup: True
+                    text: "[b]Alert Resolutions[/b] offer the ability to[color=0000AA] document corrective actions or remind users of policies[/color] when responding to alerts. (Managers can even access which alerts need to be documented!)"
+                    font_size: self.height * .29
+                    color: 0,0,0,1
+
+                Label:
+                    size_hint: 1, .13
+                    text_size: self.size
+                    halign: "left"
+                    markup: True
+                    text: "The[b] Asset Summary Report[/b] enables sites to[color=0000AA] easily present the data collected to regulatory agencies to demonstrate compliance.[/color] (For temperature sensors, the[b] Probe Replacement Report[/b] is also available.)"
+                    font_size: self.height * .22
+                    color: 0,0,0,1
+
+                Label:
+                    size_hint: 1, .13
+                    text_size: self.size
+                    halign: "left"
+                    markup: True
+                    text: "Full access summary to the[b] OneVue Dashboard[/b] offers[color=0000AA] peace of mind to assess any problems at a glance.[/color] Detailed pages list assets and sensors and link to[b] Graphs of Readings History[/b] to[color=0000AA] assess trends or warning signs.[/color]"
+                    font_size: self.height * .22
+                    color: 0,0,0,1
+
+                Widget:
+                    size_hint: 1, .18
+
+                BoxLayout:
+                    size_hint: 1, .06
+                    orientation: "horizontal"
+
+                    Button:
+                        size_hint: .47, 1
+                        text: "Confirm - This is the right package!"
+                        font_size: self.height * .52
+                        background_normal: ""
+                        background_down: ""
+                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                        on_release:
+                            app.root.transition = NoTransition()
+                            app.root.current = "PackageSelectionScreen"
+
+                    Widget:
+                        size_hint: .06, 1
+
+                    Button:
+                        size_hint: .47, 1
+                        text: "Go back to Package Selction."
+                        font_size: self.height * .52
+                        background_normal: ""
+                        background_down: ""
+                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                        on_release:
+                            app.root.transition = NoTransition()
+                            app.root.current = "PackageSelectionScreen"
+
+                Widget:
+                    size_hint: 1, .05
+
+            Widget:
+                size_hint: .05, 1
+
+<Package1Background>:
+    AnchorLayout:
+        canvas.before:
+            Color:
+                rgba: 0.23921568627450981, 0.5137254901960784, 0.7254901960784313, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        size: self.parent.size
+        anchor_x: 'center'
+        anchor_y: 'center'
+        Package1Interface:
+            id: interface
+            size_hint: .9,.9
+
+<Package1Screen>:
+    name: "Package1Screen"
+    FloatLayout:
+        Package1Background:
             id: background
             center: 0.5, 0.5
