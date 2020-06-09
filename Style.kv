@@ -21,6 +21,7 @@ WindowManager:
     WelcomeScreen:
     PackageSelectionScreen:
     Package1Screen:
+    Package2Screen:
 
 
 <WelcomeInterface>:
@@ -435,6 +436,8 @@ WindowManager:
                         backgroundColorNormal: 0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1
                         backgroundColorActive: 0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1
                         text: "TWO\nPackage that requires greatest site expertise to manage flexibility of package. Adds phone/SMS, flexibility in reports and settings"
+                        on_release:
+                            app.root.current = "Package2Screen"
 
                     RoundedButton:
                         size_hint: .25, 1
@@ -627,5 +630,199 @@ WindowManager:
     name: "Package1Screen"
     FloatLayout:
         Package1Background:
+            id: background
+            center: 0.5, 0.5
+
+
+
+<Package2Interface>:
+    size_hint: None, None
+
+    RelativeLayout:
+        pos: self.parent.pos
+        size: self.parent.size
+
+        BoxLayout:
+            canvas.before:
+                Color:
+                    rgba: 1,1,1,1
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+            size: self.parent.size
+            orientation: "horizontal"
+
+            spacing: 5
+
+            Widget:
+                size_hint: .05, 1
+
+            BoxLayout:
+                size_hint: .9, 1
+                orientation: "vertical"
+                width: self.minimum_width
+
+                Label:
+                    size_hint: 1, .1
+                    text_size: self.size
+                    halign: "left"
+                    markup: True
+                    text: "[b]Package TWO[/b]"
+                    font_size: self.height * .43
+                    color: 0,0,0,1
+
+                Widget:
+                    size_hint: 1, .05
+
+                ScrollView:
+                    size_hint: 1, .8
+
+                    do_scroll_y: True
+                    do_scroll_x: False
+
+                    GridLayout:
+                        size_hint: 1, None
+                        cols: 1
+                        spacing: 20
+
+                        height: self.minimum_height
+
+                        Label:
+                            size_hint: 1, None
+                            text_size: self.width, None
+                            height: self.texture_size[1]
+                            halign: "left"
+                            markup: True
+                            text: "Package Two is our middle option so we understand customers may be attached to it, but we encourage you to make absolutely sure thy're ready to dedicate time to being successful. Some accounts have had 200+ calls to the same number in a week. Others have experienced $100K+ losses when alerts were ignored. And the account admin wasn't aware that these problems were occurring. We encourage users to reconsider our [b]CHOICE Package[/b] to add [b]Primex Proactive Service[/b] and exclusive upgrades."
+                            #font_size: self.height * .14
+                            color: 0,0,0,1
+
+                        Label:
+                            size_hint: 1, None
+                            text_size: self.width, None
+                            height: self.texture_size[1]
+                            halign: "left"
+                            text: "But don't forget about all of the other great features that are included!"
+                            #font_size: self.height
+                            color: 0,0,0,1
+
+                        Label:
+                            size_hint: 1, None
+                            text_size: self.width, None
+                            height: self.texture_size[1]
+                            halign: "left"
+                            markup: True
+                            text: "[b]Phone or Text (SMS) Alerts[/b] can be used instead of or in addition to email alerts so [color=0000AA]users can act quickly to protect important materials or prevent unsafe room conditions.[/color]"
+                            #font_size: self.height * .43
+                            color: 0,0,0,1
+
+                        Label:
+                            size_hint: 1, None
+                            text_size: self.width, None
+                            height: self.texture_size[1]
+                            halign: "left"
+                            markup: True
+                            text: "[b]Email Alerts[/b] let users know if a refrigerator, operating room, or equipment room is having a problem so[color=0000AA] users can act quickly to protect against spoiled vaccines or unsafe room conditions.[/color]"
+                            #font_size: self.height * .43
+                            color: 0,0,0,1
+
+                        Label:
+                            size_hint: 1, None
+                            text_size: self.width, None
+                            height: self.texture_size[1]
+                            halign: "left"
+                            markup: True
+                            text: "Our [b]Full Suite of Reports[/b] is offered for [color=0000AA]maximum flexibility in how data is presented and reviewed.[/color] Want to just look at exceptions? Need the full readings history? It's all in OneVue for you! The [b]Asset Summary Report[/b] enables sites to [color=0000AA]easily present the data collected to regulatory agencies to demonstrate compliance.[/color] (For temperature sensors, the [b]Probe Replacement Report[/b] is also available.)"
+                            #font_size: self.height * .43
+                            color: 0,0,0,1
+
+                        Label:
+                            size_hint: 1, None
+                            text_size: self.width, None
+                            height: self.texture_size[1]
+                            halign: "left"
+                            markup: True
+                            text: "[b]Alert Resolutions[/b] offer the ability to[color=0000AA] document corrective actions or remind users of policies[/color] when responding to alerts. (Managers can even access which alerts need to be documented!)"
+                            #font_size: self.height * .43
+                            color: 0,0,0,1
+
+                        Label:
+                            size_hint: 1, None
+                            text_size: self.width, None
+                            height: self.texture_size[1]
+                            halign: "left"
+                            markup: True
+                            text: "Notably, our [b]Audit Report[/b] lets you monitor any changes made to settings that take assets out of policy or put you at risk for loss if they've been suspended or ranges have been improperly adjusted. We also have an [b]Alert Evaluation Report[/b] if you're having concerns about assets or alarms."
+                            #font_size: self.height * .43
+                            color: 0,0,0,1
+
+                        Label:
+                            size_hint: 1, None
+                            text_size: self.width, None
+                            height: self.texture_size[1]
+                            halign: "left"
+                            markup: True
+                            text: "Full access summary to the[b] OneVue Dashboard[/b] offers[color=0000AA] peace of mind to assess any problems at a glance.[/color] Detailed pages list assets and sensors and link to[b] Graphs of Readings History[/b] to[color=0000AA] assess trends or warning signs.[/color]"
+                            #font_size: self.height * .43
+                            color: 0,0,0,1
+
+                Widget:
+                    size_hint: 1, .04
+
+                BoxLayout:
+                    size_hint: 1, .06
+                    orientation: "horizontal"
+
+                    Button:
+                        size_hint: .47, 1
+                        text: "Confirm - This is the right package!"
+                        font_size: self.height * .55
+                        background_normal: ""
+                        background_down: ""
+                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                        on_release:
+                            app.root.transition = NoTransition()
+                            app.root.current = "PackageSelectionScreen"
+
+                    Widget:
+                        size_hint: .06, 1
+
+                    Button:
+                        size_hint: .47, 1
+                        text: "Go back to Package Selction."
+                        font_size: self.height * .55
+                        background_normal: ""
+                        background_down: ""
+                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                        on_release:
+                            app.root.transition = NoTransition()
+                            app.root.current = "PackageSelectionScreen"
+
+
+                Widget:
+                    size_hint: 1, .05
+
+            Widget:
+                size_hint: .05, 1
+
+<Package2Background>:
+    AnchorLayout:
+        canvas.before:
+            Color:
+                rgba: 0.23921568627450981, 0.5137254901960784, 0.7254901960784313, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        size: self.parent.size
+        anchor_x: 'center'
+        anchor_y: 'center'
+        Package2Interface:
+            id: interface
+            size_hint: .9,.9
+
+<Package2Screen>:
+    name: "Package2Screen"
+    FloatLayout:
+        Package2Background:
             id: background
             center: 0.5, 0.5

@@ -92,6 +92,17 @@ class Package1Screen(Screen):
 
 
 
+class Package2Interface(Widget):
+    pass
+
+class Package2Background(Widget):
+    pass
+
+class Package2Screen(Screen):
+    pass
+
+
+
 class SenseConfiguration(App):
     def build(self):
         Window.size=(850,650)
