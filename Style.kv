@@ -22,6 +22,7 @@ WindowManager:
     PackageSelectionScreen:
     Package1Screen:
     Package2Screen:
+    Package3Screen:
 
 
 <WelcomeInterface>:
@@ -449,6 +450,10 @@ WindowManager:
                         backgroundColorNormal: 0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1
                         backgroundColorActive: 0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1
                         text: "CHOICE\nFull-service package with best customer experience, exclusive upgrades (like Active Directory), proactive service, and full customization"
+                        on_release:
+                            app.root.transition = NoTransition()
+                            app.root.current = "Package3Screen"
+
 
                     RoundedButton:
                         size_hint: .25, 1
@@ -458,7 +463,7 @@ WindowManager:
                         halign: "center"
                         valign: "center"
                         backgroundColorNormal: 0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1
-                        backgroundColorActive: 0.13921568627450981, 0.4137254901960784, 0.6254901960784313, 1
+                        backgroundColorActive: 0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1
                         text: "EXCLUSIVE\nEnterprise level packages are not supported in this app and need to be configured offline at this time"
 
                 Widget:
@@ -702,27 +707,8 @@ WindowManager:
                             text_size: self.width, None
                             height: self.texture_size[1]
                             halign: "left"
-                            text: "But don't forget about all of the other great features that are included!"
-                            #font_size: self.height
-                            color: 0,0,0,1
-
-                        Label:
-                            size_hint: 1, None
-                            text_size: self.width, None
-                            height: self.texture_size[1]
-                            halign: "left"
                             markup: True
                             text: "[b]Phone or Text (SMS) Alerts[/b] can be used instead of or in addition to email alerts so [color=0000AA]users can act quickly to protect important materials or prevent unsafe room conditions.[/color]"
-                            #font_size: self.height * .43
-                            color: 0,0,0,1
-
-                        Label:
-                            size_hint: 1, None
-                            text_size: self.width, None
-                            height: self.texture_size[1]
-                            halign: "left"
-                            markup: True
-                            text: "[b]Email Alerts[/b] let users know if a refrigerator, operating room, or equipment room is having a problem so[color=0000AA] users can act quickly to protect against spoiled vaccines or unsafe room conditions.[/color]"
                             #font_size: self.height * .43
                             color: 0,0,0,1
 
@@ -742,6 +728,35 @@ WindowManager:
                             height: self.texture_size[1]
                             halign: "left"
                             markup: True
+                            text: "Notably, our [b]Audit Report[/b] lets you monitor any changes made to settings that take assets out of policy or put you at risk for loss if they've been suspended or ranges have been improperly adjusted. We also have an [b]Alert Evaluation Report[/b] if you're having concerns about assets or alarms."
+                            #font_size: self.height * .43
+                            color: 0,0,0,1
+
+                        Label:
+                            size_hint: 1, None
+                            text_size: self.width, None
+                            height: self.texture_size[1]
+                            halign: "left"
+                            text: "But don't forget about all of the other great features that are included!"
+                            #font_size: self.height
+                            color: 0,0,0,1
+
+                        Label:
+                            size_hint: 1, None
+                            text_size: self.width, None
+                            height: self.texture_size[1]
+                            halign: "left"
+                            markup: True
+                            text: "[b]Email Alerts[/b] let users know if a refrigerator, operating room, or equipment room is having a problem so[color=0000AA] users can act quickly to protect against spoiled vaccines or unsafe room conditions.[/color]"
+                            #font_size: self.height * .43
+                            color: 0,0,0,1
+
+                        Label:
+                            size_hint: 1, None
+                            text_size: self.width, None
+                            height: self.texture_size[1]
+                            halign: "left"
+                            markup: True
                             text: "[b]Alert Resolutions[/b] offer the ability to[color=0000AA] document corrective actions or remind users of policies[/color] when responding to alerts. (Managers can even access which alerts need to be documented!)"
                             #font_size: self.height * .43
                             color: 0,0,0,1
@@ -752,17 +767,7 @@ WindowManager:
                             height: self.texture_size[1]
                             halign: "left"
                             markup: True
-                            text: "Notably, our [b]Audit Report[/b] lets you monitor any changes made to settings that take assets out of policy or put you at risk for loss if they've been suspended or ranges have been improperly adjusted. We also have an [b]Alert Evaluation Report[/b] if you're having concerns about assets or alarms."
-                            #font_size: self.height * .43
-                            color: 0,0,0,1
-
-                        Label:
-                            size_hint: 1, None
-                            text_size: self.width, None
-                            height: self.texture_size[1]
-                            halign: "left"
-                            markup: True
-                            text: "Full access summary to the[b] OneVue Dashboard[/b] offers[color=0000AA] peace of mind to assess any problems at a glance.[/color] Detailed pages list assets and sensors and link to[b] Graphs of Readings History[/b] to[color=0000AA] assess trends or warning signs.[/color]"
+                            text: "Full access to the[b] OneVue Dashboard[/b] offers[color=0000AA] peace of mind to assess any problems at a glance.[/color] Detailed pages list assets and sensors and link to[b] Graphs of Readings History[/b] to[color=0000AA] assess trends or warning signs.[/color]"
                             #font_size: self.height * .43
                             color: 0,0,0,1
 
@@ -822,6 +827,230 @@ WindowManager:
 
 <Package2Screen>:
     name: "Package2Screen"
+    FloatLayout:
+        Package2Background:
+            id: background
+            center: 0.5, 0.5
+
+
+
+<Package3Interface>:
+    size_hint: None, None
+
+    RelativeLayout:
+        pos: self.parent.pos
+        size: self.parent.size
+
+        BoxLayout:
+            canvas.before:
+                Color:
+                    rgba: 1,1,1,1
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+            size: self.parent.size
+            orientation: "horizontal"
+
+            spacing: 5
+
+            Widget:
+                size_hint: .05, 1
+
+            BoxLayout:
+                size_hint: .9, 1
+                orientation: "vertical"
+                width: self.minimum_width
+
+                Label:
+                    size_hint: 1, .1
+                    text_size: self.size
+                    halign: "left"
+                    markup: True
+                    text: "[b]PREFERRED[/b]"
+                    font_size: self.height * .43
+                    color: 0,0,0,1
+
+                Widget:
+                    size_hint: 1, .05
+
+                ScrollView:
+                    size_hint: 1, .8
+
+                    do_scroll_y: True
+                    do_scroll_x: False
+
+                    GridLayout:
+                        size_hint: 1, None
+                        cols: 1
+                        spacing: 20
+
+                        height: self.minimum_height
+
+                        Label:
+                            size_hint: 1, None
+                            text_size: self.width, None
+                            height: self.texture_size[1]
+                            halign: "left"
+                            markup: True
+                            text: "Hooray!! [b]PREFERRED[/b] is our best option in the industry with all new data analytics!"
+                            #font_size: self.height * .14
+                            color: 0,0,0,1
+
+                        Label:
+                            size_hint: 1, None
+                            text_size: self.width, None
+                            height: self.texture_size[1]
+                            halign: "left"
+                            markup: True
+                            text: "In addition to all the great features below, users get two meetings per year to discuss ways to optimize their accounts to ensure succes [i]and[/i] are covered under Primex's [b]It Works or We Pay[/b] guarantee!"
+                            #font_size: self.height * .43
+                            color: 0,0,0,1
+
+                        Label:
+                            size_hint: 1, None
+                            text_size: self.width, None
+                            height: self.texture_size[1]
+                            halign: "left"
+                            markup: True
+                            text: "[b]Success Audits[/b] offer greater insight into patterns over time - [color=#0000AA]which assets are at greatest risk given alarms, warnings, and suspensions? Can we reduce the risk of alarm fatigue? Which users take longer to act on alerts and may need retraining? Are users reviewing reports and/or documenting corrective actions? Have regulations changed?[/color] Primex is here to help with detailed reports and expert advice!"
+                            #font_size: self.height * .14
+                            color: 0,0,0,1
+
+                        Label:
+                            size_hint: 1, None
+                            text_size: self.width, None
+                            height: self.texture_size[1]
+                            halign: "left"
+                            markup: True
+                            text: "In addition to the scheduled services, [b]PREFERRED[/b] sites have [b]Priority Access to Support[/b] for any question or problem they might have."
+                            #font_size: self.height * .14
+                            color: 0,0,0,1
+
+                        Label:
+                            size_hint: 1, None
+                            text_size: self.width, None
+                            height: self.texture_size[1]
+                            halign: "left"
+                            markup: True
+                            text: "Lastly, this package offers [b]Exclusive Upgrades[/b] at least once per year. To start, we're introducing [color=#0000AA]Single Sign On to integrate OneVue with sites' Active Directory or other Identity Provider[/color] for any enhanced level of security and control over access. What's next? We have ideas but our [b]PREFERRED[/b] subscribers will help us decide!"
+                            #font_size: self.height * .14
+                            color: 0,0,0,1
+
+                        Label:
+                            size_hint: 1, None
+                            text_size: self.width, None
+                            height: self.texture_size[1]
+                            halign: "left"
+                            text: "But don't forget about all of the other great features that are included!"
+                            #font_size: self.height
+                            color: 0,0,0,1
+
+                        Label:
+                            size_hint: 1, None
+                            text_size: self.width, None
+                            height: self.texture_size[1]
+                            halign: "left"
+                            markup: True
+                            text: "[b]Email, Phone, or Text (SMS) Alerts[/b] let users know if a refrigerator, operating room, or equipment room is having a problem so[color=0000AA] users can act quickly to protect against spoiled vaccines or unsafe room conditions.[/color]"
+                            #font_size: self.height * .43
+                            color: 0,0,0,1
+
+                        Label:
+                            size_hint: 1, None
+                            text_size: self.width, None
+                            height: self.texture_size[1]
+                            halign: "left"
+                            markup: True
+                            text: "[b]Alert Resolutions[/b] offer the ability to[color=0000AA] document corrective actions or remind users of policies[/color] when responding to alerts. (Managers can even access which alerts need to be documented!)"
+                            #font_size: self.height * .43
+                            color: 0,0,0,1
+
+                        Label:
+                            size_hint: 1, None
+                            text_size: self.width, None
+                            height: self.texture_size[1]
+                            halign: "left"
+                            markup: True
+                            text: "Our [b]Full Suite of Reports[/b] is offered for [color=0000AA]maximum flexibility in how data is presented and reviewed.[/color] Want to just look at exceptions? Need the full readings history? It's all in OneVue for you! The [b]Asset Summary Report[/b] enables sites to [color=0000AA]easily present the data collected to regulatory agencies to demonstrate compliance.[/color] (For temperature sensors, the [b]Probe Replacement Report[/b] is also available.)"
+                            #font_size: self.height * .43
+                            color: 0,0,0,1
+
+                        Label:
+                            size_hint: 1, None
+                            text_size: self.width, None
+                            height: self.texture_size[1]
+                            halign: "left"
+                            markup: True
+                            text: "Notably, our [b]Audit Report[/b] lets you monitor any changes made to settings that take assets out of policy or put you at risk for loss if they've been suspended or ranges have been improperly adjusted. We also have an [b]Alert Evaluation Report[/b] if you're having concerns about assets or alarms."
+                            #font_size: self.height * .43
+                            color: 0,0,0,1
+
+                        Label:
+                            size_hint: 1, None
+                            text_size: self.width, None
+                            height: self.texture_size[1]
+                            halign: "left"
+                            markup: True
+                            text: "Full access to the[b] OneVue Dashboard[/b] offers[color=0000AA] peace of mind to assess any problems at a glance.[/color] Detailed pages list assets and sensors and link to[b] Graphs of Readings History[/b] to[color=0000AA] assess trends or warning signs.[/color]"
+                            #font_size: self.height * .43
+                            color: 0,0,0,1
+
+                Widget:
+                    size_hint: 1, .04
+
+                BoxLayout:
+                    size_hint: 1, .06
+                    orientation: "horizontal"
+
+                    Button:
+                        size_hint: .47, 1
+                        text: "Confirm - This is the right package!"
+                        font_size: self.height * .55
+                        background_normal: ""
+                        background_down: ""
+                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                        on_release:
+                            app.root.transition = NoTransition()
+                            app.root.current = "PackageSelectionScreen"
+
+                    Widget:
+                        size_hint: .06, 1
+
+                    Button:
+                        size_hint: .47, 1
+                        text: "Go back to Package Selction."
+                        font_size: self.height * .55
+                        background_normal: ""
+                        background_down: ""
+                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                        on_release:
+                            app.root.transition = NoTransition()
+                            app.root.current = "PackageSelectionScreen"
+
+
+                Widget:
+                    size_hint: 1, .05
+
+            Widget:
+                size_hint: .05, 1
+
+<Package3Background>:
+    AnchorLayout:
+        canvas.before:
+            Color:
+                rgba: 0.23921568627450981, 0.5137254901960784, 0.7254901960784313, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        size: self.parent.size
+        anchor_x: 'center'
+        anchor_y: 'center'
+        Package2Interface:
+            id: interface
+            size_hint: .9,.9
+
+<Package3Screen>:
+    name: "Package3Screen"
     FloatLayout:
         Package2Background:
             id: background
