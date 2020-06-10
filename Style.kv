@@ -23,6 +23,7 @@ WindowManager:
     Package1Screen:
     Package2Screen:
     Package3Screen:
+    Package4Screen:
 
 
 <WelcomeInterface>:
@@ -423,7 +424,7 @@ WindowManager:
                         valign: "center"
                         backgroundColorNormal: 0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1
                         backgroundColorActive: 0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1
-                        text: "ONE\nSimplest package - meets compliance needs, basic protection against loss with world-class solution"
+                        text: "BASIC\nSimplest package - meets compliance needs, basic protection against loss with world-class solution"
                         on_release:
                             app.root.current = "Package1Screen"
 
@@ -436,7 +437,7 @@ WindowManager:
                         valign: "center"
                         backgroundColorNormal: 0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1
                         backgroundColorActive: 0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1
-                        text: "TWO\nPackage that requires greatest site expertise to manage flexibility of package. Adds phone/SMS, flexibility in reports and settings"
+                        text: "ADVANCED\nPackage that requires greatest site expertise to manage flexibility of package. Adds phone/SMS, flexibility in reports and settings"
                         on_release:
                             app.root.current = "Package2Screen"
 
@@ -449,7 +450,7 @@ WindowManager:
                         valign: "center"
                         backgroundColorNormal: 0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1
                         backgroundColorActive: 0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1
-                        text: "CHOICE\nFull-service package with best customer experience, exclusive upgrades (like Active Directory), proactive service, and full customization"
+                        text: "PREFERRED\nFull-service package with best customer experience, exclusive upgrades (like Active Directory), proactive service, and full customization"
                         on_release:
                             app.root.transition = NoTransition()
                             app.root.current = "Package3Screen"
@@ -465,6 +466,8 @@ WindowManager:
                         backgroundColorNormal: 0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1
                         backgroundColorActive: 0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1
                         text: "EXCLUSIVE\nEnterprise level packages are not supported in this app and need to be configured offline at this time"
+                        on_release:
+                            app.root.current = "Package4Screen"
 
                 Widget:
                     id: spacer
@@ -529,7 +532,7 @@ WindowManager:
                     text_size: self.size
                     halign: "left"
                     markup: True
-                    text: "[b]Package ONE[/b]"
+                    text: "[b]BASIC[/b]"
                     font_size: self.height * .43
                     color: 0,0,0,1
 
@@ -538,7 +541,7 @@ WindowManager:
                     text_size: self.size
                     halign: "left"
                     markup: True
-                    text: "Package ONE is a great selection for sites who are just starting out (i.e. replacing pen and paper recordings), who have minimal risk of compliance or loss events or who are very price sensitive."
+                    text: "BASIC is a great selection for sites who are just starting out (i.e. replacing pen and paper recordings), who have minimal risk of compliance or loss events or who are very price sensitive."
                     font_size: self.height * .2
                     color: 0,0,0,1
 
@@ -672,7 +675,7 @@ WindowManager:
                     text_size: self.size
                     halign: "left"
                     markup: True
-                    text: "[b]Package TWO[/b]"
+                    text: "[b]ADVANCED[/b]"
                     font_size: self.height * .43
                     color: 0,0,0,1
 
@@ -698,7 +701,7 @@ WindowManager:
                             height: self.texture_size[1]
                             halign: "left"
                             markup: True
-                            text: "Package Two is our middle option so we understand customers may be attached to it, but we encourage you to make absolutely sure thy're ready to dedicate time to being successful. Some accounts have had 200+ calls to the same number in a week. Others have experienced $100K+ losses when alerts were ignored. And the account admin wasn't aware that these problems were occurring. We encourage users to reconsider our [b]CHOICE Package[/b] to add [b]Primex Proactive Service[/b] and exclusive upgrades."
+                            text: "ADVANCED is our middle option so we understand customers may be attached to it, but we encourage you to make absolutely sure thy're ready to dedicate time to being successful. Some accounts have had 200+ calls to the same number in a week. Others have experienced $100K+ losses when alerts were ignored. And the account admin wasn't aware that these problems were occurring. We encourage users to reconsider our [b]CHOICE Package[/b] to add [b]Primex Proactive Service[/b] and exclusive upgrades."
                             #font_size: self.height * .14
                             color: 0,0,0,1
 
@@ -1045,13 +1048,132 @@ WindowManager:
         size: self.parent.size
         anchor_x: 'center'
         anchor_y: 'center'
-        Package2Interface:
+        Package3Interface:
             id: interface
             size_hint: .9,.9
 
 <Package3Screen>:
     name: "Package3Screen"
     FloatLayout:
-        Package2Background:
+        Package3Background:
+            id: background
+            center: 0.5, 0.5
+
+
+
+<Package4Interface>:
+    size_hint: None, None
+
+    RelativeLayout:
+        pos: self.parent.pos
+        size: self.parent.size
+
+        BoxLayout:
+            canvas.before:
+                Color:
+                    rgba: 1,1,1,1
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+            size: self.parent.size
+            orientation: "horizontal"
+
+            spacing: 5
+
+            Widget:
+                size_hint: .05, 1
+
+            BoxLayout:
+                size_hint: .9, 1
+                orientation: "vertical"
+                width: self.minimum_width
+
+                Label:
+                    size_hint: 1, .1
+                    text_size: self.size
+                    halign: "left"
+                    markup: True
+                    text: "[b]ENTERPRISE[/b]"
+                    font_size: self.height * .43
+                    color: 0,0,0,1
+
+                Widget:
+                    size_hint: 1, .05
+
+                Label:
+                    size_hint: 1, .15
+                    text_size: self.size
+                    halign: "left"
+                    markup: True
+                    text: "[b]ENTERPRISE[/b] is our enterprise offering which allows the most flexibility for our largest, most important customers. Given that flexibility, we need to configure and price offline."
+                    #font_size: self.height * .43
+                    color: 0,0,0,1
+
+                Label:
+                    size_hint: 1, .15
+                    text_size: self.size
+                    halign: "left"
+                    markup: True
+                    text: "Please contact Katie McMillan (kmcmillan@pimexinc.com) to discuss in more detail through the soft launch process."
+                    #font_size: self.height * .43
+                    color: 0,0,0,1
+
+                Widget:
+                    size_hint: 1, .59
+
+                BoxLayout:
+                    size_hint: 1, .06
+                    orientation: "horizontal"
+
+                    Button:
+                        size_hint: .47, 1
+                        text: "Confirm - TI won't use the app"
+                        font_size: self.height * .55
+                        background_normal: ""
+                        background_down: ""
+                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                        on_release:
+                            app.root.transition = NoTransition()
+                            app.root.current = "PackageSelectionScreen"
+
+                    Widget:
+                        size_hint: .06, 1
+
+                    Button:
+                        size_hint: .47, 1
+                        text: "Go back to Package Selction."
+                        font_size: self.height * .55
+                        background_normal: ""
+                        background_down: ""
+                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                        on_release:
+                            app.root.transition = NoTransition()
+                            app.root.current = "PackageSelectionScreen"
+
+                Widget:
+                    size_hint: 1, .05
+
+            Widget:
+                size_hint: .05, 1
+
+<Package4Background>:
+    AnchorLayout:
+        canvas.before:
+            Color:
+                rgba: 0.23921568627450981, 0.5137254901960784, 0.7254901960784313, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        size: self.parent.size
+        anchor_x: 'center'
+        anchor_y: 'center'
+        Package4Interface:
+            id: interface
+            size_hint: .9,.9
+
+<Package4Screen>:
+    name: "Package4Screen"
+    FloatLayout:
+        Package4Background:
             id: background
             center: 0.5, 0.5
