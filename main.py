@@ -125,6 +125,17 @@ class Package4Screen(Screen):
 
 
 
+class PackageQuizInterface(Widget):
+    pass
+
+class PackageQuizBackground(Widget):
+    pass
+
+class PackageQuizScreen(Screen):
+    pass
+
+
+
 class SenseConfiguration(App):
     def build(self):
         Window.size=(850,650)

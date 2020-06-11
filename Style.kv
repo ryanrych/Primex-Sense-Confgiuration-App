@@ -24,6 +24,7 @@ WindowManager:
     Package2Screen:
     Package3Screen:
     Package4Screen:
+    PackageQuizScreen:
 
 
 <WelcomeInterface>:
@@ -381,6 +382,8 @@ WindowManager:
                         background_normal: ""
                         background_down: ""
                         background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                        on_release:
+                            app.root.current = "PackageQuizScreen"
 
                     Widget:
                         size_hint: .48, 1
@@ -1175,5 +1178,471 @@ WindowManager:
     name: "Package4Screen"
     FloatLayout:
         Package4Background:
+            id: background
+            center: 0.5, 0.5
+
+
+
+<PackageQuizInterface>:
+    size_hint: None, None
+
+    RelativeLayout:
+        pos: self.parent.pos
+        size: self.parent.size
+
+        BoxLayout:
+            canvas.before:
+                Color:
+                    rgba: 1,1,1,1
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+            size: self.parent.size
+            orientation: "horizontal"
+
+            spacing: 5
+
+            Widget:
+                size_hint: .05, 1
+
+            BoxLayout:
+                size_hint: .9, 1
+                orientation: "vertical"
+
+                Label:
+                    size_hint: 1, .1
+                    text_size: self.size
+                    halign: "left"
+                    markup: True
+                    text: "[b]Package Selection[/b]"
+                    font_size: self.height * .43
+                    color: 0,0,0,1
+
+                Label:
+                    size_hint: 1, .05
+                    text_size: self.size
+                    halign: "left"
+                    text: "How does the site define successful use of OneVue Sense?"
+                    color: 0,0,0,1
+
+                BoxLayout:
+                    size_hint: 1, .07
+                    orientation: "horizontal"
+
+                    RoundedButton:
+                        size_hint: .25, 1
+                        text_size : self.size
+                        height: self.texture_size[1]
+                        pos_hint: {'top': 1}
+                        halign: "center"
+                        valign: "center"
+                        backgroundColorNormal: 0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1
+                        backgroundColorActive: 0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1
+                        text: "No Audit Findings"
+                        on_release:
+                            app.root.current = "Package4Screen"
+
+                    RoundedButton:
+                        size_hint: .25, 1
+                        text_size : self.size
+                        height: self.texture_size[1]
+                        pos_hint: {'top': 1}
+                        halign: "center"
+                        valign: "center"
+                        backgroundColorNormal: 0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1
+                        backgroundColorActive: 0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1
+                        text: "Protection Against Loss"
+                        on_release:
+                            app.root.current = "Package4Screen"
+
+                    RoundedButton:
+                        size_hint: .25, 1
+                        text_size : self.size
+                        height: self.texture_size[1]
+                        pos_hint: {'top': 1}
+                        halign: "center"
+                        valign: "center"
+                        backgroundColorNormal: 0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1
+                        backgroundColorActive: 0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1
+                        text: "Making Staff More Efficient"
+                        on_release:
+                            app.root.current = "Package4Screen"
+
+                    RoundedButton:
+                        size_hint: .25, 1
+                        text_size : self.size
+                        height: self.texture_size[1]
+                        pos_hint: {'top': 1}
+                        halign: "center"
+                        valign: "center"
+                        backgroundColorNormal: 0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1
+                        backgroundColorActive: 0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1
+                        text: "Something Else"
+                        on_release:
+                            app.root.current = "Package4Screen"
+
+                BoxLayout:
+                    size_hint: 1, .07
+                    orientation: "horizontal"
+
+                    Label:
+                        size_hint: .25, 1
+                        text_size: self.size
+                        height: self.texture_size[1]
+                        halign: "left"
+                        text: "What angenices audit?"
+                        color: 0,0,0,1
+
+                    Label:
+                        size_hint: .25, 1
+                        text_size: self.size
+                        height: self.texture_size[1]
+                        halign: "left"
+                        text: "How often do they experience loss?"
+                        color: 0,0,0,1
+
+                    Label:
+                        size_hint: .25, 1
+                        text_size: self.size
+                        height: self.texture_size[1]
+                        halign: "left"
+                        text: "Who would manage OneVue on site?"
+                        color: 0,0,0,1
+
+                    Label:
+                        size_hint: .25, 1
+                        text_size: self.size
+                        height: self.texture_size[1]
+                        halign: "left"
+                        text: "Explain:"
+                        color: 0,0,0,1
+
+                GridLayout:
+                    size_hint: 1, .6
+                    orientation: "vertical"
+                    cols: 4
+                    spacing: 5
+
+                    Button:
+                        text: "Joint Commission or DNV"
+                        height: self.texture_size[1]
+                        background_normal: ""
+                        background_down: ""
+                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+
+                    Button:
+                        text: "Less than once per year"
+                        height: self.texture_size[1]
+                        background_normal: ""
+                        background_down: ""
+                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+
+                    BoxLayout:
+                        orientation: "horizontal"
+
+                        Button:
+                            size_hint: .47, 1
+                            height: self.texture_size[1]
+                            text: "One Person"
+                            background_normal: ""
+                            background_down: ""
+                            background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+
+                        Widget:
+                            size_hint: .06, None
+
+                        Button:
+                            size_hint: .47, 1
+                            height: self.texture_size[1]
+                            text: "Small Team"
+                            background_normal: ""
+                            background_down: ""
+                            background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+
+                    TextInput:
+                        multiline: False
+                        background_normal: "White.png"
+                        background_active: "White.png"
+                        cursor_color: 0,0,0,1
+                        foreground_color: 0,0,0,1
+
+                    Button:
+                        text: "FDA"
+                        height: self.texture_size[1]
+                        background_normal: ""
+                        background_down: ""
+                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+
+                    Button:
+                        text: "About once per year"
+                        height: self.texture_size[1]
+                        background_normal: ""
+                        background_down: ""
+                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+
+                    Label:
+                        height: self.texture_size[1]
+                        text_size: self.size
+                        halign: "left"
+                        text: "How many people?"
+                        color: 0,0,0,1
+
+                    Widget:
+
+                    Button:
+                        text: "Center for Disease Control"
+                        height: self.texture_size[1]
+                        background_normal: ""
+                        background_down: ""
+                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+
+                    Button:
+                        text: "2-3 times per year"
+                        height: self.texture_size[1]
+                        background_normal: ""
+                        background_down: ""
+                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+
+                    TextInput:
+                        multiline: False
+                        background_normal: "White.png"
+                        background_active: "White.png"
+                        cursor_color: 0,0,0,1
+                        foreground_color: 0,0,0,1
+
+                    Widget:
+
+                    Button:
+                        text: "State's Vaccines for Children Program"
+                        height: self.texture_size[1]
+                        background_normal: ""
+                        background_down: ""
+                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+
+                    Button:
+                        text: "4-6 times per year"
+                        height: self.texture_size[1]
+                        background_normal: ""
+                        background_down: ""
+                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+
+                    Widget:
+
+                    Widget:
+
+                    Button:
+                        text: "Health and Human Services"
+                        height: self.texture_size[1]
+                        background_normal: ""
+                        background_down: ""
+                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+
+                    Button:
+                        text: "6-11 times per week"
+                        height: self.texture_size[1]
+                        background_normal: ""
+                        background_down: ""
+                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+
+                    Label:
+                        text_size: self.size
+                        height: self.texture_size[1]
+                        halign: "left"
+                        text: "How much of their time would be dedicated to OneVue?"
+                        color: 0,0,0,1
+
+                    Widget:
+
+                    Label:
+                        height: self.texture_size[1]
+                        text_size: self.size
+                        halign: "left"
+                        color: 0,0,0,1
+                        text: "Other:"
+
+                    Button:
+                        text: "Once a month"
+                        height: self.texture_size[1]
+                        background_normal: ""
+                        background_down: ""
+                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+
+                    Button:
+                        text: "Less than 10%"
+                        height: self.texture_size[1]
+                        background_normal: ""
+                        background_down: ""
+                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+
+                    Widget:
+
+                    TextInput:
+                        multiline: False
+                        background_normal: "White.png"
+                        background_active: "White.png"
+                        cursor_color: 0,0,0,1
+                        foreground_color: 0,0,0,1
+
+                    Button:
+                        text: "Once a week"
+                        height: self.texture_size[1]
+                        background_normal: ""
+                        background_down: ""
+                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+
+                    Button:
+                        text: "11-25%"
+                        height: self.texture_size[1]
+                        background_normal: ""
+                        background_down: ""
+                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+
+                    Widget:
+
+                    Widget:
+
+                    Label:
+                        text_size: self.size
+                        height: self.texture_size[1]
+                        align: "left"
+                        color: 0,0,0,1
+                        text: "What's the average"
+
+                    Button:
+                        text: "26-50%"
+                        height: self.texture_size[1]
+                        background_normal: ""
+                        background_down: ""
+                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+
+                    Widget:
+
+                    Widget:
+
+                    Label:
+                        text_size: self.size
+                        height: self.texture_size[1]
+                        align: "left"
+                        color: 0,0,0,1
+                        text: "value of loss?"
+
+                    Button:
+                        text: "More than 50%"
+                        height: self.texture_size[1]
+                        background_normal: ""
+                        background_down: ""
+                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+
+                    Widget:
+
+                    Widget:
+
+                    TextInput:
+                        multiline: False
+                        background_normal: "White.png"
+                        background_active: "White.png"
+                        cursor_color: 0,0,0,1
+                        foreground_color: 0,0,0,1
+
+                    Label:
+                        text_size: self.size
+                        height: self.texture_size[1]
+                        align: "left"
+                        color: 0,0,0,1
+                        text: "Have the staff managed a system like OneVue before?"
+
+                    Widget:
+
+                    Widget:
+
+                    Label:
+                        text_size: self.size
+                        height: self.texture_size[1]
+                        align: "left"
+                        color: 0,0,0,1
+                        text: "How much would they value a Primex guarantee against loss?"
+
+                    BoxLayout:
+                        orientation: "horizontal"
+                        height: self.minimum_height
+
+                        Widget:
+                            size_hint: .2, None
+
+                        Button:
+                            size_hint: .2, 1
+                            height: self.texture_size[1]
+                            text: "Yes"
+                            background_normal: ""
+                            background_down: ""
+                            background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+
+                        Widget:
+                            size_hint: .2, None
+
+                        Button:
+                            size_hint: .2, 1
+                            height: self.texture_size[1]
+                            text: "No"
+                            background_normal: ""
+                            background_down: ""
+                            background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+
+                        Widget:
+                            size_hint: .2, None
+
+                    Widget:
+
+                    Widget:
+
+                    Button:
+                        text: "High value"
+                        height: self.texture_size[1]
+                        background_normal: ""
+                        background_down: ""
+                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+
+                    Widget:
+
+                    Widget:
+
+                    Widget:
+
+                    Button:
+                        text: "Low value"
+                        height: self.texture_size[1]
+                        background_normal: ""
+                        background_down: ""
+                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+
+                        Widget:
+
+                        Widget:
+
+                Widget:
+                    size_hint: 1, .11
+
+            Widget:
+                size_hint: .05, 1
+
+<PackageQuizBackground>:
+    AnchorLayout:
+        canvas.before:
+            Color:
+                rgba: 0.23921568627450981, 0.5137254901960784, 0.7254901960784313, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        size: self.parent.size
+        anchor_x: 'center'
+        anchor_y: 'center'
+        PackageQuizInterface:
+            id: interface
+            size_hint: .9,.9
+
+<PackageQuizScreen>:
+    name: "PackageQuizScreen"
+    FloatLayout:
+        PackageQuizBackground:
             id: background
             center: 0.5, 0.5
