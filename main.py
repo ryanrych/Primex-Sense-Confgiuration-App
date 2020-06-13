@@ -126,7 +126,9 @@ class Package4Screen(Screen):
 
 
 class PackageQuizInterface(Widget):
-    pass
+
+    def noAuditPress(self):
+        self.ids.column1Spacer.size_hint = [0,0]
 
 class PackageQuizBackground(Widget):
     pass

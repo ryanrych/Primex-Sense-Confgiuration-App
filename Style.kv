@@ -1240,7 +1240,7 @@ WindowManager:
                         backgroundColorActive: 0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1
                         text: "No Audit Findings"
                         on_release:
-                            app.root.current = "Package4Screen"
+                            root.noAuditPress()
 
                     RoundedButton:
                         size_hint: .25, 1
@@ -1287,7 +1287,8 @@ WindowManager:
 
                     Label:
                         size_hint: .25, 1
-                        text_size: self.size
+                        text_size: self.width, None
+                        pos_hint: {'top': 1}
                         height: self.texture_size[1]
                         halign: "left"
                         text: "What angenices audit?"
@@ -1295,7 +1296,8 @@ WindowManager:
 
                     Label:
                         size_hint: .25, 1
-                        text_size: self.size
+                        text_size: self.width, None
+                        pos_hint: {'top': 1}
                         height: self.texture_size[1]
                         halign: "left"
                         text: "How often do they experience loss?"
@@ -1303,7 +1305,8 @@ WindowManager:
 
                     Label:
                         size_hint: .25, 1
-                        text_size: self.size
+                        text_size: self.width, None
+                        pos_hint: {'top': 1}
                         height: self.texture_size[1]
                         halign: "left"
                         text: "Who would manage OneVue on site?"
@@ -1311,313 +1314,323 @@ WindowManager:
 
                     Label:
                         size_hint: .25, 1
-                        text_size: self.size
+                        text_size: self.width, None
+                        pos_hint: {'top': 1}
                         height: self.texture_size[1]
                         halign: "left"
                         text: "Explain:"
                         color: 0,0,0,1
 
-                GridLayout:
+                BoxLayout:
                     size_hint: 1, .6
-                    orientation: "vertical"
-                    cols: 4
-                    spacing: 5
-
-                    Button:
-                        text: "Joint Commission or DNV"
-                        height: self.texture_size[1]
-                        background_normal: ""
-                        background_down: ""
-                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
-
-                    Button:
-                        text: "Less than once per year"
-                        height: self.texture_size[1]
-                        background_normal: ""
-                        background_down: ""
-                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                    orientation: "horizontal"
 
                     BoxLayout:
-                        orientation: "horizontal"
+                        size_hint: .25, 1
+                        orientation: "vertical"
 
                         Button:
-                            size_hint: .47, 1
-                            height: self.texture_size[1]
-                            text: "One Person"
+                            id: grid11
+                            size_hint: 1, .08
+                            text: "Joint Commission or DNV"
                             background_normal: ""
                             background_down: ""
                             background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+
+                        Button:
+                            id: grid21
+                            size_hint: 1, .08
+                            text: "FDA"
+                            background_normal: ""
+                            background_down: ""
+                            background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+
+                        Button:
+                            id: grid31
+                            size_hint: 1, .08
+                            text: "Center for Disease Control"
+                            background_normal: ""
+                            background_down: ""
+                            background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+
+                        Button:
+                            id: grid41
+                            size_hint: 1, .08
+                            text: "State's Vaccines for Children Program"
+                            background_normal: ""
+                            background_down: ""
+                            background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+
+                        Button:
+                            id: grid51
+                            size_hint: 1, .08
+                            text: "Health and Human Services"
+                            background_normal: ""
+                            background_down: ""
+                            background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+
+                        Label:
+                            id: grid61
+                            size_hint: 1, .1
+                            text_size: self.size
+                            halign: "left"
+                            color: 0,0,0,1
+                            text: "Other:"
+
+                        TextInput:
+                            id: grid71
+                            size_hint: 1, .1
+                            multiline: False
+                            background_normal: "White.png"
+                            background_active: "White.png"
+                            cursor_color: 0,0,0,1
+                            foreground_color: 0,0,0,1
 
                         Widget:
-                            size_hint: .06, None
-
-                        Button:
-                            size_hint: .47, 1
-                            height: self.texture_size[1]
-                            text: "Small Team"
-                            background_normal: ""
-                            background_down: ""
-                            background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
-
-                    TextInput:
-                        multiline: False
-                        background_normal: "White.png"
-                        background_active: "White.png"
-                        cursor_color: 0,0,0,1
-                        foreground_color: 0,0,0,1
-
-                    Button:
-                        text: "FDA"
-                        height: self.texture_size[1]
-                        background_normal: ""
-                        background_down: ""
-                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
-
-                    Button:
-                        text: "About once per year"
-                        height: self.texture_size[1]
-                        background_normal: ""
-                        background_down: ""
-                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
-
-                    Label:
-                        height: self.texture_size[1]
-                        text_size: self.size
-                        halign: "left"
-                        text: "How many people?"
-                        color: 0,0,0,1
-
-                    Widget:
-
-                    Button:
-                        text: "Center for Disease Control"
-                        height: self.texture_size[1]
-                        background_normal: ""
-                        background_down: ""
-                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
-
-                    Button:
-                        text: "2-3 times per year"
-                        height: self.texture_size[1]
-                        background_normal: ""
-                        background_down: ""
-                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
-
-                    TextInput:
-                        multiline: False
-                        background_normal: "White.png"
-                        background_active: "White.png"
-                        cursor_color: 0,0,0,1
-                        foreground_color: 0,0,0,1
-
-                    Widget:
-
-                    Button:
-                        text: "State's Vaccines for Children Program"
-                        height: self.texture_size[1]
-                        background_normal: ""
-                        background_down: ""
-                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
-
-                    Button:
-                        text: "4-6 times per year"
-                        height: self.texture_size[1]
-                        background_normal: ""
-                        background_down: ""
-                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
-
-                    Widget:
-
-                    Widget:
-
-                    Button:
-                        text: "Health and Human Services"
-                        height: self.texture_size[1]
-                        background_normal: ""
-                        background_down: ""
-                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
-
-                    Button:
-                        text: "6-11 times per week"
-                        height: self.texture_size[1]
-                        background_normal: ""
-                        background_down: ""
-                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
-
-                    Label:
-                        text_size: self.size
-                        height: self.texture_size[1]
-                        halign: "left"
-                        text: "How much of their time would be dedicated to OneVue?"
-                        color: 0,0,0,1
-
-                    Widget:
-
-                    Label:
-                        height: self.texture_size[1]
-                        text_size: self.size
-                        halign: "left"
-                        color: 0,0,0,1
-                        text: "Other:"
-
-                    Button:
-                        text: "Once a month"
-                        height: self.texture_size[1]
-                        background_normal: ""
-                        background_down: ""
-                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
-
-                    Button:
-                        text: "Less than 10%"
-                        height: self.texture_size[1]
-                        background_normal: ""
-                        background_down: ""
-                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
-
-                    Widget:
-
-                    TextInput:
-                        multiline: False
-                        background_normal: "White.png"
-                        background_active: "White.png"
-                        cursor_color: 0,0,0,1
-                        foreground_color: 0,0,0,1
-
-                    Button:
-                        text: "Once a week"
-                        height: self.texture_size[1]
-                        background_normal: ""
-                        background_down: ""
-                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
-
-                    Button:
-                        text: "11-25%"
-                        height: self.texture_size[1]
-                        background_normal: ""
-                        background_down: ""
-                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
-
-                    Widget:
-
-                    Widget:
-
-                    Label:
-                        text_size: self.size
-                        height: self.texture_size[1]
-                        align: "left"
-                        color: 0,0,0,1
-                        text: "What's the average"
-
-                    Button:
-                        text: "26-50%"
-                        height: self.texture_size[1]
-                        background_normal: ""
-                        background_down: ""
-                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
-
-                    Widget:
-
-                    Widget:
-
-                    Label:
-                        text_size: self.size
-                        height: self.texture_size[1]
-                        align: "left"
-                        color: 0,0,0,1
-                        text: "value of loss?"
-
-                    Button:
-                        text: "More than 50%"
-                        height: self.texture_size[1]
-                        background_normal: ""
-                        background_down: ""
-                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
-
-                    Widget:
-
-                    Widget:
-
-                    TextInput:
-                        multiline: False
-                        background_normal: "White.png"
-                        background_active: "White.png"
-                        cursor_color: 0,0,0,1
-                        foreground_color: 0,0,0,1
-
-                    Label:
-                        text_size: self.size
-                        height: self.texture_size[1]
-                        align: "left"
-                        color: 0,0,0,1
-                        text: "Have the staff managed a system like OneVue before?"
-
-                    Widget:
-
-                    Widget:
-
-                    Label:
-                        text_size: self.size
-                        height: self.texture_size[1]
-                        align: "left"
-                        color: 0,0,0,1
-                        text: "How much would they value a Primex guarantee against loss?"
+                            size_hint: 1, .4
 
                     BoxLayout:
-                        orientation: "horizontal"
-                        height: self.minimum_height
-
-                        Widget:
-                            size_hint: .2, None
+                        size_hint: .25, 1
+                        orientation: "vertical"
 
                         Button:
-                            size_hint: .2, 1
-                            height: self.texture_size[1]
-                            text: "Yes"
+                            id: grid12
+                            text: "Less than once per year"
+                            height: 0
                             background_normal: ""
                             background_down: ""
                             background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
 
-                        Widget:
-                            size_hint: .2, None
-
                         Button:
-                            size_hint: .2, 1
-                            height: self.texture_size[1]
-                            text: "No"
+                            id: grid22
+                            size_hint: 0, 0
+                            text: "About once per year"
+                            height: 0
                             background_normal: ""
                             background_down: ""
                             background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
 
-                        Widget:
-                            size_hint: .2, None
+                        Button:
+                            id: grid32
+                            text: "2-3 times per year"
+                            height: 0
+                            background_normal: ""
+                            background_down: ""
+                            background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
 
-                    Widget:
+                        Button:
+                            id: grid42
+                            text: "4-6 times per year"
+                            height: 0
+                            background_normal: ""
+                            background_down: ""
+                            background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
 
-                    Widget:
+                        Button:
+                            id: grid52
+                            text: "6-11 times per week"
+                            height: 0
+                            background_normal: ""
+                            background_down: ""
+                            background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
 
-                    Button:
-                        text: "High value"
-                        height: self.texture_size[1]
-                        background_normal: ""
-                        background_down: ""
-                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                        Button:
+                            id: grid62
+                            text: "Once a month"
+                            height: 0
+                            background_normal: ""
+                            background_down: ""
+                            background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
 
-                    Widget:
+                        Button:
+                            id: grid72
+                            text: "Once a week"
+                            height: 0
+                            background_normal: ""
+                            background_down: ""
+                            background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
 
-                    Widget:
+                        Label:
+                            id: grid82
+                            text_size: self.size
+                            height: 0
+                            align: "left"
+                            color: 0,0,0,1
+                            text: "What's the average"
 
-                    Widget:
+                        Label:
+                            id: grid92
+                            text_size: self.size
+                            height: 0
+                            align: "left"
+                            color: 0,0,0,1
+                            text: "value of loss?"
 
-                    Button:
-                        text: "Low value"
-                        height: self.texture_size[1]
-                        background_normal: ""
-                        background_down: ""
-                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                        TextInput:
+                            id: grid102
+                            multiline: False
+                            height: 0
+                            background_normal: "White.png"
+                            background_active: "White.png"
+                            cursor_color: 0,0,0,1
+                            foreground_color: 0,0,0,1
 
-                        Widget:
+                        Label:
+                            id: grid112
+                            text_size: self.size
+                            height: 0
+                            align: "left"
+                            color: 0,0,0,1
+                            text: "How much would they value a Primex guarantee against loss?"
 
-                        Widget:
+                        Button:
+                            id: grid122
+                            text: "High value"
+                            height: 0
+                            background_normal: ""
+                            background_down: ""
+                            background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+
+                        Button:
+                            id: grid132
+                            text: "Low value"
+                            height: 0
+                            background_normal: ""
+                            background_down: ""
+                            background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+
+                    BoxLayout:
+                        size_hint: .25, 1
+                        orientation: "vertical"
+
+                        BoxLayout:
+                            id: grid13
+                            height: 0
+                            orientation: "horizontal"
+
+                            Button:
+                                size_hint: .47, 1
+                                height: self.texture_size[1]
+                                text: "One Person"
+                                background_normal: ""
+                                background_down: ""
+                                background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+
+                            Widget:
+                                size_hint: .06, None
+
+                            Button:
+                                size_hint: .47, 1
+                                height: self.texture_size[1]
+                                text: "Small Team"
+                                background_normal: ""
+                                background_down: ""
+                                background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+
+                        Label:
+                            id: grid23
+                            height: 0
+                            text_size: self.size
+                            halign: "left"
+                            text: "How many people?"
+                            color: 0,0,0,1
+
+                        TextInput:
+                            id: grid33
+                            multiline: False
+                            height: 0
+                            background_normal: "White.png"
+                            background_active: "White.png"
+                            cursor_color: 0,0,0,1
+                            foreground_color: 0,0,0,1
+
+                        Label:
+                            id: grid53
+                            text_size: self.size
+                            height: 0
+                            halign: "left"
+                            text: "How much of their time would be dedicated to OneVue?"
+                            color: 0,0,0,1
+
+                        Button:
+                            id: grid63
+                            text: "Less than 10%"
+                            height: 0
+                            background_normal: ""
+                            background_down: ""
+                            background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+
+                        Button:
+                            id: grid73
+                            text: "11-25%"
+                            height: 0
+                            background_normal: ""
+                            background_down: ""
+                            background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+
+                        Button:
+                            id: grid83
+                            text: "26-50%"
+                            height: 0
+                            background_normal: ""
+                            background_down: ""
+                            background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+
+                        Button:
+                            id: grid93
+                            text: "More than 50%"
+                            height: 0
+                            background_normal: ""
+                            background_down: ""
+                            background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+
+                        Label:
+                            id: grid103
+                            text_size: self.size
+                            height: 0
+                            align: "left"
+                            color: 0,0,0,1
+                            text: "Have the staff managed a system like OneVue before?"
+
+                        BoxLayout:
+                            id: grid113
+                            orientation: "horizontal"
+                            height: 0
+
+                            Widget:
+                                size_hint: .2, None
+
+                            Button:
+                                size_hint: .2, 1
+                                height: self.texture_size[1]
+                                text: "Yes"
+                                background_normal: ""
+                                background_down: ""
+                                background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+
+                            Widget:
+                                size_hint: .2, None
+
+                            Button:
+                                size_hint: .2, 1
+                                height: self.texture_size[1]
+                                text: "No"
+                                background_normal: ""
+                                background_down: ""
+                                background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+
+                            Widget:
+                                size_hint: .2, None
+
+                    TextInput:
+                        id: grid14
+                        size_hint: .25, .07
+                        height: 0
+                        multiline: False
+                        background_normal: "White.png"
+                        background_active: "White.png"
+                        cursor_color: 0,0,0,1
+                        foreground_color: 0,0,0,1
 
                 Widget:
                     size_hint: 1, .11
