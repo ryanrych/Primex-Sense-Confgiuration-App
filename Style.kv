@@ -1228,6 +1228,7 @@ WindowManager:
                 BoxLayout:
                     size_hint: 1, .07
                     orientation: "horizontal"
+                    spacing: 7
 
                     RoundedButton:
                         size_hint: .25, 1
@@ -1324,15 +1325,18 @@ WindowManager:
                 BoxLayout:
                     size_hint: 1, .6
                     orientation: "horizontal"
+                    spacing: 5
 
                     BoxLayout:
                         size_hint: .25, 1
                         orientation: "vertical"
+                        spacing: 5
 
                         Button:
                             id: grid11
                             size_hint: 1, .08
                             text: "Joint Commission or DNV"
+                            font_size: self.height * .57
                             background_normal: ""
                             background_down: ""
                             background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
@@ -1341,6 +1345,7 @@ WindowManager:
                             id: grid21
                             size_hint: 1, .08
                             text: "FDA"
+                            font_size: self.height * .57
                             background_normal: ""
                             background_down: ""
                             background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
@@ -1349,6 +1354,7 @@ WindowManager:
                             id: grid31
                             size_hint: 1, .08
                             text: "Center for Disease Control"
+                            font_size: self.height * .57
                             background_normal: ""
                             background_down: ""
                             background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
@@ -1356,7 +1362,8 @@ WindowManager:
                         Button:
                             id: grid41
                             size_hint: 1, .08
-                            text: "State's Vaccines for Children Program"
+                            text: "Vaccines for Children Program"
+                            font_size: self.height * .47
                             background_normal: ""
                             background_down: ""
                             background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
@@ -1365,6 +1372,7 @@ WindowManager:
                             id: grid51
                             size_hint: 1, .08
                             text: "Health and Human Services"
+                            font_size: self.height * .55
                             background_normal: ""
                             background_down: ""
                             background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
@@ -1387,89 +1395,83 @@ WindowManager:
                             foreground_color: 0,0,0,1
 
                         Widget:
-                            size_hint: 1, .4
+                            size_hint: 1, .40
 
                     BoxLayout:
                         size_hint: .25, 1
                         orientation: "vertical"
+                        spacing: 5
 
                         Button:
                             id: grid12
+                            size_hint: 1, .07
                             text: "Less than once per year"
-                            height: 0
+                            font_size: self.height * .7
                             background_normal: ""
                             background_down: ""
                             background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
 
                         Button:
                             id: grid22
-                            size_hint: 0, 0
+                            size_hint: 1, .07
                             text: "About once per year"
-                            height: 0
                             background_normal: ""
                             background_down: ""
                             background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
 
                         Button:
                             id: grid32
+                            size_hint: 1, .07
                             text: "2-3 times per year"
-                            height: 0
                             background_normal: ""
                             background_down: ""
                             background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
 
                         Button:
                             id: grid42
+                            size_hint: 1, .07
                             text: "4-6 times per year"
-                            height: 0
                             background_normal: ""
                             background_down: ""
                             background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
 
                         Button:
                             id: grid52
+                            size_hint: 1, .07
                             text: "6-11 times per week"
-                            height: 0
                             background_normal: ""
                             background_down: ""
                             background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
 
                         Button:
                             id: grid62
+                            size_hint: 1, .07
                             text: "Once a month"
-                            height: 0
                             background_normal: ""
                             background_down: ""
                             background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
 
                         Button:
                             id: grid72
+                            size_hint: 1, .07
                             text: "Once a week"
-                            height: 0
                             background_normal: ""
                             background_down: ""
                             background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
 
                         Label:
-                            id: grid82
-                            text_size: self.size
-                            height: 0
-                            align: "left"
-                            color: 0,0,0,1
-                            text: "What's the average"
-
-                        Label:
                             id: grid92
+                            size_hint: 1, .11
                             text_size: self.size
-                            height: 0
                             align: "left"
                             color: 0,0,0,1
-                            text: "value of loss?"
+                            text: "What's the average value of loss?"
+                            font_size: self.height * .42
 
                         TextInput:
                             id: grid102
+                            size_hint: 1, .1
                             multiline: False
-                            height: 0
                             background_normal: "White.png"
                             background_active: "White.png"
                             cursor_color: 0,0,0,1
@@ -1477,24 +1479,25 @@ WindowManager:
 
                         Label:
                             id: grid112
+                            size_hint: 1, .18
                             text_size: self.size
-                            height: 0
                             align: "left"
                             color: 0,0,0,1
                             text: "How much would they value a Primex guarantee against loss?"
+                            font_size: self.height * .27
 
                         Button:
                             id: grid122
+                            size_hint: 1, .06
                             text: "High value"
-                            height: 0
                             background_normal: ""
                             background_down: ""
                             background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
 
                         Button:
                             id: grid132
+                            size_hint: 1, .06
                             text: "Low value"
-                            height: 0
                             background_normal: ""
                             background_down: ""
                             background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
@@ -1502,10 +1505,11 @@ WindowManager:
                     BoxLayout:
                         size_hint: .25, 1
                         orientation: "vertical"
+                        spacing: 5
 
                         BoxLayout:
                             id: grid13
-                            height: 0
+                            size_hint: 1, .07
                             orientation: "horizontal"
 
                             Button:
@@ -1529,7 +1533,7 @@ WindowManager:
 
                         Label:
                             id: grid23
-                            height: 0
+                            size_hint: 1, .07
                             text_size: self.size
                             halign: "left"
                             text: "How many people?"
@@ -1538,7 +1542,7 @@ WindowManager:
                         TextInput:
                             id: grid33
                             multiline: False
-                            height: 0
+                            size_hint: 1, .07
                             background_normal: "White.png"
                             background_active: "White.png"
                             cursor_color: 0,0,0,1
@@ -1547,15 +1551,16 @@ WindowManager:
                         Label:
                             id: grid53
                             text_size: self.size
-                            height: 0
+                            size_hint: 1, .16
                             halign: "left"
-                            text: "How much of their time would be dedicated to OneVue?"
                             color: 0,0,0,1
+                            text: "How much of their time would be dedicated to OneVue?"
+                            font_size: self.height * .29
 
                         Button:
                             id: grid63
                             text: "Less than 10%"
-                            height: 0
+                            size_hint: 1, .07
                             background_normal: ""
                             background_down: ""
                             background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
@@ -1563,7 +1568,7 @@ WindowManager:
                         Button:
                             id: grid73
                             text: "11-25%"
-                            height: 0
+                            size_hint: 1, .07
                             background_normal: ""
                             background_down: ""
                             background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
@@ -1571,7 +1576,7 @@ WindowManager:
                         Button:
                             id: grid83
                             text: "26-50%"
-                            height: 0
+                            size_hint: 1, .07
                             background_normal: ""
                             background_down: ""
                             background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
@@ -1579,7 +1584,7 @@ WindowManager:
                         Button:
                             id: grid93
                             text: "More than 50%"
-                            height: 0
+                            size_hint: 1, .07
                             background_normal: ""
                             background_down: ""
                             background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
@@ -1587,15 +1592,16 @@ WindowManager:
                         Label:
                             id: grid103
                             text_size: self.size
-                            height: 0
+                            size_hint: 1, .16
                             align: "left"
                             color: 0,0,0,1
                             text: "Have the staff managed a system like OneVue before?"
+                            font_size: self.height * .29
 
                         BoxLayout:
                             id: grid113
                             orientation: "horizontal"
-                            height: 0
+                            size_hint: 1, .07
 
                             Widget:
                                 size_hint: .2, None
@@ -1622,15 +1628,25 @@ WindowManager:
                             Widget:
                                 size_hint: .2, None
 
-                    TextInput:
-                        id: grid14
-                        size_hint: .25, .07
-                        height: 0
-                        multiline: False
-                        background_normal: "White.png"
-                        background_active: "White.png"
-                        cursor_color: 0,0,0,1
-                        foreground_color: 0,0,0,1
+                        Widget:
+                            size_hint: 1, .12
+
+                    BoxLayout:
+                        size_hint: .25, 1
+                        orientation: "vertical"
+
+                        TextInput:
+                            id: grid14
+                            size_hint: 1, .09
+                            height: 0
+                            multiline: False
+                            background_normal: "White.png"
+                            background_active: "White.png"
+                            cursor_color: 0,0,0,1
+                            foreground_color: 0,0,0,1
+
+                        Widget:
+                            size_hint: 1, .91
 
                 Widget:
                     size_hint: 1, .11
