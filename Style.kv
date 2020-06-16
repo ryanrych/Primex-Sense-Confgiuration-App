@@ -1283,47 +1283,7 @@ WindowManager:
                             root.showColumn4()
 
                 BoxLayout:
-                    size_hint: 1, .07
-                    orientation: "horizontal"
-
-                    Label:
-                        size_hint: .25, 1
-                        text_size: self.width, None
-                        pos_hint: {'top': 1}
-                        height: self.texture_size[1]
-                        halign: "left"
-                        text: "What angenices audit?"
-                        color: 0,0,0,1
-
-                    Label:
-                        size_hint: .25, 1
-                        text_size: self.width, None
-                        pos_hint: {'top': 1}
-                        height: self.texture_size[1]
-                        halign: "left"
-                        text: "How often do they experience loss?"
-                        color: 0,0,0,1
-
-                    Label:
-                        size_hint: .25, 1
-                        text_size: self.width, None
-                        pos_hint: {'top': 1}
-                        height: self.texture_size[1]
-                        halign: "left"
-                        text: "Who would manage OneVue on site?"
-                        color: 0,0,0,1
-
-                    Label:
-                        size_hint: .25, 1
-                        text_size: self.width, None
-                        pos_hint: {'top': 1}
-                        height: self.texture_size[1]
-                        halign: "left"
-                        text: "Explain:"
-                        color: 0,0,0,1
-
-                BoxLayout:
-                    size_hint: 1, .6
+                    size_hint: 1, .67
                     orientation: "horizontal"
                     spacing: 5
 
@@ -1335,13 +1295,24 @@ WindowManager:
 
                         visible: False
 
+                        Label:
+                            size_hint: [1, .1]
+                            opacity: 1 if self.parent.visible else 0
+                            disabled: not self.parent.visible
+                            text_size: self.width, None
+                            pos_hint: {'top': 1}
+                            height: self.texture_size[1]
+                            halign: "left"
+                            text: "What angenices audit?"
+                            color: 0,0,0,1
+
                         Button:
                             id: grid11
                             size_hint: [1, .08]
                             opacity: 1 if self.parent.visible else 0
                             disabled: not self.parent.visible
                             text: "Joint Commission or DNV"
-                            font_size: self.height * .57
+                            font_size: self.height * .5
                             background_normal: ""
                             background_down: ""
                             background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
@@ -1352,7 +1323,7 @@ WindowManager:
                             opacity: 1 if self.parent.visible else 0
                             disabled: not self.parent.visible
                             text: "FDA"
-                            font_size: self.height * .57
+                            font_size: self.height * .58
                             background_normal: ""
                             background_down: ""
                             background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
@@ -1363,7 +1334,7 @@ WindowManager:
                             opacity: 1 if self.parent.visible else 0
                             disabled: not self.parent.visible
                             text: "Center for Disease Control"
-                            font_size: self.height * .57
+                            font_size: self.height * .5
                             background_normal: ""
                             background_down: ""
                             background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
@@ -1374,7 +1345,7 @@ WindowManager:
                             opacity: 1 if self.parent.visible else 0
                             disabled: not self.parent.visible
                             text: "Vaccines for Children Program"
-                            font_size: self.height * .47
+                            font_size: self.height * .42
                             background_normal: ""
                             background_down: ""
                             background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
@@ -1385,7 +1356,7 @@ WindowManager:
                             opacity: 1 if self.parent.visible else 0
                             disabled: not self.parent.visible
                             text: "Health and Human Services"
-                            font_size: self.height * .55
+                            font_size: self.height * .47
                             background_normal: ""
                             background_down: ""
                             background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
@@ -1402,7 +1373,7 @@ WindowManager:
 
                         TextInput:
                             id: grid71
-                            size_hint: [1, .1]
+                            size_hint: [1, .08]
                             opacity: 1 if self.parent.visible else 0
                             disabled: not self.parent.visible
                             multiline: False
@@ -1412,7 +1383,7 @@ WindowManager:
                             foreground_color: 0,0,0,1
 
                         Widget:
-                            size_hint: [1, .4]
+                            size_hint: [1, .28]
 
                     BoxLayout:
                         id: column2
@@ -1421,6 +1392,17 @@ WindowManager:
                         spacing: 5
 
                         visible: False
+
+                        Label:
+                            size_hint: 1, .1
+                            opacity: 1 if self.parent.visible else 0
+                            disabled: not self.parent.visible
+                            text_size: self.width, None
+                            pos_hint: {'top': 1}
+                            height: self.texture_size[1]
+                            halign: "left"
+                            text: "How often do they experience loss?"
+                            color: 0,0,0,1
 
                         Button:
                             id: grid12
@@ -1554,6 +1536,17 @@ WindowManager:
 
                         visible: False
 
+                        Label:
+                            size_hint: 1, .1
+                            opacity: 1 if self.parent.visible else 0
+                            disabled: not self.parent.visible
+                            text_size: self.width, None
+                            pos_hint: {'top': 1}
+                            height: self.texture_size[1]
+                            halign: "left"
+                            text: "Who would manage OneVue on site?"
+                            color: 0,0,0,1
+
                         BoxLayout:
                             id: grid13
                             size_hint: 1, .07
@@ -1565,6 +1558,7 @@ WindowManager:
                                 size_hint: .47, 1
                                 height: self.texture_size[1]
                                 text: "One Person"
+                                font_size: self.height * .6
                                 background_normal: ""
                                 background_down: ""
                                 background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
@@ -1578,6 +1572,7 @@ WindowManager:
                                 size_hint: .47, 1
                                 height: self.texture_size[1]
                                 text: "Small Team"
+                                font_size: self.height * .6
                                 background_normal: ""
                                 background_down: ""
                                 background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
@@ -1594,7 +1589,7 @@ WindowManager:
 
                         TextInput:
                             id: grid33
-                            size_hint: 1, .07
+                            size_hint: 1, .09
                             opacity: 1 if self.parent.visible else 0
                             disabled: not self.parent.visible
                             multiline: False
@@ -1697,15 +1692,23 @@ WindowManager:
                             Widget:
                                 size_hint: .2, None
 
-                        Widget:
-                            size_hint: 1, .12
-
                     BoxLayout:
                         id: column4
                         size_hint: .25, 1
                         orientation: "vertical"
 
                         visible: False
+
+                        Label:
+                            size_hint: 1, .1
+                            opacity: 1 if self.parent.visible else 0
+                            disabled: not self.parent.visible
+                            text_size: self.width, None
+                            pos_hint: {'top': 1}
+                            height: self.texture_size[1]
+                            halign: "left"
+                            text: "Explain:"
+                            color: 0,0,0,1
 
                         TextInput:
                             id: grid14
