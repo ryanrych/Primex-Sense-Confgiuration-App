@@ -1241,7 +1241,7 @@ WindowManager:
                         backgroundColorActive: 0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1
                         text: "No Audit Findings"
                         on_release:
-                            root.noAuditPress()
+                            root.showColumn1()
 
                     RoundedButton:
                         size_hint: .25, 1
@@ -1254,7 +1254,7 @@ WindowManager:
                         backgroundColorActive: 0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1
                         text: "Protection Against Loss"
                         on_release:
-                            app.root.current = "Package4Screen"
+                            root.showColumn2()
 
                     RoundedButton:
                         size_hint: .25, 1
@@ -1267,7 +1267,7 @@ WindowManager:
                         backgroundColorActive: 0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1
                         text: "Making Staff More Efficient"
                         on_release:
-                            app.root.current = "Package4Screen"
+                            root.showColumn3()
 
                     RoundedButton:
                         size_hint: .25, 1
@@ -1280,7 +1280,7 @@ WindowManager:
                         backgroundColorActive: 0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1
                         text: "Something Else"
                         on_release:
-                            app.root.current = "Package4Screen"
+                            root.showColumn4()
 
                 BoxLayout:
                     size_hint: 1, .07
@@ -1328,13 +1328,18 @@ WindowManager:
                     spacing: 5
 
                     BoxLayout:
+                        id: column1
                         size_hint: .25, 1
                         orientation: "vertical"
                         spacing: 5
 
+                        visible: False
+
                         Button:
                             id: grid11
-                            size_hint: 1, .08
+                            size_hint: [1, .08]
+                            opacity: 1 if self.parent.visible else 0
+                            disabled: not self.parent.visible
                             text: "Joint Commission or DNV"
                             font_size: self.height * .57
                             background_normal: ""
@@ -1343,7 +1348,9 @@ WindowManager:
 
                         Button:
                             id: grid21
-                            size_hint: 1, .08
+                            size_hint: [1, .08]
+                            opacity: 1 if self.parent.visible else 0
+                            disabled: not self.parent.visible
                             text: "FDA"
                             font_size: self.height * .57
                             background_normal: ""
@@ -1352,7 +1359,9 @@ WindowManager:
 
                         Button:
                             id: grid31
-                            size_hint: 1, .08
+                            size_hint: [1, .08]
+                            opacity: 1 if self.parent.visible else 0
+                            disabled: not self.parent.visible
                             text: "Center for Disease Control"
                             font_size: self.height * .57
                             background_normal: ""
@@ -1361,7 +1370,9 @@ WindowManager:
 
                         Button:
                             id: grid41
-                            size_hint: 1, .08
+                            size_hint: [1, .08]
+                            opacity: 1 if self.parent.visible else 0
+                            disabled: not self.parent.visible
                             text: "Vaccines for Children Program"
                             font_size: self.height * .47
                             background_normal: ""
@@ -1370,7 +1381,9 @@ WindowManager:
 
                         Button:
                             id: grid51
-                            size_hint: 1, .08
+                            size_hint: [1, .08]
+                            opacity: 1 if self.parent.visible else 0
+                            disabled: not self.parent.visible
                             text: "Health and Human Services"
                             font_size: self.height * .55
                             background_normal: ""
@@ -1379,7 +1392,9 @@ WindowManager:
 
                         Label:
                             id: grid61
-                            size_hint: 1, .1
+                            size_hint: [1, .1]
+                            opacity: 1 if self.parent.visible else 0
+                            disabled: not self.parent.visible
                             text_size: self.size
                             halign: "left"
                             color: 0,0,0,1
@@ -1387,7 +1402,9 @@ WindowManager:
 
                         TextInput:
                             id: grid71
-                            size_hint: 1, .1
+                            size_hint: [1, .1]
+                            opacity: 1 if self.parent.visible else 0
+                            disabled: not self.parent.visible
                             multiline: False
                             background_normal: "White.png"
                             background_active: "White.png"
@@ -1395,16 +1412,21 @@ WindowManager:
                             foreground_color: 0,0,0,1
 
                         Widget:
-                            size_hint: 1, .40
+                            size_hint: [1, .4]
 
                     BoxLayout:
+                        id: column2
                         size_hint: .25, 1
                         orientation: "vertical"
                         spacing: 5
 
+                        visible: False
+
                         Button:
                             id: grid12
-                            size_hint: 1, .07
+                            size_hint: [1, .07]
+                            opacity: 1 if self.parent.visible else 0
+                            disabled: not self.parent.visible
                             text: "Less than once per year"
                             font_size: self.height * .7
                             background_normal: ""
@@ -1413,7 +1435,9 @@ WindowManager:
 
                         Button:
                             id: grid22
-                            size_hint: 1, .07
+                            size_hint: [1, .07]
+                            opacity: 1 if self.parent.visible else 0
+                            disabled: not self.parent.visible
                             text: "About once per year"
                             background_normal: ""
                             background_down: ""
@@ -1421,7 +1445,9 @@ WindowManager:
 
                         Button:
                             id: grid32
-                            size_hint: 1, .07
+                            size_hint: [1, .07]
+                            opacity: 1 if self.parent.visible else 0
+                            disabled: not self.parent.visible
                             text: "2-3 times per year"
                             background_normal: ""
                             background_down: ""
@@ -1429,7 +1455,9 @@ WindowManager:
 
                         Button:
                             id: grid42
-                            size_hint: 1, .07
+                            size_hint: [1, .07]
+                            opacity: 1 if self.parent.visible else 0
+                            disabled: not self.parent.visible
                             text: "4-6 times per year"
                             background_normal: ""
                             background_down: ""
@@ -1437,7 +1465,9 @@ WindowManager:
 
                         Button:
                             id: grid52
-                            size_hint: 1, .07
+                            size_hint: [1, .07]
+                            opacity: 1 if self.parent.visible else 0
+                            disabled: not self.parent.visible
                             text: "6-11 times per week"
                             background_normal: ""
                             background_down: ""
@@ -1445,7 +1475,9 @@ WindowManager:
 
                         Button:
                             id: grid62
-                            size_hint: 1, .07
+                            size_hint: [1, .07]
+                            opacity: 1 if self.parent.visible else 0
+                            disabled: not self.parent.visible
                             text: "Once a month"
                             background_normal: ""
                             background_down: ""
@@ -1453,7 +1485,9 @@ WindowManager:
 
                         Button:
                             id: grid72
-                            size_hint: 1, .07
+                            size_hint: [1, .07]
+                            opacity: 1 if self.parent.visible else 0
+                            disabled: not self.parent.visible
                             text: "Once a week"
                             background_normal: ""
                             background_down: ""
@@ -1461,7 +1495,9 @@ WindowManager:
 
                         Label:
                             id: grid92
-                            size_hint: 1, .11
+                            size_hint: [1, .11]
+                            opacity: 1 if self.parent.visible else 0
+                            disabled: not self.parent.visible
                             text_size: self.size
                             align: "left"
                             color: 0,0,0,1
@@ -1470,7 +1506,9 @@ WindowManager:
 
                         TextInput:
                             id: grid102
-                            size_hint: 1, .1
+                            size_hint: [1, .1]
+                            opacity: 1 if self.parent.visible else 0
+                            disabled: not self.parent.visible
                             multiline: False
                             background_normal: "White.png"
                             background_active: "White.png"
@@ -1479,7 +1517,9 @@ WindowManager:
 
                         Label:
                             id: grid112
-                            size_hint: 1, .18
+                            size_hint: [1, .18]
+                            opacity: 1 if self.parent.visible else 0
+                            disabled: not self.parent.visible
                             text_size: self.size
                             align: "left"
                             color: 0,0,0,1
@@ -1488,7 +1528,9 @@ WindowManager:
 
                         Button:
                             id: grid122
-                            size_hint: 1, .06
+                            size_hint: [1, .06]
+                            opacity: 1 if self.parent.visible else 0
+                            disabled: not self.parent.visible
                             text: "High value"
                             background_normal: ""
                             background_down: ""
@@ -1496,20 +1538,27 @@ WindowManager:
 
                         Button:
                             id: grid132
-                            size_hint: 1, .06
+                            size_hint: [1, .06]
+                            opacity: 1 if self.parent.visible else 0
+                            disabled: not self.parent.visible
                             text: "Low value"
                             background_normal: ""
                             background_down: ""
                             background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
 
                     BoxLayout:
+                        id: column3
                         size_hint: .25, 1
                         orientation: "vertical"
                         spacing: 5
 
+                        visible: False
+
                         BoxLayout:
                             id: grid13
                             size_hint: 1, .07
+                            opacity: 1 if self.parent.visible else 0
+                            disabled: not self.parent.visible
                             orientation: "horizontal"
 
                             Button:
@@ -1519,6 +1568,8 @@ WindowManager:
                                 background_normal: ""
                                 background_down: ""
                                 background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                                on_release:
+                                    print("hi")
 
                             Widget:
                                 size_hint: .06, None
@@ -1534,6 +1585,8 @@ WindowManager:
                         Label:
                             id: grid23
                             size_hint: 1, .07
+                            opacity: 1 if self.parent.visible else 0
+                            disabled: not self.parent.visible
                             text_size: self.size
                             halign: "left"
                             text: "How many people?"
@@ -1541,8 +1594,10 @@ WindowManager:
 
                         TextInput:
                             id: grid33
-                            multiline: False
                             size_hint: 1, .07
+                            opacity: 1 if self.parent.visible else 0
+                            disabled: not self.parent.visible
+                            multiline: False
                             background_normal: "White.png"
                             background_active: "White.png"
                             cursor_color: 0,0,0,1
@@ -1552,6 +1607,8 @@ WindowManager:
                             id: grid53
                             text_size: self.size
                             size_hint: 1, .16
+                            opacity: 1 if self.parent.visible else 0
+                            disabled: not self.parent.visible
                             halign: "left"
                             color: 0,0,0,1
                             text: "How much of their time would be dedicated to OneVue?"
@@ -1561,6 +1618,8 @@ WindowManager:
                             id: grid63
                             text: "Less than 10%"
                             size_hint: 1, .07
+                            opacity: 1 if self.parent.visible else 0
+                            disabled: not self.parent.visible
                             background_normal: ""
                             background_down: ""
                             background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
@@ -1569,6 +1628,8 @@ WindowManager:
                             id: grid73
                             text: "11-25%"
                             size_hint: 1, .07
+                            opacity: 1 if self.parent.visible else 0
+                            disabled: not self.parent.visible
                             background_normal: ""
                             background_down: ""
                             background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
@@ -1577,6 +1638,8 @@ WindowManager:
                             id: grid83
                             text: "26-50%"
                             size_hint: 1, .07
+                            opacity: 1 if self.parent.visible else 0
+                            disabled: not self.parent.visible
                             background_normal: ""
                             background_down: ""
                             background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
@@ -1585,6 +1648,8 @@ WindowManager:
                             id: grid93
                             text: "More than 50%"
                             size_hint: 1, .07
+                            opacity: 1 if self.parent.visible else 0
+                            disabled: not self.parent.visible
                             background_normal: ""
                             background_down: ""
                             background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
@@ -1593,6 +1658,8 @@ WindowManager:
                             id: grid103
                             text_size: self.size
                             size_hint: 1, .16
+                            opacity: 1 if self.parent.visible else 0
+                            disabled: not self.parent.visible
                             align: "left"
                             color: 0,0,0,1
                             text: "Have the staff managed a system like OneVue before?"
@@ -1602,6 +1669,8 @@ WindowManager:
                             id: grid113
                             orientation: "horizontal"
                             size_hint: 1, .07
+                            opacity: 1 if self.parent.visible else 0
+                            disabled: not self.parent.visible
 
                             Widget:
                                 size_hint: .2, None
@@ -1632,12 +1701,17 @@ WindowManager:
                             size_hint: 1, .12
 
                     BoxLayout:
+                        id: column4
                         size_hint: .25, 1
                         orientation: "vertical"
+
+                        visible: False
 
                         TextInput:
                             id: grid14
                             size_hint: 1, .09
+                            opacity: 1 if self.parent.visible else 0
+                            disabled: not self.parent.visible
                             height: 0
                             multiline: False
                             background_normal: "White.png"

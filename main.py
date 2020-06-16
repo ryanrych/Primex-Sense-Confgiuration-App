@@ -127,8 +127,33 @@ class Package4Screen(Screen):
 
 class PackageQuizInterface(Widget):
 
-    def noAuditPress(self):
-        self.ids.column1Spacer.size_hint = [0,0]
+    def showColumn1(self):
+        sm = App.get_running_app().root
+        screen = sm.get_screen("PackageQuizScreen")
+        column = screen.ids.background.ids.interface.ids.column1
+
+        column.visible = True
+
+    def showColumn2(self):
+        sm = App.get_running_app().root
+        screen = sm.get_screen("PackageQuizScreen")
+        column = screen.ids.background.ids.interface.ids.column2
+
+        column.visible = True
+
+    def showColumn3(self):
+        sm = App.get_running_app().root
+        screen = sm.get_screen("PackageQuizScreen")
+        column = screen.ids.background.ids.interface.ids.column3
+
+        column.visible = True
+
+    def showColumn4(self):
+        sm = App.get_running_app().root
+        screen = sm.get_screen("PackageQuizScreen")
+        column = screen.ids.background.ids.interface.ids.column4
+
+        column.visible = True
 
 class PackageQuizBackground(Widget):
     pass
