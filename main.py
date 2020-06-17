@@ -155,6 +155,58 @@ class PackageQuizInterface(Widget):
 
         column.visible = True
 
+    def resetColumn1Buttons(self):
+        sm = App.get_running_app().root
+        screen = sm.get_screen("PackageQuizScreen")
+
+        screen.ids.background.ids.interface.ids.column1Button1.background_color = (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1)
+        screen.ids.background.ids.interface.ids.column1Button2.background_color = (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1)
+        screen.ids.background.ids.interface.ids.column1Button3.background_color = (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1)
+        screen.ids.background.ids.interface.ids.column1Button4.background_color = (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1)
+        screen.ids.background.ids.interface.ids.column1Button5.background_color = (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1)
+
+    def resetColumn2FrequencyButtons(self):
+       sm = App.get_running_app().root
+       screen = sm.get_screen("PackageQuizScreen")
+
+       screen.ids.background.ids.interface.ids.frequencyButton1.background_color = (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1)
+       screen.ids.background.ids.interface.ids.frequencyButton2.background_color = (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1)
+       screen.ids.background.ids.interface.ids.frequencyButton3.background_color = (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1)
+       screen.ids.background.ids.interface.ids.frequencyButton4.background_color = (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1)
+       screen.ids.background.ids.interface.ids.frequencyButton5.background_color = (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1)
+       screen.ids.background.ids.interface.ids.frequencyButton6.background_color = (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1)
+       screen.ids.background.ids.interface.ids.frequencyButton7.background_color = (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1)
+
+    def resetColumn2ValueButtons(self):
+        sm = App.get_running_app().root
+        screen = sm.get_screen("PackageQuizScreen")
+
+        screen.ids.background.ids.interface.ids.valueButton1.background_color = (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1)
+        screen.ids.background.ids.interface.ids.valueButton2.background_color = (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1)
+
+    def resetColumn3TeamButtons(self):
+        sm = App.get_running_app().root
+        screen = sm.get_screen("PackageQuizScreen")
+
+        screen.ids.background.ids.interface.ids.teamButton1.background_color = (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1)
+        screen.ids.background.ids.interface.ids.teamButton2.background_color = (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1)
+
+    def resetColumn3TimeButtons(self):
+        sm = App.get_running_app().root
+        screen = sm.get_screen("PackageQuizScreen")
+
+        screen.ids.background.ids.interface.ids.timeButton1.background_color = (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1)
+        screen.ids.background.ids.interface.ids.timeButton2.background_color = (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1)
+        screen.ids.background.ids.interface.ids.timeButton3.background_color = (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1)
+        screen.ids.background.ids.interface.ids.timeButton4.background_color = (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1)
+
+    def resetColumn3ExperienceButtons(self):
+        sm = App.get_running_app().root
+        screen = sm.get_screen("PackageQuizScreen")
+
+        screen.ids.background.ids.interface.ids.experienceButton1.background_color = (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1)
+        screen.ids.background.ids.interface.ids.experienceButton2.background_color = (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1)
+
 class PackageQuizBackground(Widget):
     pass
 
