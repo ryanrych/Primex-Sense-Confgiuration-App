@@ -1,0 +1,659 @@
+<PackageQuizInterface>:
+    size_hint: None, None
+
+    RelativeLayout:
+        pos: self.parent.pos
+        size: self.parent.size
+
+        BoxLayout:
+            canvas.before:
+                Color:
+                    rgba: 1,1,1,1
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+            size: self.parent.size
+            orientation: "horizontal"
+
+            spacing: 5
+
+            Widget:
+                size_hint: .05, 1
+
+            BoxLayout:
+                size_hint: .9, 1
+                orientation: "vertical"
+
+                Label:
+                    size_hint: 1, .1
+                    text_size: self.size
+                    halign: "left"
+                    markup: True
+                    text: "[b]Package Selection[/b]"
+                    font_size: self.height * .43
+                    color: 0,0,0,1
+
+                Label:
+                    size_hint: 1, .05
+                    text_size: self.size
+                    halign: "left"
+                    text: "How does the site define successful use of OneVue Sense?"
+                    color: 0,0,0,1
+
+                BoxLayout:
+                    size_hint: 1, .07
+                    orientation: "horizontal"
+                    spacing: 7
+
+                    RoundedButton:
+                        size_hint: .25, 1
+                        text_size : self.size
+                        height: self.texture_size[1]
+                        pos_hint: {'top': 1}
+                        halign: "center"
+                        valign: "center"
+                        backgroundColorNormal: 0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1
+                        backgroundColorActive: 0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1
+                        text: "No Audit Findings"
+                        on_release:
+                            root.showColumn1()
+
+                    RoundedButton:
+                        size_hint: .25, 1
+                        text_size : self.size
+                        height: self.texture_size[1]
+                        pos_hint: {'top': 1}
+                        halign: "center"
+                        valign: "center"
+                        backgroundColorNormal: 0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1
+                        backgroundColorActive: 0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1
+                        text: "Protection Against Loss"
+                        on_release:
+                            root.showColumn2()
+
+                    RoundedButton:
+                        size_hint: .25, 1
+                        text_size : self.size
+                        height: self.texture_size[1]
+                        pos_hint: {'top': 1}
+                        halign: "center"
+                        valign: "center"
+                        backgroundColorNormal: 0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1
+                        backgroundColorActive: 0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1
+                        text: "Making Staff More Efficient"
+                        on_release:
+                            root.showColumn3()
+
+                    RoundedButton:
+                        size_hint: .25, 1
+                        text_size : self.size
+                        height: self.texture_size[1]
+                        pos_hint: {'top': 1}
+                        halign: "center"
+                        valign: "center"
+                        backgroundColorNormal: 0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1
+                        backgroundColorActive: 0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1
+                        text: "Something Else"
+                        on_release:
+                            root.showColumn4()
+
+                BoxLayout:
+                    size_hint: 1, .67
+                    orientation: "horizontal"
+                    spacing: 5
+
+                    BoxLayout:
+                        id: column1
+                        size_hint: .25, 1
+                        orientation: "vertical"
+                        spacing: 5
+
+                        visible: False
+                        selected: -1
+
+                        Label:
+                            size_hint: [1, .1]
+                            opacity: 1 if self.parent.visible else 0
+                            disabled: not self.parent.visible
+                            text_size: self.width, None
+                            pos_hint: {'top': 1}
+                            height: self.texture_size[1]
+                            halign: "left"
+                            text: "What angenices audit?"
+                            color: 0,0,0,1
+
+                        Button:
+                            id: column1Button1
+                            size_hint: [1, .08]
+                            opacity: 1 if self.parent.visible else 0
+                            disabled: not self.parent.visible
+                            text: "Joint Commission or DNV"
+                            font_size: self.height * .5
+                            background_normal: ""
+                            background_down: ""
+                            background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                            on_release:
+                                root.resetColumn1Buttons();
+                                self.background_color = (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1);
+                                self.selected = 1;
+
+                        Button:
+                            id: column1Button2
+                            size_hint: [1, .08]
+                            opacity: 1 if self.parent.visible else 0
+                            disabled: not self.parent.visible
+                            text: "FDA"
+                            font_size: self.height * .58
+                            background_normal: ""
+                            background_down: ""
+                            background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                            on_release:
+                                root.resetColumn1Buttons();
+                                self.background_color = (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1);
+                                self.selected = 2;
+
+                        Button:
+                            id: column1Button3
+                            size_hint: [1, .08]
+                            opacity: 1 if self.parent.visible else 0
+                            disabled: not self.parent.visible
+                            text: "Center for Disease Control"
+                            font_size: self.height * .5
+                            background_normal: ""
+                            background_down: ""
+                            background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                            on_release:
+                                root.resetColumn1Buttons();
+                                self.background_color = (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1);
+                                self.selected = 3;
+
+                        Button:
+                            id: column1Button4
+                            size_hint: [1, .08]
+                            opacity: 1 if self.parent.visible else 0
+                            disabled: not self.parent.visible
+                            text: "Vaccines for Children Program"
+                            font_size: self.height * .42
+                            background_normal: ""
+                            background_down: ""
+                            background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                            on_release:
+                                root.resetColumn1Buttons();
+                                self.background_color = (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1);
+                                self.selected = 4;
+
+                        Button:
+                            id: column1Button5
+                            size_hint: [1, .08]
+                            opacity: 1 if self.parent.visible else 0
+                            disabled: not self.parent.visible
+                            text: "Health and Human Services"
+                            font_size: self.height * .47
+                            background_normal: ""
+                            background_down: ""
+                            background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                            on_release:
+                                root.resetColumn1Buttons();
+                                self.background_color = (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1);
+                                self.selected = 5;
+
+                        Label:
+                            size_hint: [1, .1]
+                            opacity: 1 if self.parent.visible else 0
+                            disabled: not self.parent.visible
+                            text_size: self.size
+                            halign: "left"
+                            color: 0,0,0,1
+                            text: "Other:"
+
+                        TextInput:
+                            id: auditInput
+                            size_hint: [1, .08]
+                            opacity: 1 if self.parent.visible else 0
+                            disabled: not self.parent.visible
+                            multiline: False
+                            background_normal: "White.png"
+                            background_active: "White.png"
+                            cursor_color: 0,0,0,1
+                            foreground_color: 0,0,0,1
+                            on_focus:
+                                root.resetColumn1Buttons();
+                                self.selected = 6;
+
+                        Widget:
+                            size_hint: [1, .28]
+
+                    BoxLayout:
+                        id: column2
+                        size_hint: .25, 1
+                        orientation: "vertical"
+                        spacing: 5
+
+                        visible: False
+                        frequencySelected: -1
+                        valueSelected: -1
+
+                        Label:
+                            size_hint: 1, .1
+                            opacity: 1 if self.parent.visible else 0
+                            disabled: not self.parent.visible
+                            text_size: self.width, None
+                            pos_hint: {'top': 1}
+                            height: self.texture_size[1]
+                            halign: "left"
+                            text: "How often do they experience loss?"
+                            color: 0,0,0,1
+
+                        Button:
+                            id: frequencyButton1
+                            size_hint: [1, .07]
+                            opacity: 1 if self.parent.visible else 0
+                            disabled: not self.parent.visible
+                            text: "Less than once per year"
+                            font_size: self.height * .7
+                            background_normal: ""
+                            background_down: ""
+                            background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                            on_release:
+                                root.resetColumn2FrequencyButtons();
+                                self.background_color = (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1);
+                                self.frequencySelected = 1;
+
+                        Button:
+                            id: frequencyButton2
+                            size_hint: [1, .07]
+                            opacity: 1 if self.parent.visible else 0
+                            disabled: not self.parent.visible
+                            text: "About once per year"
+                            background_normal: ""
+                            background_down: ""
+                            background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                            on_release:
+                                root.resetColumn2FrequencyButtons();
+                                self.background_color = (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1);
+                                self.frequencySelected = 2;
+
+                        Button:
+                            id: frequencyButton3
+                            size_hint: [1, .07]
+                            opacity: 1 if self.parent.visible else 0
+                            disabled: not self.parent.visible
+                            text: "2-3 times per year"
+                            background_normal: ""
+                            background_down: ""
+                            background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                            on_release:
+                                root.resetColumn2FrequencyButtons();
+                                self.background_color = (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1);
+                                self.frequencySelected = 3;
+
+                        Button:
+                            id: frequencyButton4
+                            size_hint: [1, .07]
+                            opacity: 1 if self.parent.visible else 0
+                            disabled: not self.parent.visible
+                            text: "4-6 times per year"
+                            background_normal: ""
+                            background_down: ""
+                            background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                            on_release:
+                                root.resetColumn2FrequencyButtons();
+                                self.background_color = (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1);
+                                self.frequencySelected = 4;
+
+                        Button:
+                            id: frequencyButton5
+                            size_hint: [1, .07]
+                            opacity: 1 if self.parent.visible else 0
+                            disabled: not self.parent.visible
+                            text: "6-11 times per week"
+                            background_normal: ""
+                            background_down: ""
+                            background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                            on_release:
+                                root.resetColumn2FrequencyButtons();
+                                self.background_color = (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1);
+                                self.frequencySelected = 5;
+
+                        Button:
+                            id: frequencyButton6
+                            size_hint: [1, .07]
+                            opacity: 1 if self.parent.visible else 0
+                            disabled: not self.parent.visible
+                            text: "Once a month"
+                            background_normal: ""
+                            background_down: ""
+                            background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                            on_release:
+                                root.resetColumn2FrequencyButtons();
+                                self.background_color = (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1);
+                                self.frequencySelected = 6;
+
+                        Button:
+                            id: frequencyButton7
+                            size_hint: [1, .07]
+                            opacity: 1 if self.parent.visible else 0
+                            disabled: not self.parent.visible
+                            text: "Once a week"
+                            background_normal: ""
+                            background_down: ""
+                            background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                            on_release:
+                                root.resetColumn2FrequencyButtons();
+                                self.background_color = (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1);
+                                self.frequencySelected = 7;
+
+                        Label:
+                            size_hint: [1, .11]
+                            opacity: 1 if self.parent.visible else 0
+                            disabled: not self.parent.visible
+                            text_size: self.size
+                            align: "left"
+                            color: 0,0,0,1
+                            text: "What's the average value of loss?"
+                            font_size: self.height * .42
+
+                        TextInput:
+                            id: averageLoss
+                            size_hint: [1, .1]
+                            opacity: 1 if self.parent.visible else 0
+                            disabled: not self.parent.visible
+                            multiline: False
+                            background_normal: "White.png"
+                            background_active: "White.png"
+                            cursor_color: 0,0,0,1
+                            foreground_color: 0,0,0,1
+
+                        Label:
+                            size_hint: [1, .18]
+                            opacity: 1 if self.parent.visible else 0
+                            disabled: not self.parent.visible
+                            text_size: self.size
+                            align: "left"
+                            color: 0,0,0,1
+                            text: "How much would they value a Primex guarantee against loss?"
+                            font_size: self.height * .27
+
+                        Button:
+                            id: valueButton1
+                            size_hint: [1, .06]
+                            opacity: 1 if self.parent.visible else 0
+                            disabled: not self.parent.visible
+                            text: "High value"
+                            background_normal: ""
+                            background_down: ""
+                            background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                            on_release:
+                                root.resetColumn2ValueButtons();
+                                self.background_color = (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1);
+                                self.valueSelected = 1;
+
+                        Button:
+                            id: valueButton2
+                            size_hint: [1, .06]
+                            opacity: 1 if self.parent.visible else 0
+                            disabled: not self.parent.visible
+                            text: "Low value"
+                            background_normal: ""
+                            background_down: ""
+                            background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                            on_release:
+                                root.resetColumn2ValueButtons();
+                                self.background_color = (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1);
+                                self.valueSelected = 2;
+
+                    BoxLayout:
+                        id: column3
+                        size_hint: .25, 1
+                        orientation: "vertical"
+                        spacing: 5
+
+                        visible: False
+                        teamSelected: -1
+                        timeSelected: -1
+                        experienceSelected: -1
+
+                        Label:
+                            size_hint: 1, .1
+                            opacity: 1 if self.parent.visible else 0
+                            disabled: not self.parent.visible
+                            text_size: self.width, None
+                            pos_hint: {'top': 1}
+                            height: self.texture_size[1]
+                            halign: "left"
+                            text: "Who would manage OneVue on site?"
+                            color: 0,0,0,1
+
+                        BoxLayout:
+                            size_hint: 1, .07
+                            opacity: 1 if self.parent.visible else 0
+                            disabled: not self.parent.visible
+                            orientation: "horizontal"
+
+                            Button:
+                                id: teamButton1
+                                size_hint: .47, 1
+                                height: self.texture_size[1]
+                                text: "One Person"
+                                font_size: self.height * .6
+                                background_normal: ""
+                                background_down: ""
+                                background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                                on_release:
+                                    root.resetColumn3TeamButtons();
+                                    self.background_color = (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1);
+                                    self.teamSelected = 1;
+
+                            Widget:
+                                size_hint: .06, 1
+
+                            Button:
+                                id: teamButton2
+                                size_hint: .47, 1
+                                height: self.texture_size[1]
+                                text: "Small Team"
+                                font_size: self.height * .6
+                                background_normal: ""
+                                background_down: ""
+                                background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                                on_release:
+                                    root.resetColumn3TeamButtons();
+                                    self.background_color = (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1);
+                                    self.teamSelected = 2;
+
+                        Label:
+                            size_hint: 1, .07
+                            opacity: 1 if self.parent.visible else 0
+                            disabled: not self.parent.visible
+                            text_size: self.size
+                            halign: "left"
+                            text: "How many people?"
+                            color: 0,0,0,1
+
+                        TextInput:
+                            id: teamSizeInput
+                            size_hint: 1, .09
+                            opacity: 1 if self.parent.visible else 0
+                            disabled: not self.parent.visible
+                            multiline: False
+                            background_normal: "White.png"
+                            background_active: "White.png"
+                            cursor_color: 0,0,0,1
+                            foreground_color: 0,0,0,1
+
+                        Label:
+                            text_size: self.size
+                            size_hint: 1, .16
+                            opacity: 1 if self.parent.visible else 0
+                            disabled: not self.parent.visible
+                            halign: "left"
+                            color: 0,0,0,1
+                            text: "How much of their time would be dedicated to OneVue?"
+                            font_size: self.height * .29
+
+                        Button:
+                            id: timeButton1
+                            text: "Less than 10%"
+                            size_hint: 1, .07
+                            opacity: 1 if self.parent.visible else 0
+                            disabled: not self.parent.visible
+                            background_normal: ""
+                            background_down: ""
+                            background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                            on_release:
+                                root.resetColumn3TimeButtons();
+                                self.background_color = (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1);
+                                self.timeSelected = 1;
+
+                        Button:
+                            id: timeButton2
+                            text: "11-25%"
+                            size_hint: 1, .07
+                            opacity: 1 if self.parent.visible else 0
+                            disabled: not self.parent.visible
+                            background_normal: ""
+                            background_down: ""
+                            background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                            on_release:
+                                root.resetColumn3TimeButtons();
+                                self.background_color = (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1);
+                                self.timeSelected = 2;
+
+                        Button:
+                            id: timeButton3
+                            text: "26-50%"
+                            size_hint: 1, .07
+                            opacity: 1 if self.parent.visible else 0
+                            disabled: not self.parent.visible
+                            background_normal: ""
+                            background_down: ""
+                            background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                            on_release:
+                                root.resetColumn3TimeButtons();
+                                self.background_color = (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1);
+                                self.timeSelected = 3;
+
+                        Button:
+                            id: timeButton4
+                            text: "More than 50%"
+                            size_hint: 1, .07
+                            opacity: 1 if self.parent.visible else 0
+                            disabled: not self.parent.visible
+                            background_normal: ""
+                            background_down: ""
+                            background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                            on_release:
+                                root.resetColumn3TimeButtons();
+                                self.background_color = (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1);
+                                self.timeSelected = 4;
+
+                        Label:
+                            text_size: self.size
+                            size_hint: 1, .16
+                            opacity: 1 if self.parent.visible else 0
+                            disabled: not self.parent.visible
+                            align: "left"
+                            color: 0,0,0,1
+                            text: "Have the staff managed a system like OneVue before?"
+                            font_size: self.height * .29
+
+                        BoxLayout:
+                            orientation: "horizontal"
+                            size_hint: 1, .07
+                            opacity: 1 if self.parent.visible else 0
+                            disabled: not self.parent.visible
+
+                            Widget:
+                                size_hint: .2, None
+
+                            Button:
+                                id: experienceButton1
+                                size_hint: .2, 1
+                                height: self.texture_size[1]
+                                text: "Yes"
+                                background_normal: ""
+                                background_down: ""
+                                background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                                on_release:
+                                    root.resetColumn3ExperienceButtons();
+                                    self.background_color = (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1);
+                                    self.experienceSelected = 1;
+
+                            Widget:
+                                size_hint: .2, None
+
+                            Button:
+                                id: experienceButton2
+                                size_hint: .2, 1
+                                height: self.texture_size[1]
+                                text: "No"
+                                background_normal: ""
+                                background_down: ""
+                                background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                                on_release:
+                                    root.resetColumn3ExperienceButtons();
+                                    self.background_color = (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1);
+                                    self.experienceSelected = 2;
+
+                            Widget:
+                                size_hint: .2, None
+
+                    BoxLayout:
+                        id: column4
+                        size_hint: .25, 1
+                        orientation: "vertical"
+
+                        visible: False
+
+                        Label:
+                            size_hint: 1, .1
+                            opacity: 1 if self.parent.visible else 0
+                            disabled: not self.parent.visible
+                            text_size: self.width, None
+                            pos_hint: {'top': 1}
+                            height: self.texture_size[1]
+                            halign: "left"
+                            text: "Explain:"
+                            color: 0,0,0,1
+
+                        TextInput:
+                            id: grid14
+                            size_hint: 1, .09
+                            opacity: 1 if self.parent.visible else 0
+                            disabled: not self.parent.visible
+                            height: 0
+                            multiline: False
+                            background_normal: "White.png"
+                            background_active: "White.png"
+                            cursor_color: 0,0,0,1
+                            foreground_color: 0,0,0,1
+
+                        Widget:
+                            size_hint: 1, .91
+
+                Widget:
+                    size_hint: 1, .03
+
+                BoxLayout:
+                    size_hint: 1, .06
+                    orientation: "horizontal"
+
+                    Widget:
+                        size_hint: .45, 1
+
+                    Button:
+                        size_hint: .1, 1
+                        height: self.texture_size[1]
+                        text: "Next"
+                        background_normal: ""
+                        background_down: ""
+                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+
+                    Widget:
+                        size_hint: .45, 1
+
+                Widget:
+                    size_hint: 1, .02
+
+            Widget:
+                size_hint: .05, 1
