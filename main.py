@@ -136,6 +136,17 @@ class Package4Screen(Screen):
 
 
 
+class AuditsInterface(Widget):
+    pass
+
+class AuditsBackground(Widget):
+    pass
+
+class AuditsScreen(Screen):
+    pass
+
+
+
 class SenseConfiguration(App):
     def build(self):
         Window.size=(850,650)
