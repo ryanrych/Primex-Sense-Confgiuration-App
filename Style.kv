@@ -1391,10 +1391,12 @@ WindowManager:
                     text: "What Agencies Audit?"
 
                 BoxLayout:
+                    id: buttonList
                     size_hint: 1, .4
                     orientation: "vertical"
                     spacing: 7
 
+                    selected: -1
 
                     Widget:
                         size_hint: 1, .04
@@ -1410,6 +1412,10 @@ WindowManager:
                             background_down: ""
                             background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
                             text: "Joint Commission or DNV"
+                            on_release:
+                                root.clearSelection()
+                                self.parent.parent.selected = 0
+                                self.background_color = (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
 
                         Widget:
                             size_hint: .7, 1
@@ -1425,6 +1431,10 @@ WindowManager:
                             background_down: ""
                             background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
                             text: "FDA"
+                            on_release:
+                                root.clearSelection()
+                                self.parent.parent.selected = 1
+                                self.background_color = (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
 
                         Widget:
                             size_hint: .9, 1
@@ -1440,6 +1450,10 @@ WindowManager:
                             background_down: ""
                             background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
                             text: "Center for Disease Control"
+                            on_release:
+                                root.clearSelection()
+                                self.parent.parent.selected = 2
+                                self.background_color = (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
 
                         Widget:
                             size_hint: .7, 1
@@ -1455,6 +1469,10 @@ WindowManager:
                             background_down: ""
                             background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
                             text: "State's Vaccines for Children Program"
+                            on_release:
+                                root.clearSelection()
+                                self.parent.parent.selected = 3
+                                self.background_color = (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
 
                         Widget:
                             size_hint: .6, 1
@@ -1470,6 +1488,10 @@ WindowManager:
                             background_down: ""
                             background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
                             text: "Health and Human Services"
+                            on_release:
+                                root.clearSelection()
+                                self.parent.parent.selected = 4
+                                self.background_color = (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
 
                         Widget:
                             size_hint: .7, 1
@@ -1491,6 +1513,9 @@ WindowManager:
                             background_active: "White.png"
                             cursor_color: 0,0,0,1
                             foreground_color: 0,0,0,1
+                            on_focus:
+                                root.clearSelection()
+                                self.parent.parent.selected = 5
 
                         Widget:
                             size_hint: .6, 1
