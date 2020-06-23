@@ -294,7 +294,6 @@ WindowManager:
                         on_release:
                             app.root.transition = NoTransition()
                             app.root.current = "SitePrioritiesScreen"
-                            print("hi")
 
                     Label:
                         size_hint: .42, 1
@@ -1377,19 +1376,28 @@ WindowManager:
                     halign: "left"
                     markup: True
                     color: 0,0,0,1
+                    font_size: self.height * .4
                     text: "[b]Compliance & Audits[/b]"
+
+                Widget:
+                    size_hint: 1, .06
 
                 Label:
                     size_hint: 1, .05
                     text_size: self.size
                     halign: "left"
                     color: 0,0,0,1
+                    font_size: self.height * .57
                     text: "What Agencies Audit?"
 
                 BoxLayout:
-                    size_hint: 1, .5
+                    size_hint: 1, .4
                     orientation: "vertical"
+                    spacing: 7
 
+
+                    Widget:
+                        size_hint: 1, .04
 
                     BoxLayout:
                         size_hint: 1, .16
@@ -1397,14 +1405,14 @@ WindowManager:
 
                         Button:
                             id: button0
-                            size_hint: .25, 1
+                            size_hint: .3, 1
                             background_normal: ""
                             background_down: ""
                             background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
                             text: "Joint Commission or DNV"
 
                         Widget:
-                            size_hint: .75, 1
+                            size_hint: .7, 1
 
                     BoxLayout:
                         size_hint: 1, .16
@@ -1412,14 +1420,14 @@ WindowManager:
 
                         Button:
                             id: button1
-                            size_hint: .25, 1
+                            size_hint: .1, 1
                             background_normal: ""
                             background_down: ""
                             background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
                             text: "FDA"
 
                         Widget:
-                            size_hint: .75, 1
+                            size_hint: .9, 1
 
                     BoxLayout:
                         size_hint: 1, .16
@@ -1427,14 +1435,14 @@ WindowManager:
 
                         Button:
                             id: button2
-                            size_hint: .25, 1
+                            size_hint: .3, 1
                             background_normal: ""
                             background_down: ""
                             background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
                             text: "Center for Disease Control"
 
                         Widget:
-                            size_hint: .75, 1
+                            size_hint: .7, 1
 
                     BoxLayout:
                         size_hint: 1, .16
@@ -1442,14 +1450,14 @@ WindowManager:
 
                         Button:
                             id: button3
-                            size_hint: .25, 1
+                            size_hint: .4, 1
                             background_normal: ""
                             background_down: ""
                             background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
                             text: "State's Vaccines for Children Program"
 
                         Widget:
-                            size_hint: .75, 1
+                            size_hint: .6, 1
 
                     BoxLayout:
                         size_hint: 1, .16
@@ -1457,17 +1465,17 @@ WindowManager:
 
                         Button:
                             id: button4
-                            size_hint: .25, 1
+                            size_hint: .3, 1
                             background_normal: ""
                             background_down: ""
                             background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
                             text: "Health and Human Services"
 
                         Widget:
-                            size_hint: .75, 1
+                            size_hint: .7, 1
 
                     BoxLayout:
-                        size_hint: 1, .2
+                        size_hint: 1, .16
                         orientation: "horizontal"
 
                         Label:
@@ -1488,7 +1496,7 @@ WindowManager:
                             size_hint: .6, 1
 
                 Widget:
-                    size_hint: 1, .07
+                    size_hint: 1, .05
 
                 Label:
                     size_hint: 1, .05
@@ -1497,23 +1505,40 @@ WindowManager:
                     color: 0,0,0,1
                     text: "How much time do you typically spend preparing for audits?"
 
-                TextInput:
-                    size_hint: 1, .07
-                    multiline: False
-                    background_normal: "White.png"
-                    background_active: "White.png"
-                    cursor_color: 0,0,0,1
-                    foreground_color: 0,0,0,1
+                BoxLayout:
+                    size_hint: 1, .05
+                    orientation: "horizontal"
+
+                    TextInput:
+                        size_hint: .2, 1
+                        multiline: False
+                        background_normal: "White.png"
+                        background_active: "White.png"
+                        cursor_color: 0,0,0,1
+                        foreground_color: 0,0,0,1
+
+                    Widget:
+                        size_hint: .8, 1
 
                 Widget:
-                    size_hint: 1, .05
+                    size_hint: 1, .14
 
-                Button:
-                    size_hint: 1, .06
-                    background_normal: ""
-                    background_down: ""
-                    background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
-                    text: "Next"
+                BoxLayout:
+                    size_hint: 1, .05
+                    orientation: "horizontal"
+
+                    Widget:
+                        size_hint: .45, 1
+
+                    Button:
+                        size_hint: .1, 1
+                        background_normal: ""
+                        background_down: ""
+                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                        text: "Next"
+
+                    Widget:
+                        size_hint: .45, 1
 
                 Widget:
                     size_hint: 1, .05
