@@ -153,6 +153,23 @@ class AuditsScreen(Screen):
 
 
 
+class LossInterface(Widget):
+
+    def clearSelection(self):
+        self.ids.button0.background_color = (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1)
+        self.ids.button1.background_color = (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1)
+        self.ids.button2.background_color = (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1)
+        self.ids.button3.background_color = (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1)
+        self.ids.button4.background_color = (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1)
+
+class LossBackground(Widget):
+    pass
+
+class LossScreen(Screen):
+    pass
+
+
+
 class SenseConfiguration(App):
     def build(self):
         Window.size=(850,650)

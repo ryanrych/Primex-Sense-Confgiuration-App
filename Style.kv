@@ -26,6 +26,7 @@ WindowManager:
     Package4Screen:
     SitePrioritiesScreen:
     AuditsScreen:
+    LossScreen:
 
 
 <WelcomeInterface>:
@@ -1262,6 +1263,8 @@ WindowManager:
                             backgroundColorNormal: 0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1
                             backgroundColorActive: 0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1
                             text: "Loss Protection"
+                            on_release:
+                                app.root.current = "LossScreen"
 
                         Widget:
                             size_hint: .75, 1
@@ -1590,5 +1593,216 @@ WindowManager:
     name: "AuditsScreen"
     FloatLayout:
         AuditsBackground:
+            id: background
+            center: 0.5, 0.5
+
+
+
+<LossInterface>:
+    size_hint: None, None
+
+    RelativeLayout:
+        pos: self.parent.pos
+        size: self.parent.size
+
+        BoxLayout:
+            canvas.before:
+                Color:
+                    rgba: 1,1,1,1
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+            size: self.parent.size
+            orientation: "horizontal"
+
+            spacing: 5
+
+            Widget:
+                size_hint: .05, 1
+
+            BoxLayout:
+                size_hint: .9, 1
+                orientation: "vertical"
+
+                Label:
+                    size_hint: 1, .1
+                    markup: True
+                    text_size: self.size
+                    halign: "left"
+                    color: 0,0,0,1
+                    text: "[b]Loss Prevention[/b]"
+
+                Label:
+                    size_hint: 1, .05
+                    text_size: self.size
+                    halign: "left"
+                    color: 0,0,0,1
+                    text: "How often do they experience loss?"
+
+                GridLayout:
+                    id: buttonList
+                    size_hint: 1, .4
+                    cols: 2
+
+                    Widget:
+                        size_hint: .5, .02
+
+                    Widget:
+                        size_hint: .5, .02
+
+                    Button:
+                        id: button0
+                        size_hint: .3, .14
+                        background_normal: ""
+                        background_down: ""
+                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                        text: "Less than once per year"
+
+                    Widget:
+                        size_hint: .7, .14
+
+                    Button:
+                        id: button1
+                        size_hint: .3, .14
+                        background_normal: ""
+                        background_down: ""
+                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                        text: "About once per year"
+
+                    Widget:
+                        size_hint: .7, .14
+
+                    Button:
+                        id: button2
+                        size_hint: .3, .14
+                        background_normal: ""
+                        background_down: ""
+                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                        text: "2-3 times per year"
+
+                    Widget:
+                        size_hint: .7, .14
+
+                    Button:
+                        id: button3
+                        size_hint: .3, .14
+                        background_normal: ""
+                        background_down: ""
+                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                        text: "4-6 times per year"
+
+                    Widget:
+                        size_hint: .7, .14
+
+                    Button:
+                        id: button4
+                        size_hint: .3, .14
+                        background_normal: ""
+                        background_down: ""
+                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                        text: "6-11 times per year"
+
+                    Widget:
+                        size_hint: .7, .14
+
+                    Button:
+                        id: button5
+                        size_hint: .3, .14
+                        background_normal: ""
+                        background_down: ""
+                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                        text: "Once a month"
+
+                    Widget:
+                        size_hint: .7, .14
+
+                    Button:
+                        id: button6
+                        size_hint: .3, .14
+                        background_normal: ""
+                        background_down: ""
+                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                        text: "Once a week"
+
+                    Widget:
+                        size_hint: .7, .14
+
+                Label:
+                    size_hint: 1, .05
+                    text_size: self.size
+                    halign: "left"
+                    color: 0,0,0,1
+                    text: "What's the average value of each loss?"
+
+                TextInput:
+                    size_hint: 1, .07
+                    multiline: False
+                    background_normal: "White.png"
+                    background_active: "White.png"
+                    cursor_color: 0,0,0,1
+                    foreground_color: 0,0,0,1
+
+                Label:
+                    size_hint: 1, .05
+                    text_size: self.size
+                    halign: "left"
+                    color: 0,0,0,1
+                    text: "How much would they value a Primex\nguarantee against loss?"
+
+                BoxLayout:
+                    size_hint: 1, .12
+                    orientation: "vertical"
+
+                    Button:
+                        id: button0
+                        size_hint: 1, .5
+                        background_normal: ""
+                        background_down: ""
+                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                        text: "High value"
+
+                    Button:
+                        id: button1
+                        size_hint: 1, .5
+                        background_normal: ""
+                        background_down: ""
+                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                        text: "Low value"
+
+                Widget:
+                    size_hint: 1, .06
+
+                Button:
+                    size_hint: 1, .06
+                    background_normal: ""
+                    background_down: ""
+                    background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                    text: "Next"
+
+                Widget:
+                    size_hint: 1, .04
+
+            Widget:
+                size_hint: .05, 1
+
+<LossBackground>:
+    AnchorLayout:
+        canvas.before:
+            Color:
+                rgba: 0.23921568627450981, 0.5137254901960784, 0.7254901960784313, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        size: self.parent.size
+        anchor_x: 'center'
+        anchor_y: 'center'
+        LossInterface:
+            id: interface
+            size_hint: .9,.9
+
+<LossScreen>:
+    name: "LossScreen"
+    FloatLayout:
+        LossBackground:
             id: background
             center: 0.5, 0.5
