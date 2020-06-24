@@ -176,6 +176,17 @@ class LossScreen(Screen):
 
 
 
+class EfficiencyInterface(Widget):
+    pass
+
+class EfficiencyBackground(Widget):
+    pass
+
+class EfficiencyScreen(Screen):
+    pass
+
+
+
 class SenseConfiguration(App):
     def build(self):
         Window.size=(850,650)
