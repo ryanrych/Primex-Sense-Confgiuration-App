@@ -1630,6 +1630,7 @@ WindowManager:
                     text_size: self.size
                     halign: "left"
                     color: 0,0,0,1
+                    font_size: self.height * .4
                     text: "[b]Loss Prevention[/b]"
 
                 Label:
@@ -1640,9 +1641,12 @@ WindowManager:
                     text: "How often do they experience loss?"
 
                 GridLayout:
-                    id: buttonList
-                    size_hint: 1, .4
+                    id: lossButtonList
+                    size_hint: 1, .36
                     cols: 2
+                    spacing: 5
+
+                    selected: -1
 
                     Widget:
                         size_hint: .5, .02
@@ -1651,81 +1655,113 @@ WindowManager:
                         size_hint: .5, .02
 
                     Button:
-                        id: button0
+                        id: lossButton0
                         size_hint: .3, .14
                         background_normal: ""
                         background_down: ""
                         background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
                         text: "Less than once per year"
+                        on_release:
+                            root.clearLossSelection()
+                            self.background_color = (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                            self.parent.selected = 0
+
 
                     Widget:
                         size_hint: .7, .14
 
                     Button:
-                        id: button1
+                        id: lossButton1
                         size_hint: .3, .14
                         background_normal: ""
                         background_down: ""
                         background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
                         text: "About once per year"
+                        on_release:
+                            root.clearLossSelection()
+                            self.background_color = (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                            self.parent.selected = 1
 
                     Widget:
                         size_hint: .7, .14
 
                     Button:
-                        id: button2
+                        id: lossButton2
                         size_hint: .3, .14
                         background_normal: ""
                         background_down: ""
                         background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
                         text: "2-3 times per year"
+                        on_release:
+                            root.clearLossSelection()
+                            self.background_color = (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                            self.parent.selected = 2
 
                     Widget:
                         size_hint: .7, .14
 
                     Button:
-                        id: button3
+                        id: lossButton3
                         size_hint: .3, .14
                         background_normal: ""
                         background_down: ""
                         background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
                         text: "4-6 times per year"
+                        on_release:
+                            root.clearLossSelection()
+                            self.background_color = (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                            self.parent.selected = 3
 
                     Widget:
                         size_hint: .7, .14
 
                     Button:
-                        id: button4
+                        id: lossButton4
                         size_hint: .3, .14
                         background_normal: ""
                         background_down: ""
                         background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
                         text: "6-11 times per year"
+                        on_release:
+                            root.clearLossSelection()
+                            self.background_color = (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                            self.parent.selected = 4
 
                     Widget:
                         size_hint: .7, .14
 
                     Button:
-                        id: button5
+                        id: lossButton5
                         size_hint: .3, .14
                         background_normal: ""
                         background_down: ""
                         background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
                         text: "Once a month"
+                        on_release:
+                            root.clearLossSelection()
+                            self.background_color = (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                            self.parent.selected = 5
 
                     Widget:
                         size_hint: .7, .14
 
                     Button:
-                        id: button6
+                        id: lossButton6
                         size_hint: .3, .14
                         background_normal: ""
                         background_down: ""
                         background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
                         text: "Once a week"
+                        on_release:
+                            root.clearLossSelection()
+                            self.background_color = (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                            self.parent.selected = 6
 
                     Widget:
                         size_hint: .7, .14
+
+                Widget:
+                    size_hint: 1, .03
 
                 Label:
                     size_hint: 1, .05
@@ -1734,50 +1770,93 @@ WindowManager:
                     color: 0,0,0,1
                     text: "What's the average value of each loss?"
 
-                TextInput:
-                    size_hint: 1, .07
-                    multiline: False
-                    background_normal: "White.png"
-                    background_active: "White.png"
-                    cursor_color: 0,0,0,1
-                    foreground_color: 0,0,0,1
+                BoxLayout:
+                    size_hint: 1, .05
+                    orientation: "horizontal"
+
+                    TextInput:
+                        size_hint: .15, 1
+                        multiline: False
+                        background_normal: "White.png"
+                        background_active: "White.png"
+                        cursor_color: 0,0,0,1
+                        foreground_color: 0,0,0,1
+
+                    Widget:
+                        size_hint: .85, 1
+
+                Widget:
+                    size_hint: 1, .04
 
                 Label:
-                    size_hint: 1, .05
+                    size_hint: 1, .07
                     text_size: self.size
                     halign: "left"
                     color: 0,0,0,1
                     text: "How much would they value a Primex\nguarantee against loss?"
 
-                BoxLayout:
-                    size_hint: 1, .12
-                    orientation: "vertical"
+                Widget:
+                    size_hint: 1, .02
+
+                GridLayout:
+                    id: valueButtonList
+                    size_hint: 1, .09
+                    cols: 2
+                    spacing: 5
+
+                    selection: -1
 
                     Button:
-                        id: button0
-                        size_hint: 1, .5
+                        id: valueButton0
+                        size_hint: .2, .5
                         background_normal: ""
                         background_down: ""
                         background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
                         text: "High value"
+                        on_release:
+                            root.clearValueSelection()
+                            self.background_color = (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                            self.parent.selection = 0
+
+                    Widget:
+                        size_hint: .8, .5
 
                     Button:
-                        id: button1
-                        size_hint: 1, .5
+                        id: valueButton1
+                        size_hint: .2, .5
                         background_normal: ""
                         background_down: ""
                         background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
                         text: "Low value"
+                        on_release:
+                            root.clearValueSelection()
+                            self.background_color = (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                            self.parent.selection = 1
+
+                    Widget:
+                        size_hint: .8, .5
 
                 Widget:
                     size_hint: 1, .06
 
-                Button:
+                BoxLayout:
                     size_hint: 1, .06
-                    background_normal: ""
-                    background_down: ""
-                    background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
-                    text: "Next"
+                    orientation: "horizontal"
+
+                    Widget:
+                        size_hint: .45, 1
+
+                    Button:
+                        size_hint: .1, 1
+                        background_normal: ""
+                        background_down: ""
+                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                        text: "Next"
+                        on_release:
+                            app.root.current = "SitePrioritiesScreen"
+
+                    Widget:
+                        size_hint: .45, 1
 
                 Widget:
                     size_hint: 1, .04
