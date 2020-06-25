@@ -1927,11 +1927,11 @@ WindowManager:
                     text: "[b]Staff Efficiency[/b]"
 
                 BoxLayout:
-                    size_hint: 1, .06
+                    size_hint: 1, .05
                     orientation: "horizontal"
 
                     Label:
-                        size_hint: .5, 1
+                        size_hint: .48, 1
                         text_size: self.size
                         halgin: "left"
                         color: 0,0,0,1
@@ -1946,7 +1946,7 @@ WindowManager:
                         foreground_color: 0,0,0,1
 
                     Widget:
-                        size_hint: .4, 1
+                        size_hint: .42, 1
 
                 Label:
                     size_hint: 1, .06
@@ -1955,8 +1955,11 @@ WindowManager:
                     color: 0,0,0,1
                     text: "Who would manage OneVue on site?"
 
+                Widget:
+                    size_hint: 1, .01
+
                 BoxLayout:
-                    size_hint: 1, .06
+                    size_hint: 1, .04
                     orientation: "horizontal"
                     spacing: 10
 
@@ -1978,11 +1981,11 @@ WindowManager:
                         size_hint: .7, 1
 
                 BoxLayout:
-                    size_hint: 1, .06
+                    size_hint: 1, .05
                     orientation: "horizontal"
 
                     Label:
-                        size_hint: .1, 1
+                        size_hint: .2, 1
                         text_size: self.size
                         halign: "left"
                         color: 0,0,0,1
@@ -1997,7 +2000,7 @@ WindowManager:
                         foreground_color: 0,0,0,1
 
                     Widget:
-                        size_hint: .8, 1
+                        size_hint: .7, 1
 
                 Label:
                     size_hint: 1, .06
@@ -2006,9 +2009,13 @@ WindowManager:
                     color: 0,0,0,1
                     text: "How much of their time would be dedicated to OneVue?"
 
+                Widget:
+                    size_hint: 1, .01
+
                 GridLayout:
                     size_hint: 1, .2
                     cols: 2
+                    spacing: 7
 
                     Button:
                         size_hint: .2, 1
@@ -2057,117 +2064,103 @@ WindowManager:
                     color: 0,0,0,1
                     text: "Have the staff managed a system like OneVue before?"
 
+                Widget:
+                    size_hint: 1, .01
+
                 BoxLayout:
-                    size_hint: 1, .06
+                    size_hint: 1, .04
                     orientation: "horizontal"
                     spacing: 10
 
-                    Widget:
-                        size_hint: .45, 1
-
                     Button:
-                        size_hint: .05, 1
+                        size_hint: .1, 1
                         background_normal: ""
                         background_down: ""
                         background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
                         text: "Yes"
 
                     Button:
-                        size_hint: .05, 1
+                        size_hint: .1, 1
                         background_normal: ""
                         background_down: ""
                         background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
                         text: "No"
 
                     Widget:
-                        size_hint: .05, 1
+                        size_hint: .8, 1
 
-                BoxLayout:
-                    size_hint: 1, .06
-                    orientaion: "horizontal"
+                Widget:
+                    size_hint: 1, .01
+
+                GridLayout:
+                    size_hint: 1, .2
+                    cols: 2
 
                     Label:
-                        size_hint: .6, 1
+                        size_hint: .8, .25
                         text_size: self.size
+                        halign: "left"
                         color: 0,0,0,1
                         text: "About how many alerts does your system generate per week?"
 
                     TextInput:
-                        size_hint: .2, 1
+                        size_hint: .2, .25
                         multiline: False
                         background_normal: "White.png"
                         background_active: "White.png"
                         cursor_color: 0,0,0,1
                         foreground_color: 0,0,0,1
 
-                    Widget:
-                        size_hint: .2, 1
-
-                BoxLayout:
-                    size_hint: 1, .06
-                    orientaion: "horizontal"
-
                     Label:
-                        size_hint: .65, 1
+                        size_hint: .8, .25
                         text_size: self.size
+                        halign: "left"
                         color: 0,0,0,1
-                        text: "We estimate $15/hour for our calculation. Want to adjust?"
+                        text: "We estimate labor rates at $15/hour for our calculation. Want to adjust?"
 
                     TextInput:
-                        size_hint: .1, 1
+                        size_hint: .2, .25
                         multiline: False
                         background_normal: "White.png"
                         background_active: "White.png"
                         cursor_color: 0,0,0,1
                         foreground_color: 0,0,0,1
 
-                    Widget:
-                        size_hint: .25, 1
-
-                BoxLayout:
-                    size_hint: 1, .06
-                    orientaion: "horizontal"
-
                     Label:
-                        size_hint: .4, 1
+                        size_hint: .8, .25
                         text_size: self.size
+                        halign: "left"
                         color: 0,0,0,1
                         text: "How many reports are generated per week?"
 
                     TextInput:
-                        size_hint: .2, 1
+                        size_hint: .2, .25
                         multiline: False
                         background_normal: "White.png"
                         background_active: "White.png"
                         cursor_color: 0,0,0,1
                         foreground_color: 0,0,0,1
 
-                    Widget:
-                        size_hint: .4, 1
-
-                BoxLayout:
-                    size_hint: 1, .06
-                    orientaion: "horizontal"
-
                     Label:
-                        size_hint: .7, 1
+                        size_hint: .8, .25
                         text_size: self.size
+                        halign: "left"
                         color: 0,0,0,1
                         text: "We estimate management rates at $50/hour for our calculation. Want to adjust?"
 
                     TextInput:
-                        size_hint: .1, 1
+                        size_hint: .2, .25
                         multiline: False
                         background_normal: "White.png"
                         background_active: "White.png"
                         cursor_color: 0,0,0,1
                         foreground_color: 0,0,0,1
 
-                    Widget:
-                        size_hint: .2, 1
+                Widget:
+                    size_hint: 1, .03
 
                 BoxLayout:
-                    size_hint: 1, .04
+                    size_hint: 1, .05
                     orientation: "horizontal"
 
                     Widget:
@@ -2184,6 +2177,9 @@ WindowManager:
 
                     Widget:
                         size_hint: .45, 1
+
+                Widget:
+                    size_hint: 1, .02
 
             Widget:
                 size_hint: .05, 1
