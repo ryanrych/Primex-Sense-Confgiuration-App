@@ -1959,28 +1959,42 @@ WindowManager:
                     size_hint: 1, .01
 
                 BoxLayout:
+                    id: teamButtons
                     size_hint: 1, .04
                     orientation: "horizontal"
                     spacing: 10
 
+                    selected: -1
+
                     Button:
+                        id: teamButton0
                         size_hint: .15, 1
                         background_normal: ""
                         background_down: ""
                         background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
                         text: "One Person"
+                        on_release:
+                            root.clearTeamButtons()
+                            self.background_color = (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                            self.parent.selected = 0
 
                     Button:
+                        id: teamButton1
                         size_hint: .15, 1
                         background_normal: ""
                         background_down: ""
                         background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
                         text: "Small Team"
+                        on_release:
+                            root.clearTeamButtons()
+                            self.background_color = (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                            self.parent.selected = 0
 
                     Widget:
                         size_hint: .7, 1
 
                 BoxLayout:
+                    id: teamSizeLayout
                     size_hint: 1, .05
                     orientation: "horizontal"
 
@@ -2002,6 +2016,7 @@ WindowManager:
                     Widget:
                         size_hint: .7, 1
 
+
                 Label:
                     size_hint: 1, .06
                     text_size: self.size
@@ -2013,46 +2028,69 @@ WindowManager:
                     size_hint: 1, .01
 
                 GridLayout:
+                    id: frequencyButtons
                     size_hint: 1, .2
                     cols: 2
                     spacing: 7
 
+                    selected: -1
+
                     Button:
+                        id: frequencyButton0
                         size_hint: .2, 1
                         background_normal: ""
                         background_down: ""
                         background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
                         text: "Less Than 10%"
+                        on_release:
+                            root.clearFrequencyButtons()
+                            self.background_color = (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                            self.parent.selected = 0
 
                     Widget:
                         size_hint: .8, 1
 
                     Button:
+                        id: frequencyButton1
                         size_hint: .2, 1
                         background_normal: ""
                         background_down: ""
                         background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
                         text: "11-25%"
+                        on_release:
+                            root.clearFrequencyButtons()
+                            self.background_color = (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                            self.parent.selected = 1
 
                     Widget:
                         size_hint: .8, 1
 
                     Button:
+                        id: frequencyButton2
                         size_hint: .2, 1
                         background_normal: ""
                         background_down: ""
                         background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
                         text: "26-50%"
+                        on_release:
+                            root.clearFrequencyButtons()
+                            self.background_color = (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                            self.parent.selected = 2
 
                     Widget:
                         size_hint: .8, 1
 
                     Button:
+                        id: frequencyButton3
                         size_hint: .2, 1
                         background_normal: ""
                         background_down: ""
                         background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
                         text: "More than 50%"
+                        on_release:
+                            root.clearFrequencyButtons()
+                            self.background_color = (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                            self.parent.selected = 3
 
                     Widget:
                         size_hint: .8, 1
@@ -2068,23 +2106,36 @@ WindowManager:
                     size_hint: 1, .01
 
                 BoxLayout:
+                    id: experienceButtons
                     size_hint: 1, .04
                     orientation: "horizontal"
                     spacing: 10
 
+                    selected: -1
+
                     Button:
+                        id: experienceButton0
                         size_hint: .1, 1
                         background_normal: ""
                         background_down: ""
                         background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
                         text: "Yes"
+                        on_release:
+                            root.clearExperienceButtons()
+                            self.background_color = (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                            self.parent.selected = 0
 
                     Button:
+                        id: experienceButton1
                         size_hint: .1, 1
                         background_normal: ""
                         background_down: ""
                         background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
                         text: "No"
+                        on_release:
+                            root.clearExperienceButtons()
+                            self.background_color = (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                            self.parent.selected = 1
 
                     Widget:
                         size_hint: .8, 1
