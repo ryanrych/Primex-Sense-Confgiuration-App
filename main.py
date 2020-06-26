@@ -194,6 +194,17 @@ class EfficiencyScreen(Screen):
 
 
 
+class OtherInterface(Widget):
+    pass
+
+class OtherBackground(Widget):
+    pass
+
+class OtherScreen(Screen):
+    pass
+
+
+
 class SenseConfiguration(App):
     def build(self):
         Window.size=(850,650)
