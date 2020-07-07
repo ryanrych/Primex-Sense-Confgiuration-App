@@ -1568,17 +1568,31 @@ WindowManager:
                     orientation: "horizontal"
 
                     Widget:
-                        size_hint: .45, 1
+                        size_hint: .38, 1
 
                     Button:
                         size_hint: .1, 1
                         background_normal: ""
                         background_down: ""
                         background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
-                        text: "Next"
+                        text: "Back"
+                        on_release:
+                            app.root.current = "SitePrioritiesScreen"
 
                     Widget:
-                        size_hint: .45, 1
+                        size_hint: .04, 1
+
+                    Button:
+                        size_hint: .1, 1
+                        background_normal: ""
+                        background_down: ""
+                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                        text: "Confirm"
+                        on_release:
+                            app.root.current = "SitePrioritiesScreen"
+
+                    Widget:
+                        size_hint: .38, 1
 
                 Widget:
                     size_hint: 1, .05
@@ -1856,19 +1870,31 @@ WindowManager:
                     orientation: "horizontal"
 
                     Widget:
-                        size_hint: .45, 1
+                        size_hint: .38, 1
 
                     Button:
                         size_hint: .1, 1
                         background_normal: ""
                         background_down: ""
                         background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
-                        text: "Next"
+                        text: "Back"
                         on_release:
                             app.root.current = "SitePrioritiesScreen"
 
                     Widget:
-                        size_hint: .45, 1
+                        size_hint: .04, 1
+
+                    Button:
+                        size_hint: .1, 1
+                        background_normal: ""
+                        background_down: ""
+                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                        text: "Confirm"
+                        on_release:
+                            app.root.current = "SitePrioritiesScreen"
+
+                    Widget:
+                        size_hint: .38, 1
 
                 Widget:
                     size_hint: 1, .04
@@ -2232,19 +2258,31 @@ WindowManager:
                     orientation: "horizontal"
 
                     Widget:
-                        size_hint: .45, 1
+                        size_hint: .38, 1
 
                     Button:
                         size_hint: .1, 1
                         background_normal: ""
                         background_down: ""
                         background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
-                        text: "Next"
+                        text: "Back"
                         on_release:
                             app.root.current = "SitePrioritiesScreen"
 
                     Widget:
-                        size_hint: .45, 1
+                        size_hint: .04, 1
+
+                    Button:
+                        size_hint: .1, 1
+                        background_normal: ""
+                        background_down: ""
+                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                        text: "Confirm"
+                        on_release:
+                            app.root.current = "SitePrioritiesScreen"
+
+                    Widget:
+                        size_hint: .38, 1
 
                 Widget:
                     size_hint: 1, .02
@@ -2336,19 +2374,31 @@ WindowManager:
                     orientation: "horizontal"
 
                     Widget:
-                        size_hint: .45, 1
+                        size_hint: .38, 1
 
                     Button:
                         size_hint: .1, 1
                         background_normal: ""
                         background_down: ""
                         background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
-                        text: "Next"
+                        text: "Back"
                         on_release:
                             app.root.current = "SitePrioritiesScreen"
 
                     Widget:
-                        size_hint: .45, 1
+                        size_hint: .04, 1
+
+                    Button:
+                        size_hint: .1, 1
+                        background_normal: ""
+                        background_down: ""
+                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                        text: "Confirm"
+                        on_release:
+                            app.root.current = "SitePrioritiesScreen"
+
+                    Widget:
+                        size_hint: .38, 1
 
                 Widget:
                     size_hint: 1, .02
