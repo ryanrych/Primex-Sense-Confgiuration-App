@@ -10,6 +10,10 @@ class WindowManager(ScreenManager):
 
 
 
+
+
+
+
 class WelcomeInterface(Widget):
 
     def facilitiesBox(self):
@@ -185,6 +189,9 @@ class EfficiencyInterface(Widget):
     def clearExperienceButtons(self):
         self.ids.experienceButton0.background_color = (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1)
         self.ids.experienceButton1.background_color = (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1)
+
+    def confirmAnswers(self):
+        pass
 
 class EfficiencyBackground(Widget):
     pass
