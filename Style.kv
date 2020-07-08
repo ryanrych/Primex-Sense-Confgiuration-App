@@ -1525,6 +1525,7 @@ WindowManager:
                             text: "Other:"
 
                         TextInput:
+                            id: otherCompanyInput
                             size_hint: .3, 1
                             multiline: False
                             background_normal: "White.png"
@@ -1550,6 +1551,7 @@ WindowManager:
                     orientation: "horizontal"
 
                     TextInput:
+                        id: auditPrepTimeInput
                         size_hint: .2, 1
                         multiline: False
                         background_normal: "White.png"
@@ -1589,6 +1591,7 @@ WindowManager:
                         background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
                         text: "Confirm"
                         on_release:
+                            root.confirmAnswers()
                             app.root.current = "SitePrioritiesScreen"
 
                     Widget:

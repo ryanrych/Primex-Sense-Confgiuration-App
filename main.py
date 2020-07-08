@@ -5,12 +5,14 @@ from kivy.core.window import Window
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.uix.widget import Widget
 
+import SitePriorities
+
 class WindowManager(ScreenManager):
     pass
 
 
 
-
+sitePriorities = SitePriorities()
 
 
 
@@ -165,6 +167,9 @@ class LossInterface(Widget):
     def clearValueSelection(self):
         self.ids.valueButton0.background_color = (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1)
         self.ids.valueButton1.background_color = (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1)
+
+    def confirmAnswers(self):
+        pass
 
 class LossBackground(Widget):
     pass
