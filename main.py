@@ -5,7 +5,7 @@ from kivy.core.window import Window
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.uix.widget import Widget
 
-import SitePriorities
+from SitePriorities import SitePriorities
 
 class WindowManager(ScreenManager):
     pass
@@ -143,7 +143,19 @@ class Package4Screen(Screen):
 
 
 class AuditsInterface(Widget):
-    pass
+
+    def confirmAnswers(self):
+        global sitePriorities
+
+        for layout in self.ids.buttonList.children[1:-1]:
+            if layout.children[1].selected:
+                sitePriorities.auditAgencies.append(layout.children[1].text)
+
+        if self.ids.buttonList.children[0].children[1].text != "":
+            for agency in self.ids.buttonList.children[0].children[1].text.split(","):
+                sitePriorities.auditAgencies.append(agency)
+
+        sitePriorities.auditPrepTime = int(self.ids.auditPrepTimeInput.text)
 
 class AuditsBackground(Widget):
     pass
@@ -169,7 +181,11 @@ class LossInterface(Widget):
         self.ids.valueButton1.background_color = (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1)
 
     def confirmAnswers(self):
-        pass
+        global sitePriorities
+
+        sitePriorities.lossFrequency = self.ids.lossButtonList.selected
+        sitePriorities.averageLoss = int(self.ids.averageLossInput.text)
+        sitePriorities.primexValue = not self.ids.valueButtonList.selection
 
 class LossBackground(Widget):
     pass
@@ -196,7 +212,26 @@ class EfficiencyInterface(Widget):
         self.ids.experienceButton1.background_color = (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1)
 
     def confirmAnswers(self):
-        pass
+        global sitePriorities
+
+        sitePriorities.oneVueDepartments = int(self.ids.oneVueDepartmentsInput.text)
+
+        if self.ids.teamButtons.selected == 1:
+            sitePriorities.oneVueTeamSize = int(self.ids.teamSizeInput.text)
+        else:
+            sitePriorities.oneVueTeamSize = 1
+
+        sitePriorities.oneVueTime = self.ids.frequencyButtons.selected
+        sitePriorities.experiencedTeam = not self.ids.experienceButtons.selected
+        sitePriorities.alertsPerWeek = int(self.ids.alertsPerWeekInput.text)
+
+        if self.ids.laborRateInput.text != "":
+            sitePriorities.laborRate = int(self.ids.laborRateInput.text)
+
+        sitePriorities.reportsPerWeek = int(self.ids.reportsPerWeekInput.text)
+
+        if self.ids.managementRateInput.text != "":
+            sitePriorities.managementRate = int(self.ids.managementRateInput.text)
 
 class EfficiencyBackground(Widget):
     pass
@@ -207,7 +242,11 @@ class EfficiencyScreen(Screen):
 
 
 class OtherInterface(Widget):
-    pass
+
+    def confirmAnswers(self):
+        global sitePriorities
+
+        sitePriorities.otherPriorities = self.ids.criteriaInput.text
 
 class OtherBackground(Widget):
     pass

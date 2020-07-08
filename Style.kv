@@ -1804,6 +1804,7 @@ WindowManager:
                     orientation: "horizontal"
 
                     TextInput:
+                        id: averageLossInput
                         size_hint: .15, 1
                         multiline: False
                         background_normal: "White.png"
@@ -1894,6 +1895,7 @@ WindowManager:
                         background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
                         text: "Confirm"
                         on_release:
+                            root.confirmAnswers()
                             app.root.current = "SitePrioritiesScreen"
 
                     Widget:
@@ -1976,6 +1978,7 @@ WindowManager:
                         text: "How many departments will be using OneVue? "
 
                     TextInput:
+                        id: oneVueDepartmentsInput
                         size_hint: .1, 1
                         multiline: False
                         background_normal: "White.png"
@@ -2201,6 +2204,7 @@ WindowManager:
                         text: "About how many alerts does your system generate per week?"
 
                     TextInput:
+                        id: alertsPerWeekInput
                         size_hint: .2, .25
                         multiline: False
                         background_normal: "White.png"
@@ -2216,6 +2220,7 @@ WindowManager:
                         text: "We estimate labor rates at $15/hour for our calculation. Want to adjust?"
 
                     TextInput:
+                        id: laborRateInput
                         size_hint: .2, .25
                         multiline: False
                         background_normal: "White.png"
@@ -2231,6 +2236,7 @@ WindowManager:
                         text: "How many reports are generated per week?"
 
                     TextInput:
+                        id: reportsPerWeekInput
                         size_hint: .2, .25
                         multiline: False
                         background_normal: "White.png"
@@ -2246,6 +2252,7 @@ WindowManager:
                         text: "We estimate management rates at $50/hour for our calculation. Want to adjust?"
 
                     TextInput:
+                        id: managementRateInput
                         size_hint: .2, .25
                         multiline: False
                         background_normal: "White.png"
@@ -2282,6 +2289,7 @@ WindowManager:
                         background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
                         text: "Confirm"
                         on_release:
+                            root.confirmAnswers()
                             app.root.current = "SitePrioritiesScreen"
 
                     Widget:
@@ -2366,6 +2374,7 @@ WindowManager:
                     size_hint: 1, .02
 
                 TextInput:
+                    id: criteriaInput
                     size_hint: 1, .7
                     cursor_color: 0,0,0,1
 
@@ -2398,6 +2407,7 @@ WindowManager:
                         background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
                         text: "Confirm"
                         on_release:
+                            root.confirmAnswers()
                             app.root.current = "SitePrioritiesScreen"
 
                     Widget:
