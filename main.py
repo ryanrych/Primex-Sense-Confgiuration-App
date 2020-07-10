@@ -13,6 +13,7 @@ class WindowManager(ScreenManager):
 
 
 sitePriorities = SitePriorities()
+package = ""
 
 
 
@@ -88,7 +89,67 @@ class PackageSelectionScreen(Screen):
 
 
 class SitePrioritiesInterface(Widget):
-    pass
+
+    def selectPackage(self):
+        global sitePriorities
+        global package
+
+        basicPoints = 0
+        preferredPoints = 0
+
+        if sitePriorities.auditAgencies != [] and sitePriorities.auditPrepTime != -1:
+
+            if sitePriorities.lossFrequency == -1 and sitePriorities.averageLoss == -1 and not sitePriorities.primexValue and sitePriorities.oneVueDepartments == -1 and sitePriorities.oneVueTeamSize == -1 and sitePriorities.oneVueTime == -1 and not sitePriorities.experiencedTeam and sitePriorities.alertsPerWeek == -1 and sitePriorities.laborRate == 15 and sitePriorities.reportsPerWeek == -1 and sitePriorities.managementRate == 50 and sitePriorities.otherPriorities == "":
+                basicPoints += 1
+
+        if sitePriorities.lossFrequency != -1 and sitePriorities.averageLoss != -1:
+
+            if sitePriorities.lossFrequency in range(0,3):
+                basicPoints +=1
+            else:
+                preferredPoints += 1
+
+        if sitePriorities.primexValue:
+            preferredPoints += 1
+        else:
+            basicPoints += 1
+
+        if sitePriorities.oneVueTeamSize == 1:
+
+            if sitePriorities.oneVueTime in range(0,4):
+                preferredPoints += 1
+            else:
+                basicPoints += 1
+        elif sitePriorities.oneVueTeamSize > 1:
+
+            if sitePriorities.oneVueTime == 0:
+                oneVueTimeExact = .01
+            elif sitePriorities.oneVueTime == 1:
+                oneVueTimeExact = .11
+            elif sitePriorities.oneVueTime == 1:
+                oneVueTimeExact = .26
+            else:
+                oneVueTimeExact = .5
+
+            katiesNumber = sitePriorities.oneVueTeamSize / oneVueTimeExact
+
+            if katiesNumber > .5:
+                preferredPoints += 1
+            else:
+                basicPoints += 1
+
+        if sitePriorities.experiencedTeam:
+            basicPoints += 1
+        else:
+            preferredPoints += 1
+
+        #What is manage staff compliance?
+
+        if basicPoints > preferredPoints:
+            package = "Basic"
+        else:
+            package = "Preferred"
+
 
 class SitePrioritiesBackground(Widget):
     pass
