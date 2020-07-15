@@ -150,6 +150,16 @@ class SitePrioritiesInterface(Widget):
         else:
             package = "Preferred"
 
+    def goToPackageScreen(self):
+        global package
+
+        sm = App.get_running_app().root
+
+        if package == "Basic":
+            sm.current = "Package1Screen"
+
+        elif package == "Preferred":
+            sm.current = "Package3Screen"
 
 class SitePrioritiesBackground(Widget):
     pass
