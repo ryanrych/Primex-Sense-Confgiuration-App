@@ -374,52 +374,11 @@ WindowManager:
                     color: 0,0,0,1
 
                 Widget:
-                    size_hint: 1, .1
-
-                BoxLayout:
-                    size_hint: 1, .06
-                    orientation: "horizontal"
-
-                    Button:
-                        size_hint: .54, 1
-                        font_size: self.height * .47
-                        text: "I'd like to answer some questions to select a plan"
-                        background_normal: ""
-                        background_down: ""
-                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
-                        on_release:
-                            app.root.current = "PackageQuizScreen"
-
-                    Widget:
-                        size_hint: .48, 1
-
-                Widget:
-                    size_hint: 1, .02
-
-                BoxLayout:
-                    size_hint: 1, .06
-                    orientation: "horizontal"
-
-                    Button:
-                        size_hint: .4, 1
-                        font_size: self.height * .47
-                        text: "I know what plan to propose already"
-                        background_normal: ""
-                        background_down: ""
-                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
-                        on_release:
-                            root.showOptions()
-
-                    Widget:
-                        size_hint: .6, 1
-
-                Widget:
-                    size_hint: 1, .21
+                    size_hint: 1, .15
 
                 BoxLayout:
                     id: options
-                    size_hint: 1, None
-                    height: 0
+                    size_hint: 1, .27
                     orientation: "horizontal"
                     spacing: 5
 
@@ -479,7 +438,7 @@ WindowManager:
 
                 Widget:
                     id: spacer
-                    size_hint: 1, .45
+                    size_hint: 1, .47
 
 
             Widget:
