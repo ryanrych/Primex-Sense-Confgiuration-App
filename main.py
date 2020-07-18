@@ -226,7 +226,7 @@ class AuditsInterface(Widget):
             for agency in self.ids.buttonList.children[0].children[1].text.split(","):
                 sitePriorities.auditAgencies.append(agency)
 
-        sitePriorities.auditPrepTime = int(self.ids.auditPrepTimeInput.text)
+            sitePriorities.auditPrepTime = int(self.ids.auditPrepTimeInput.text)
 
 class AuditsBackground(Widget):
     pass
@@ -330,7 +330,7 @@ class OtherScreen(Screen):
 class SenseConfiguration(App):
     def build(self):
         Window.size=(850,650)
-        self.icon = "primex logo.png"
+        self.icon = "favicon.png"
         self.title = "Sense Configuration"
         return Builder.load_file("Style.kv")
 
