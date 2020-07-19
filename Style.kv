@@ -1506,7 +1506,7 @@ WindowManager:
                     text_size: self.size
                     halign: "left"
                     color: 0,0,0,1
-                    text: "How much time do you typically spend preparing for audits?"
+                    text: "How much time do you typically spend preparing for audits? (in hours)"
 
                 BoxLayout:
                     size_hint: 1, .05
@@ -1524,8 +1524,14 @@ WindowManager:
                     Widget:
                         size_hint: .8, 1
 
+                Label:
+                    id: errorMessage
+                    size_hint: 1, .05
+                    color: 1, 0, 0, 1
+                    text: ""
+
                 Widget:
-                    size_hint: 1, .14
+                    size_hint: 1, .09
 
                 BoxLayout:
                     size_hint: 1, .05
@@ -1554,7 +1560,6 @@ WindowManager:
                         text: "Confirm"
                         on_release:
                             root.confirmAnswers()
-                            app.root.current = "SitePrioritiesScreen"
 
                     Widget:
                         size_hint: .38, 1

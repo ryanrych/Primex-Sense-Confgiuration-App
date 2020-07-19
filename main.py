@@ -4,6 +4,7 @@ from kivy.lang import Builder
 from kivy.core.window import Window
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.uix.widget import Widget
+from kivy.clock import Clock
 
 from SitePriorities import SitePriorities
 
@@ -226,7 +227,23 @@ class AuditsInterface(Widget):
             for agency in self.ids.buttonList.children[0].children[1].text.split(","):
                 sitePriorities.auditAgencies.append(agency)
 
-            sitePriorities.auditPrepTime = int(self.ids.auditPrepTimeInput.text)
+            if self.ids.auditPrepTimeInput.text == "":
+                self.errorMessage()
+                Clock.schedule_once(self.errorMessageEnd, 3)
+
+        try:
+            sitePriorities.auditPrepTime = float(self.ids.auditPrepTimeInput.text)
+            App.get_running_app().root.current = "SitePrioritiesScreen"
+        except:
+            print(3)
+            self.errorMessageStart()
+            Clock.schedule_once(self.errorMessageEnd, 3)
+
+    def errorMessageStart(self):
+        self.ids.errorMessage.text = "Please enter a number for your audit preparation time"
+
+    def errorMessageEnd(self, dt):
+        self.ids.errorMessage.text = ""
 
 class AuditsBackground(Widget):
     pass
