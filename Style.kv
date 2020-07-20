@@ -29,6 +29,7 @@ WindowManager:
     LossScreen:
     EfficiencyScreen:
     OtherScreen:
+    FeaturesScreen:
 
 
 
@@ -564,7 +565,7 @@ WindowManager:
                         background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
                         on_release:
                             app.root.transition = NoTransition()
-                            app.root.current = "PackageSelectionScreen"
+                            app.root.current = "FeaturesScreen"
 
                     Widget:
                         size_hint: .06, 1
@@ -2403,5 +2404,262 @@ WindowManager:
     name: "OtherScreen"
     FloatLayout:
         OtherBackground:
+            id: background
+            center: 0.5, 0.5
+
+
+
+<FeaturesInterface>:
+    size_hint: None, None
+
+    RelativeLayout:
+        pos: self.parent.pos
+        size: self.parent.size
+
+        BoxLayout:
+            canvas.before:
+                Color:
+                    rgba: 1,1,1,1
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+            size: self.parent.size
+            orientation: "horizontal"
+
+            spacing: 5
+
+            Widget:
+                size_hint: .05, 1
+
+            BoxLayout:
+                size_hint: .9, 1
+                orientation: "vertical"
+
+                Label:
+                    size_hint: 1, .1
+                    text_size: self.size
+                    markup: True
+                    halign: "left"
+                    color: 0,0,0,1
+                    text: "[b]Feature Needs[/b]"
+
+                Label:
+                    size_hint: 1, .05
+                    text_size: self.size
+                    halign: "left"
+                    color: 0,0,0,1
+                    text: "Does the site need more than email alerts? (i.e. phone or text message) Note that phone and text have fewer details and still require logging into OneVue."
+
+                BoxLayout:
+                    size_hint: 1, .1
+
+                    orientation: "horizontal"
+
+                    RoundedButton:
+                        size_hint: .25, 1
+                        background_normal: ""
+                        background_down: ""
+                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                        text: "Email is Fine"
+
+                    RoundedButton:
+                        size_hint: .25, 1
+                        background_normal: ""
+                        background_down: ""
+                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                        text: "Needs Phone"
+
+                    RoundedButton:
+                        size_hint: .25, 1
+                        background_normal: ""
+                        background_down: ""
+                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                        text: "Needs text/SMS"
+
+                    Widget:
+                        size_hint: .25, 1
+
+                Label:
+                    size_hint: 1, .06
+                    text_size: self.size
+                    halign: "left"
+                    color: 0,0,0,1
+                    text: "Feature Needs"
+
+                GridLayout:
+                    size_hint: 1, .24
+
+                    cols: 2
+                    selected: -1
+
+                    Button:
+                        size_hint: .25, .33
+                        background_normal: ""
+                        background_down: ""
+                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                        text: "Limited Access to Email"
+
+                    Widget:
+                        size_hint: .75, .33
+
+                    Button:
+                        size_hint: .25, .33
+                        background_normal: ""
+                        background_down: ""
+                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                        text: "Get Faster Attention via Phone or Text"
+
+                    Widget:
+                        size_hint: .75, .33
+
+                    BoxLayout:
+                        size_hint: .25, .34
+
+                        orientation: "horizontal"
+
+                        Label:
+                            size_hint: .3, 1
+                            text_size: self.size
+                            halign: "left"
+                            color: 0,0,0,1
+                            text: "Other:"
+
+                        TextInput:
+                            size_hint: .7, 1
+                            multiline: False
+                            background_normal: "White.png"
+                            background_active: "White.png"
+                            cursor_color: 0,0,0,1
+                            foreground_color: 0,0,0,1
+
+                    Widget:
+                        size_hint: .75, .34
+
+                Label:
+                    size_hint: 1, .05
+                    text_size: self.size
+                    halign: "left"
+                    color: 0,0,0,1
+                    text: "Does the site need more reports than asset summary and probe replacement?"
+
+                BoxLayout:
+                    size_hint: 1, .1
+
+                    orientation: "horizontal"
+
+                    RoundedButton:
+                        size_hint: .25, 1
+                        background_normal: ""
+                        background_down: ""
+                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                        text: "No"
+
+                    RoundedButton:
+                        size_hint: .25, 1
+                        background_normal: ""
+                        background_down: ""
+                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                        text: "Yes - Audit Report"
+
+                    RoundedButton:
+                        size_hint: .25, 1
+                        background_normal: ""
+                        background_down: ""
+                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                        text: "Yes - Alert Evaluation Report"
+
+                    RoundedButton:
+                        size_hint: .25, 1
+                        background_normal: ""
+                        background_down: ""
+                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                        text: "Yes - Other Reports"
+
+                Label:
+                    size_hint: 1, .05
+                    text_size: self.size
+                    halign: "left"
+                    color: 0,0,0,1
+                    text: "Does the site need access to custom settings?"
+
+                BoxLayout:
+                    size_hint: 1, .1
+
+                    orientation: "horizontal"
+
+                    RoundedButton:
+                        size_hint: .25, 1
+                        background_normal: ""
+                        background_down: ""
+                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                        text: "No"
+
+                    RoundedButton:
+                        size_hint: .25, 1
+                        background_normal: ""
+                        background_down: ""
+                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                        text: "Yes - Teams"
+
+                    RoundedButton:
+                        size_hint: .25, 1
+                        background_normal: ""
+                        background_down: ""
+                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                        text: "Yes - Alarm Delay, Check In and Logging Times"
+
+                    RoundedButton:
+                        size_hint: .25, 1
+                        background_normal: ""
+                        background_down: ""
+                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                        text: "Yes - Other Settings"
+
+                Widget:
+                    size_hint: 1, .05
+
+                BoxLayout:
+                    size_hint: 1, .05
+
+                    orientation: "horizontal"
+
+                    Widget:
+                        size_hint: .45, 1
+
+                    Button:
+                        size_hint: .1, 1
+                        background_normal: ""
+                        background_down: ""
+                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                        text: "Next"
+
+                    Widget:
+                        size_hint: .45, 1
+
+                Widget:
+                    size_hint: 1, .05
+
+            Widget:
+                size_hint: .05, 1
+
+<FeaturesBackground>:
+    AnchorLayout:
+        canvas.before:
+            Color:
+                rgba: 0.23921568627450981, 0.5137254901960784, 0.7254901960784313, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        size: self.parent.size
+        anchor_x: 'center'
+        anchor_y: 'center'
+        FeaturesInterface:
+            id: interface
+            size_hint: .9,.9
+
+<FeaturesScreen>:
+    name: "FeaturesScreen"
+    FloatLayout:
+        FeaturesBackground:
             id: background
             center: 0.5, 0.5

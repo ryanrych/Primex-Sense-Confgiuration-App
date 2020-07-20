@@ -407,6 +407,17 @@ class OtherScreen(Screen):
 
 
 
+class FeaturesInterface(Widget):
+    pass
+
+class FeaturesBackground(Widget):
+    pass
+
+class FeaturesScreen(Screen):
+    pass
+
+
+
 class SenseConfiguration(App):
     def build(self):
         Window.size=(850,650)
