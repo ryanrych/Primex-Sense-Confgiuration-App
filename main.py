@@ -235,7 +235,6 @@ class AuditsInterface(Widget):
             sitePriorities.auditPrepTime = float(self.ids.auditPrepTimeInput.text)
             App.get_running_app().root.current = "SitePrioritiesScreen"
         except:
-            print(3)
             self.errorMessageStart()
             Clock.schedule_once(self.errorMessageEnd, 3)
 
@@ -271,9 +270,32 @@ class LossInterface(Widget):
     def confirmAnswers(self):
         global sitePriorities
 
-        sitePriorities.lossFrequency = self.ids.lossButtonList.selected
-        sitePriorities.averageLoss = int(self.ids.averageLossInput.text)
-        sitePriorities.primexValue = not self.ids.valueButtonList.selection
+        if self.ids.lossButtonList.selected != -1:
+            sitePriorities.lossFrequency = self.ids.lossButtonList.selected
+
+            if self.ids.valueButtonList.selection != -1:
+                sitePriorities.primexValue = not self.ids.valueButtonList.selection
+
+                try:
+                    sitePriorities.averageLoss = float(self.ids.averageLossInput.text)
+                    App.get_running_app().root.current = "SitePrioritiesScreen"
+                except:
+                    self.errorMessageStart()
+                    Clock.schedule_once(self.errorMessageEnd, 3)
+
+            else:
+                self.errorMessageStart()
+                Clock.schedule_once(self.errorMessageEnd, 3)
+
+        else:
+            self.errorMessageStart()
+            Clock.schedule_once(self.errorMessageEnd, 3)
+
+    def errorMessageStart(self):
+        self.ids.errorMessage.text = "Please Answer All Sections"
+
+    def errorMessageEnd(self, dt):
+        self.ids.errorMessage.text = ""
 
 class LossBackground(Widget):
     pass
