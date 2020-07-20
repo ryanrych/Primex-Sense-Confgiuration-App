@@ -227,16 +227,16 @@ class AuditsInterface(Widget):
             for agency in self.ids.buttonList.children[0].children[1].text.split(","):
                 sitePriorities.auditAgencies.append(agency)
 
-            if self.ids.auditPrepTimeInput.text == "":
-                self.errorMessage()
-                Clock.schedule_once(self.errorMessageEnd, 3)
-
-        try:
-            sitePriorities.auditPrepTime = float(self.ids.auditPrepTimeInput.text)
-            App.get_running_app().root.current = "SitePrioritiesScreen"
-        except:
-            self.errorMessageStart()
+        if self.ids.auditPrepTimeInput.text == "":
+            self.errorMessage()
             Clock.schedule_once(self.errorMessageEnd, 3)
+        else:
+            try:
+                sitePriorities.auditPrepTime = float(self.ids.auditPrepTimeInput.text)
+                App.get_running_app().root.current = "SitePrioritiesScreen"
+            except:
+                self.errorMessageStart()
+                Clock.schedule_once(self.errorMessageEnd, 3)
 
     def errorMessageStart(self):
         self.ids.errorMessage.text = "Please enter a number for your audit preparation time"
@@ -324,24 +324,65 @@ class EfficiencyInterface(Widget):
     def confirmAnswers(self):
         global sitePriorities
 
-        sitePriorities.oneVueDepartments = int(self.ids.oneVueDepartmentsInput.text)
+        try:
+            sitePriorities.oneVueDepartments = int(self.ids.oneVueDepartmentsInput.text)
+        except:
+            self.errorMessageStart()
+            Clock.schedule_once(self.errorMessageEnd, 3)
+            return
 
         if self.ids.teamButtons.selected == 1:
             sitePriorities.oneVueTeamSize = int(self.ids.teamSizeInput.text)
         else:
             sitePriorities.oneVueTeamSize = 1
 
-        sitePriorities.oneVueTime = self.ids.frequencyButtons.selected
-        sitePriorities.experiencedTeam = not self.ids.experienceButtons.selected
-        sitePriorities.alertsPerWeek = int(self.ids.alertsPerWeekInput.text)
+        if self.ids.frequencyButtons.selected != -1:
+            sitePriorities.oneVueTime = self.ids.frequencyButtons.selected
+
+            if self.ids.experienceButtons.selected != -1:
+                sitePriorities.experiencedTeam = not self.ids.experienceButtons.selected
+                try:
+                    sitePriorities.alertsPerWeek = int(self.ids.alertsPerWeekInput.text)
+                except:
+                    self.errorMessageStart()
+                    Clock.schedule_once(self.errorMessageEnd, 3)
+                    return
+
+            else:
+                self.errorMessageStart()
+                Clock.schedule_once(self.errorMessageEnd, 3)
+                return
+
+        else:
+            self.errorMessageStart()
+            Clock.schedule_once(self.errorMessageEnd, 3)
+            return
 
         if self.ids.laborRateInput.text != "":
             sitePriorities.laborRate = int(self.ids.laborRateInput.text)
 
-        sitePriorities.reportsPerWeek = int(self.ids.reportsPerWeekInput.text)
+        try:
+            sitePriorities.reportsPerWeek = int(self.ids.reportsPerWeekInput.text)
+        except:
+            self.errorMessageStart()
+            Clock.schedule_once(self.errorMessageEnd, 3)
+            return
 
         if self.ids.managementRateInput.text != "":
-            sitePriorities.managementRate = int(self.ids.managementRateInput.text)
+            try:
+                sitePriorities.managementRate = int(self.ids.managementRateInput.text)
+            except:
+                self.errorMessageStart()
+                Clock.schedule_once(self.errorMessageEnd, 3)
+                return
+
+        App.get_running_app().root.current = "SitePrioritiesScreen"
+
+    def errorMessageStart(self):
+        self.ids.errorMessage.text = "Please Answer All Sections"
+
+    def errorMessageEnd(self, dt):
+        self.ids.errorMessage.text = ""
 
 class EfficiencyBackground(Widget):
     pass

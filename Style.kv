@@ -2120,9 +2120,6 @@ WindowManager:
                     color: 0,0,0,1
                     text: "Have the staff managed a system like OneVue before?"
 
-                Widget:
-                    size_hint: 1, .01
-
                 BoxLayout:
                     id: experienceButtons
                     size_hint: 1, .04
@@ -2157,9 +2154,6 @@ WindowManager:
 
                     Widget:
                         size_hint: .8, 1
-
-                Widget:
-                    size_hint: 1, .01
 
                 GridLayout:
                     size_hint: 1, .2
@@ -2229,8 +2223,11 @@ WindowManager:
                         cursor_color: 0,0,0,1
                         foreground_color: 0,0,0,1
 
-                Widget:
-                    size_hint: 1, .03
+                Label:
+                    id: errorMessage
+                    size_hint: 1, .05
+                    color: 1, 0, 0, 1
+                    text: ""
 
                 BoxLayout:
                     size_hint: 1, .05
@@ -2259,7 +2256,6 @@ WindowManager:
                         text: "Confirm"
                         on_release:
                             root.confirmAnswers()
-                            app.root.current = "SitePrioritiesScreen"
 
                     Widget:
                         size_hint: .38, 1
