@@ -2555,6 +2555,7 @@ WindowManager:
                             text: "Other:"
 
                         TextInput:
+                            id: otherReasonInput
                             size_hint: .7, 1
                             multiline: False
                             background_normal: "White.png"
@@ -2576,6 +2577,7 @@ WindowManager:
                     text: "Does the site need more reports than asset summary and probe replacement?"
 
                 BoxLayout:
+                    id: assetButtons
                     size_hint: 1, .06
 
                     orientation: "horizontal"
@@ -2644,7 +2646,7 @@ WindowManager:
                     text: "Does the site need access to custom settings?"
 
                 BoxLayout:
-                    id: settingsList
+                    id: settingsButtons
                     size_hint: 1, .06
 
                     orientation: "horizontal"
@@ -2702,8 +2704,14 @@ WindowManager:
                     Widget:
                         size_hint: .15, 1
 
+                Label:
+                    id: errorMessage
+                    size_hint: 1, .05
+                    color: 1, 0, 0, 1
+                    text: ""
+
                 Widget:
-                    size_hint: 1, .11
+                    size_hint: 1, .06
 
                 BoxLayout:
                     size_hint: 1, .05
@@ -2719,6 +2727,8 @@ WindowManager:
                         background_down: ""
                         background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
                         text: "Next"
+                        on_release:
+                            root.confirmAnswers()
 
                     Widget:
                         size_hint: .45, 1

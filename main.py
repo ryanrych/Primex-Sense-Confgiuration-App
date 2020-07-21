@@ -424,6 +424,21 @@ class FeaturesInterface(Widget):
         self.ids.settingsButton2.background_color = (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1)
         self.ids.settingsButton3.background_color = (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1)
 
+    def confirmAnswers(self):
+
+        if self.ids.assetButtons.selected == -1 or self.ids.settingsButtons.selected == -1:
+            self.errorMessageStart()
+            Clock.schedule_once(self.errorMessageEnd, 3)
+        else:
+            pass
+            #go to next screen
+
+    def errorMessageStart(self):
+        self.ids.errorMessage.text = "Please Answer All Sections"
+
+    def errorMessageEnd(self, dt):
+        self.ids.errorMessage.text = ""
+
 class FeaturesBackground(Widget):
     pass
 
