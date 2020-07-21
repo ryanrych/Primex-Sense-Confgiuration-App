@@ -228,7 +228,7 @@ class AuditsInterface(Widget):
                 sitePriorities.auditAgencies.append(agency)
 
         if self.ids.auditPrepTimeInput.text == "":
-            self.errorMessage()
+            self.errorMessageStart()
             Clock.schedule_once(self.errorMessageEnd, 3)
         else:
             try:
