@@ -2461,32 +2461,35 @@ WindowManager:
                     size_hint: 1, .06
 
                     orientation: "horizontal"
-
+                    selected: -1
                     spacing: 5
 
-                    RoundedButton:
-                        size_hint: .25, 1
-                        background_normal: ""
-                        background_down: ""
-                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
-                        text: "Email is Fine"
-
-                    RoundedButton:
+                    Button:
+                        id: alertsButton0
                         size_hint: .25, 1
                         background_normal: ""
                         background_down: ""
                         background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
                         text: "Needs Phone"
+                        on_release:
+                            root.clearAlertsList()
+                            self.background_color = (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                            self.parent.selected = 0
 
-                    RoundedButton:
+                    Button:
+                        id: alertsButton1
                         size_hint: .25, 1
                         background_normal: ""
                         background_down: ""
                         background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
                         text: "Needs text/SMS"
+                        on_release:
+                            root.clearAlertsList()
+                            self.background_color = (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                            self.parent.selected = 1
 
                     Widget:
-                        size_hint: .25, 1
+                        size_hint: .5, 1
 
                 Label:
                     size_hint: 1, .06
@@ -2506,21 +2509,35 @@ WindowManager:
                     selected: -1
 
                     Button:
+                        id: reasonButton0
                         size_hint: .3, .33
                         background_normal: ""
                         background_down: ""
                         background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
                         text: "Limited Access to Email"
 
+                        selected: False
+
+                        on_release:
+                            self.selected = not self.selected
+                            self.background_color = (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1) if self.selected else (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1)
+
                     Widget:
                         size_hint: .7, .33
 
                     Button:
+                        id: reasonButton1
                         size_hint: .5, .33
                         background_normal: ""
                         background_down: ""
                         background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
                         text: "Get Faster Attention via Phone or Text"
+
+                        selected: False
+
+                        on_release:
+                            self.selected = not self.selected
+                            self.background_color = (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1) if self.selected else (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1)
 
                     Widget:
                         size_hint: .5, .33
@@ -2562,35 +2579,56 @@ WindowManager:
                     size_hint: 1, .06
 
                     orientation: "horizontal"
+                    selected: -1
                     spacing: 5
 
-                    RoundedButton:
+                    Button:
+                        id: assetButton0
                         size_hint: .1, 1
                         background_normal: ""
                         background_down: ""
                         background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
                         text: "No"
+                        on_release:
+                            root.clearAssetsList()
+                            self.background_color = (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                            self.parent.selected = 0
 
-                    RoundedButton:
+                    Button:
+                        id: assetButton1
                         size_hint: .2, 1
                         background_normal: ""
                         background_down: ""
                         background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
                         text: "Yes - Audit Report"
+                        on_release:
+                            root.clearAssetsList()
+                            self.background_color = (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                            self.parent.selected = 1
 
-                    RoundedButton:
+                    Button:
+                        id: assetButton2
                         size_hint: .3, 1
                         background_normal: ""
                         background_down: ""
                         background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
                         text: "Yes - Alert Evaluation Report"
+                        on_release:
+                            root.clearAssetsList()
+                            self.background_color = (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                            self.parent.selected = 2
 
-                    RoundedButton:
+                    Button:
+                        id: assetButton3
                         size_hint: .21, 1
                         background_normal: ""
                         background_down: ""
                         background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
                         text: "Yes - Other Reports"
+                        on_release:
+                            root.clearAssetsList()
+                            self.background_color = (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                            self.parent.selected = 3
 
                     Widget:
                         size_hint: .19, 1
@@ -2606,38 +2644,60 @@ WindowManager:
                     text: "Does the site need access to custom settings?"
 
                 BoxLayout:
+                    id: settingsList
                     size_hint: 1, .06
 
                     orientation: "horizontal"
+                    selected: -1
                     spacing: 5
 
-                    RoundedButton:
+                    Button:
+                        id: settingsButton0
                         size_hint: .1, 1
                         background_normal: ""
                         background_down: ""
                         background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
                         text: "No"
+                        on_release:
+                            root.clearSettingsList()
+                            self.background_color = (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                            self.parent.selected = 0
 
-                    RoundedButton:
+                    Button:
+                        id: settingsButton1
                         size_hint: .25, 1
                         background_normal: ""
                         background_down: ""
                         background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
                         text: "Yes - Teams"
+                        on_release:
+                            root.clearSettingsList()
+                            self.background_color = (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                            self.parent.selected = 1
 
-                    RoundedButton:
+                    Button:
+                        id: settingsButton2
                         size_hint: .25, 1
                         background_normal: ""
                         background_down: ""
                         background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
                         text: "Yes - Alarm Delay"
+                        on_release:
+                            root.clearSettingsList()
+                            self.background_color = (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                            self.parent.selected = 2
 
-                    RoundedButton:
+                    Button:
+                        id: settingsButton3
                         size_hint: .25, 1
                         background_normal: ""
                         background_down: ""
                         background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
                         text: "Yes - Other Settings"
+                        on_release:
+                            root.clearSettingsList()
+                            self.background_color = (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                            self.parent.selected = 3
 
                     Widget:
                         size_hint: .15, 1

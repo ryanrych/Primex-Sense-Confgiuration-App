@@ -408,7 +408,21 @@ class OtherScreen(Screen):
 
 
 class FeaturesInterface(Widget):
-    pass
+    def clearAlertsList(self):
+        self.ids.alertsButton0.background_color = (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1)
+        self.ids.alertsButton1.background_color = (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1)
+
+    def clearAssetsList(self):
+        self.ids.assetButton0.background_color = (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1)
+        self.ids.assetButton1.background_color = (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1)
+        self.ids.assetButton2.background_color = (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1)
+        self.ids.assetButton3.background_color = (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1)
+
+    def clearSettingsList(self):
+        self.ids.settingsButton0.background_color = (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1)
+        self.ids.settingsButton1.background_color = (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1)
+        self.ids.settingsButton2.background_color = (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1)
+        self.ids.settingsButton3.background_color = (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1)
 
 class FeaturesBackground(Widget):
     pass
