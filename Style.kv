@@ -18,7 +18,7 @@
 
 
 WindowManager:
-    WhiteGloveOnboardingScreen:
+    SensorSubscriptionScreen:
     WelcomeScreen:
     PackageSelectionScreen:
     Package1Screen:
@@ -32,6 +32,7 @@ WindowManager:
     OtherScreen:
     FeaturesScreen:
     SelfStartOnboardingScreen:
+    WhiteGloveOnboardingScreen:
 
 
 
@@ -2838,6 +2839,8 @@ WindowManager:
                         background_down: ""
                         background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
                         text: "Show me White Glove Onboarding"
+                        on_release:
+                            app.root.current = "WhiteGloveOnboardingScreen"
 
                     Widget:
                         size_hint: .1, 1
@@ -2915,7 +2918,7 @@ WindowManager:
                     text_size: self.size
                     halign: "left"
                     color: 0,0,0,1
-                    text: "Hooray! White Glove Onboarding enables Primex experts to own the account configuration to ensure everything is setup properly and meets the site's goals! We strongly recommend White Glove onboarding for sites who have the advanced or preferred packages to correctly use the flexibility offered.\n\nUsers on site will be asked to participate in 4-6 meetings with Primex in order to explain their goals and priorities. We'll need their help to collect information like asset names, organizational structure and user contact information. After that, Primex will handle the rest! Sites will have access to our onboarding portal with videos and articles to explain concepts, describe next steps, and show examples, but we'll also be right there with them to explain those elements live.\n\nTraining using the site's specific account will be offered for 2 hours with this package. We can hold separate sessions for admins and users and in addition to our extensive help files, sites will retain access to those customized training reocrdings."
+                    text: "Hooray! White Glove Onboarding enables Primex experts to own the account configuration to ensure everything is setup properly and meets the site's goals! We strongly recommend White Glove onboarding for sites who have the advanced or preferred packages to correctly use the flexibility offered.\n\nUsers on site will be asked to participate in 4-6 meetings with Primex in order to explain their goals and priorities. We'll need their help to collect information like asset names, organizational structure and user contact information. After that, Primex will handle the rest! Sites will have access to our onboarding portal with videos and articles to explain concepts, describe next steps, and show examples, but we'll also be right there with them to explain those elements live.\n\nTraining using the site's specific account will be offered for 2 hours with this package. We can hold separate sessions for admins and users and in addition to our extensive help files, sites will retain access to those customized training recordings."
 
                 Widget:
                     size_hint: 1, .36
@@ -2943,7 +2946,9 @@ WindowManager:
                         background_normal: ""
                         background_down: ""
                         background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
-                        text: "Show me White Glove Onboarding"
+                        text: "Show me Self-Start Onboarding"
+                        on_release:
+                            app.root.current = "SelfStartOnboardingScreen"
 
                     Widget:
                         size_hint: .1, 1
@@ -2973,5 +2978,112 @@ WindowManager:
     name: "WhiteGloveOnboardingScreen"
     FloatLayout:
         WhiteGloveOnboardingBackground:
+            id: background
+            center: 0.5, 0.5
+
+
+
+<SensorSubscriptionInterface>:
+    size_hint: None, None
+
+    RelativeLayout:
+        pos: self.parent.pos
+        size: self.parent.size
+
+        BoxLayout:
+            canvas.before:
+                Color:
+                    rgba: 1,1,1,1
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+            size: self.parent.size
+            orientation: "horizontal"
+
+            spacing: 5
+
+            Widget:
+                size_hint: .05, 1
+
+            BoxLayout:
+                size_hint: .9, 1
+                orientation: "vertical"
+
+                Label:
+                    size_hint: 1, .1
+                    text_size: self.size
+                    markup: True
+                    halign: "left"
+                    font_size: self.height * .55
+                    color: 0,0,0,1
+                    text: "[b]Sensor Subscription[/b]"
+
+                Widget:
+                    size_hint: 1, .02
+
+                Label:
+                    size_hint: 1, .6
+                    text_size: self.size
+                    halign: "left"
+                    markup: True
+                    color: 0,0,0,1
+                    text: "We always recommend sites subscribe to the sensor hardware in addition to the software and services. This enables Primex to optimize the entire solution and to leave the site with minimal risk of getting out of date or having to deal with a hardware refresh.\n\nOur sensors are remarkably durable and long-lasting but, unfortunatley, [color=#0000AA]Wifi technology continues to change rapidly and upgrades - whether for security or compliance or other functionality - are not always possible. That can put sites in the difficult position of having to make a large capital expenditure to replace their sensors.[/color]\n\nFor our full subscriptions, Primex handles replacement of sensors for any reason, [color=#0000AA]including accidental damage[/color] so that the monitoring of the refrigerator or space is always functioning properly.\n\nNote that probe replacements are also covered under the full subscription model."
+
+                Widget:
+                    size_hint: 1, .39
+
+                BoxLayout:
+                    size_hint: 1, .07
+
+                    orientation: "horizontal"
+
+                    Widget:
+                        size_hint: .1, 1
+
+                    Button:
+                        size_hint: .45, 1
+                        background_normal: ""
+                        background_down: ""
+                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                        text: "Confirm - We'll Subscribe to the Hardware!"
+
+                    Widget:
+                        size_hint: .05, 1
+
+                    Button:
+                        size_hint: .29, 1
+                        background_normal: ""
+                        background_down: ""
+                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                        text: "Show me Sensor Purchase"
+
+                    Widget:
+                        size_hint: .1, 1
+
+                Widget:
+                    size_hint: 1, .1
+
+            Widget:
+                size_hint: .05, 1
+
+<SensorSubscriptionBackground>:
+    AnchorLayout:
+        canvas.before:
+            Color:
+                rgba: 0.23921568627450981, 0.5137254901960784, 0.7254901960784313, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        size: self.parent.size
+        anchor_x: 'center'
+        anchor_y: 'center'
+        SensorSubscriptionInterface:
+            id: interface
+            size_hint: .9,.9
+
+<SensorSubscriptionScreen>:
+    name: "SensorSubscriptionScreen"
+    FloatLayout:
+        SensorSubscriptionBackground:
             id: background
             center: 0.5, 0.5

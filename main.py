@@ -467,6 +467,17 @@ class WhiteGloveOnboardingScreen(Screen):
 
 
 
+class SensorSubscriptionInterface(Widget):
+    pass
+
+class SensorSubscriptionBackground(Widget):
+    pass
+
+class SensorSubscriptionScreen(Screen):
+    pass
+
+
+
 class SenseConfiguration(App):
     def build(self):
         Window.size=(850,650)
