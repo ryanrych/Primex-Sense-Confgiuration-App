@@ -144,8 +144,6 @@ class SitePrioritiesInterface(Widget):
         else:
             preferredPoints += 1
 
-        #What is manage staff compliance?
-
         if basicPoints > preferredPoints:
             package = "Basic"
         else:
@@ -443,6 +441,17 @@ class FeaturesBackground(Widget):
     pass
 
 class FeaturesScreen(Screen):
+    pass
+
+
+
+class SelfStartOnboardingInterface(Widget):
+    pass
+
+class SelfStartOnboardingBackground(Widget):
+    pass
+
+class SelfStartOnboardingScreen(Screen):
     pass
 
 

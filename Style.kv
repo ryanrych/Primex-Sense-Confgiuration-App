@@ -18,6 +18,7 @@
 
 
 WindowManager:
+    SelfStartOnboardingScreen:
     WelcomeScreen:
     PackageSelectionScreen:
     Package1Screen:
@@ -30,6 +31,7 @@ WindowManager:
     EfficiencyScreen:
     OtherScreen:
     FeaturesScreen:
+
 
 
 
@@ -2758,5 +2760,111 @@ WindowManager:
     name: "FeaturesScreen"
     FloatLayout:
         FeaturesBackground:
+            id: background
+            center: 0.5, 0.5
+
+
+
+<SelfStartOnboardingInterface>:
+    size_hint: None, None
+
+    RelativeLayout:
+        pos: self.parent.pos
+        size: self.parent.size
+
+        BoxLayout:
+            canvas.before:
+                Color:
+                    rgba: 1,1,1,1
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+            size: self.parent.size
+            orientation: "horizontal"
+
+            spacing: 5
+
+            Widget:
+                size_hint: .05, 1
+
+            BoxLayout:
+                size_hint: .9, 1
+                orientation: "vertical"
+
+                Label:
+                    size_hint: 1, .1
+                    text_size: self.size
+                    markup: True
+                    halign: "left"
+                    font_size: self.height * .55
+                    color: 0,0,0,1
+                    text: "[b]Self-Start Onboarding[/b]"
+
+                Widget:
+                    size_hint: 1, .05
+
+                Label:
+                    size_hint: 1, .65
+                    text_size: self.size
+                    halign: "left"
+                    color: 0,0,0,1
+                    text: "We recommend Self-Start onboarding for sites who have our simplest package or who are price sensitive.\n\nUsers on site will handle most of the workload for self-start but will have accessto 3 meetings with Primex experts to answer questions and guide next steps. Sites will also have access to our onboarding portal with videos and articles to explain concepts, describe next steps, and show examples.\n\nPlease let sites know that - depending on the size of their account - this onboarding process could take up to 120-160 hours. It's not difficult work, but it is very detailed and mistakes can lead to loss (alerts not being sent properly, users not knowing how to respond).\n\nGeneral training will be offered for 1 hour with this package. This is sufficient for the basic package with limited features and flexibility but is going to be a significant challenge with the advanced and preferred packages. Please prep the site to do a lot of reading and watching videos on their own."
+
+                Widget:
+                    size_hint: 1, .31
+
+                BoxLayout:
+                    size_hint: 1, .07
+
+                    orientation: "horizontal"
+
+                    Widget:
+                        size_hint: .1, 1
+
+                    Button:
+                        size_hint: .37, 1
+                        background_normal: ""
+                        background_down: ""
+                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                        text: "Confirm - This is the Right Package!"
+
+                    Widget:
+                        size_hint: .05, 1
+
+                    Button:
+                        size_hint: .37, 1
+                        background_normal: ""
+                        background_down: ""
+                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                        text: "Show me White Glove Onboarding"
+
+                    Widget:
+                        size_hint: .1, 1
+
+                Widget:
+                    size_hint: 1, .1
+
+            Widget:
+                size_hint: .05, 1
+
+<SelfStartOnboardingBackground>:
+    AnchorLayout:
+        canvas.before:
+            Color:
+                rgba: 0.23921568627450981, 0.5137254901960784, 0.7254901960784313, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        size: self.parent.size
+        anchor_x: 'center'
+        anchor_y: 'center'
+        SelfStartOnboardingInterface:
+            id: interface
+            size_hint: .9,.9
+
+<SelfStartOnboardingScreen>:
+    name: "SelfStartOnboardingScreen"
+    FloatLayout:
+        SelfStartOnboardingBackground:
             id: background
             center: 0.5, 0.5
