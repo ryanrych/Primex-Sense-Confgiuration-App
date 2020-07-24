@@ -761,7 +761,7 @@ WindowManager:
                         background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
                         on_release:
                             app.root.transition = NoTransition()
-                            app.root.current = "PackageSelectionScreen"
+                            app.root.current = "FeaturesScreen"
 
                     Widget:
                         size_hint: .06, 1
@@ -985,7 +985,7 @@ WindowManager:
                         background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
                         on_release:
                             app.root.transition = NoTransition()
-                            app.root.current = "PackageSelectionScreen"
+                            app.root.current = "FeaturesScreen"
 
                     Widget:
                         size_hint: .06, 1
@@ -1098,7 +1098,7 @@ WindowManager:
 
                     Button:
                         size_hint: .47, 1
-                        text: "Confirm - TI won't use the app"
+                        text: "Confirm - I won't use the app"
                         font_size: self.height * .55
                         background_normal: ""
                         background_down: ""
