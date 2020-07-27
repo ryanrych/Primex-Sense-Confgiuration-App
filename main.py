@@ -428,8 +428,7 @@ class FeaturesInterface(Widget):
             self.errorMessageStart()
             Clock.schedule_once(self.errorMessageEnd, 3)
         else:
-            pass
-            #go to next screen
+            App.get_running_app().root.current = "SensorSubscriptionScreen"
 
     def errorMessageStart(self):
         self.ids.errorMessage.text = "Please Answer All Sections"
@@ -479,7 +478,13 @@ class SensorSubscriptionScreen(Screen):
 
 
 class SensorHardwareInterface(Widget):
-    pass
+
+    def setSiteInfo(self):
+        sm = App.get_running_app().root
+        screen = sm.get_screen("WelcomeScreen")
+
+        self.ids.siteName.text = screen.ids.background.ids.interface.ids.siteName.text
+        self.ids.bedSize.text = screen.ids.background.ids.interface.ids.bedSize.text
 
 class SensorHardwareBackground(Widget):
     pass

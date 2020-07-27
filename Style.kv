@@ -18,7 +18,6 @@
 
 
 WindowManager:
-    SensorHardwareScreen:
     WelcomeScreen:
     PackageSelectionScreen:
     Package1Screen:
@@ -34,6 +33,7 @@ WindowManager:
     SelfStartOnboardingScreen:
     WhiteGloveOnboardingScreen:
     SensorSubscriptionScreen:
+    SensorHardwareScreen:
 
 
 
@@ -3045,6 +3045,9 @@ WindowManager:
                         background_down: ""
                         background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
                         text: "Confirm - We'll Subscribe to the Hardware!"
+                        on_release:
+                            app.root.get_screen("SensorHardwareScreen").ids.background.ids.interface.setSiteInfo()
+                            app.root.current = "SensorHardwareScreen"
 
                     Widget:
                         size_hint: .05, 1
@@ -3144,7 +3147,7 @@ WindowManager:
 
                     TextInput:
                         id: siteName
-                        size_hint: .15, 1
+                        size_hint: .2, 1
                         multiline: False
                         background_normal: "White.png"
                         background_active: "White.png"
@@ -3152,7 +3155,7 @@ WindowManager:
                         foreground_color: 0,0,0,1
 
                     Widget:
-                        size_hint: .7, 1
+                        size_hint: .65, 1
 
                 BoxLayout:
                     size_hint: 1, .05
@@ -3171,7 +3174,7 @@ WindowManager:
 
                     TextInput:
                         id: bedSize
-                        size_hint: .15, 1
+                        size_hint: .2, 1
                         multiline: False
                         background_normal: "White.png"
                         background_active: "White.png"
@@ -3179,7 +3182,7 @@ WindowManager:
                         foreground_color: 0,0,0,1
 
                     Widget:
-                        size_hint: .7, 1
+                        size_hint: .65, 1
 
                 Widget:
                     size_hint: 1, .02
