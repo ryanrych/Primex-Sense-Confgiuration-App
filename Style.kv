@@ -18,6 +18,7 @@
 
 
 WindowManager:
+    SensorHardwareScreen:
     WelcomeScreen:
     PackageSelectionScreen:
     Package1Screen:
@@ -3083,5 +3084,291 @@ WindowManager:
     name: "SensorSubscriptionScreen"
     FloatLayout:
         SensorSubscriptionBackground:
+            id: background
+            center: 0.5, 0.5
+
+
+
+<SensorHardwareInterface>:
+    size_hint: None, None
+
+    RelativeLayout:
+        pos: self.parent.pos
+        size: self.parent.size
+
+        BoxLayout:
+            canvas.before:
+                Color:
+                    rgba: 1,1,1,1
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+            size: self.parent.size
+            orientation: "horizontal"
+
+            spacing: 5
+
+            Widget:
+                size_hint: .05, 1
+
+            BoxLayout:
+                size_hint: .9, 1
+                orientation: "vertical"
+
+                Label:
+                    size_hint: 1, .1
+                    text_size: self.size
+                    markup: True
+                    halign: "left"
+                    font_size: self.height * .47
+                    color: 0,0,0,1
+                    text: "[b]Sensor Hardware[/b]"
+
+                Widget:
+                    size_hint: 1, .04
+
+                BoxLayout:
+                    size_hint: 1, .05
+
+                    orientation: "horizontal"
+
+                    Label:
+                        size_hint: .1, 1
+                        text_size: self.size
+                        halign: "left"
+                        color: 0,0,0,1
+                        text: "Site Name"
+
+                    Widget:
+                        size_hint: .05, 1
+
+                    TextInput:
+                        id: siteName
+                        size_hint: .15, 1
+                        multiline: False
+                        background_normal: "White.png"
+                        background_active: "White.png"
+                        cursor_color: 0,0,0,1
+                        foreground_color: 0,0,0,1
+
+                    Widget:
+                        size_hint: .7, 1
+
+                BoxLayout:
+                    size_hint: 1, .05
+
+                    orientation: "horizontal"
+
+                    Label:
+                        size_hint: .1, 1
+                        text_size: self.size
+                        halign: "left"
+                        color: 0,0,0,1
+                        text: "Bed Size"
+
+                    Widget:
+                        size_hint: .05, 1
+
+                    TextInput:
+                        id: bedSize
+                        size_hint: .15, 1
+                        multiline: False
+                        background_normal: "White.png"
+                        background_active: "White.png"
+                        cursor_color: 0,0,0,1
+                        foreground_color: 0,0,0,1
+
+                    Widget:
+                        size_hint: .7, 1
+
+                Widget:
+                    size_hint: 1, .02
+
+                Label:
+                    size_hint: 1, .06
+                    text_size: self.size
+                    markup: True
+                    halign: "left"
+                    color: 0,0,0,1
+                    text: "[b]Number of Sensors[/b]"
+
+                GridLayout:
+                    size_hint: 1, .55
+
+                    cols: 2
+                    spacing: 5
+
+                    TextInput:
+                        id: t101Input
+                        size_hint: .1, .11
+                        multiline: False
+                        background_normal: "White.png"
+                        background_active: "White.png"
+                        cursor_color: 0,0,0,1
+                        foreground_color: 0,0,0,1
+
+                    Label:
+                        size_hint: .9, .11
+                        text_size: self.size
+                        markup: True
+                        halign: "left"
+                        color: 0,0,0,1
+                        text: "T101 - Temperature with single probe - [color=#0000AA]protects vaccines, tissue samples, blanket warmers[/color]"
+
+                    TextInput:
+                        id: t102Input
+                        size_hint: .1, .11
+                        multiline: False
+                        background_normal: "White.png"
+                        background_active: "White.png"
+                        cursor_color: 0,0,0,1
+                        foreground_color: 0,0,0,1
+
+                    Label:
+                        size_hint: .9, .11
+                        text_size: self.size
+                        markup: True
+                        halign: "left"
+                        color: 0,0,0,1
+                        text: "T102 - Temperature with two probes - [color=#0000AA]fridge/freezer combos or 2 refrigerators side by side[/color]"
+
+                    TextInput:
+                        id: a100Input
+                        size_hint: .1, .11
+                        multiline: False
+                        background_normal: "White.png"
+                        background_active: "White.png"
+                        cursor_color: 0,0,0,1
+                        foreground_color: 0,0,0,1
+
+                    Label:
+                        size_hint: .9, .11
+                        text_size: self.size
+                        markup: True
+                        halign: "left"
+                        color: 0,0,0,1
+                        text: "A100 - Air temperature and humidity - [color=#0000AA]OR, clean room, equipment room conditions[/color]"
+
+                    TextInput:
+                        id: a120Input
+                        size_hint: .1, .11
+                        multiline: False
+                        background_normal: "White.png"
+                        background_active: "White.png"
+                        cursor_color: 0,0,0,1
+                        foreground_color: 0,0,0,1
+
+                    Label:
+                        size_hint: .9, .11
+                        text_size: self.size
+                        markup: True
+                        halign: "left"
+                        color: 0,0,0,1
+                        text: "A120 - Differential pressure - [color=#0000AA]infection control, construction zone compliance[/color]"
+
+                    TextInput:
+                        id: e121Input
+                        size_hint: .1, .11
+                        multiline: False
+                        background_normal: "White.png"
+                        background_active: "White.png"
+                        cursor_color: 0,0,0,1
+                        foreground_color: 0,0,0,1
+
+                    Label:
+                        size_hint: .9, .11
+                        text_size: self.size
+                        markup: True
+                        halign: "left"
+                        color: 0,0,0,1
+                        text: "E121 - Water leak - [color=#0000AA]early warning in high risk or low traffic areas[/color]"
+
+                    TextInput:
+                        id: e122Input
+                        size_hint: .1, .11
+                        multiline: False
+                        background_normal: "White.png"
+                        background_active: "White.png"
+                        cursor_color: 0,0,0,1
+                        foreground_color: 0,0,0,1
+
+                    Label:
+                        size_hint: .9, .11
+                        text_size: self.size
+                        markup: True
+                        halign: "left"
+                        font_size: self.height * .47
+                        color: 0,0,0,1
+                        text: "E122 - Contact Closure - [color=#0000AA]monitor access to controlled spaces (hospital wings or med cabinets)[/color]"
+
+                    TextInput:
+                        id: e123Input
+                        size_hint: .1, .11
+                        multiline: False
+                        background_normal: "White.png"
+                        background_active: "White.png"
+                        cursor_color: 0,0,0,1
+                        foreground_color: 0,0,0,1
+
+                    Label:
+                        size_hint: .9, .11
+                        text_size: self.size
+                        markup: True
+                        halign: "left"
+                        color: 0,0,0,1
+                        text: "E123 - Water leak & contact closure - [color=#0000AA]2 use cases located close together[/color]"
+
+                    Widget:
+                        size_hint: .1, .23
+
+                    Widget:
+                        size_hint: .9, .23
+
+                Widget:
+                    size_hint: 1, .03
+
+                BoxLayout:
+                    size_hint: 1, .05
+
+                    orientation: "horizontal"
+
+                    Widget:
+                        size_hint: .45, 1
+
+                    Button:
+                        size_hint: .1, 1
+                        background_normal: ""
+                        background_down: ""
+                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                        text: "Next"
+
+                    Widget:
+                        size_hint: .45, 1
+
+                Widget:
+                    size_hint: 1, .05
+
+            Widget:
+                size_hint: .05, 1
+
+<SensorHardwareBackground>:
+    AnchorLayout:
+        canvas.before:
+            Color:
+                rgba: 0.23921568627450981, 0.5137254901960784, 0.7254901960784313, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        size: self.parent.size
+        anchor_x: 'center'
+        anchor_y: 'center'
+        SensorHardwareInterface:
+            id: interface
+            size_hint: .9,.9
+
+<SensorHardwareScreen>:
+    name: "SensorHardwareScreen"
+    FloatLayout:
+        SensorHardwareBackground:
             id: background
             center: 0.5, 0.5

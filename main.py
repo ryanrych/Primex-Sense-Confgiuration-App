@@ -478,6 +478,16 @@ class SensorSubscriptionScreen(Screen):
 
 
 
+class SensorHardwareInterface(Widget):
+    pass
+
+class SensorHardwareBackground(Widget):
+    pass
+
+class SensorHardwareScreen(Screen):
+    pass
+
+
 class SenseConfiguration(App):
     def build(self):
         Window.size=(850,650)
