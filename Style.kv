@@ -33,6 +33,7 @@ WindowManager:
     SelfStartOnboardingScreen:
     WhiteGloveOnboardingScreen:
     SensorSubscriptionScreen:
+    SensorPurchaseScreen:
     SensorHardwareScreen:
 
 
@@ -2828,6 +2829,8 @@ WindowManager:
                         background_down: ""
                         background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
                         text: "Confirm - This is the Right Package!"
+                        on_release:
+                            app.root.current = "SensorSubscriptionScreen"
 
                     Widget:
                         size_hint: .05, 1
@@ -2936,6 +2939,8 @@ WindowManager:
                         background_down: ""
                         background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
                         text: "Confirm - This is the Right Package!"
+                        on_release:
+                            app.root.current = "SensorSubscriptionScreen"
 
                     Widget:
                         size_hint: .05, 1
@@ -3058,6 +3063,8 @@ WindowManager:
                         background_down: ""
                         background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
                         text: "Show me Sensor Purchase"
+                        on_release:
+                            app.root.current = "SensorPurchaseScreen"
 
                     Widget:
                         size_hint: .1, 1
@@ -3087,6 +3094,118 @@ WindowManager:
     name: "SensorSubscriptionScreen"
     FloatLayout:
         SensorSubscriptionBackground:
+            id: background
+            center: 0.5, 0.5
+
+
+
+<SensorPurchaseInterface>:
+    size_hint: None, None
+
+    RelativeLayout:
+        pos: self.parent.pos
+        size: self.parent.size
+
+        BoxLayout:
+            canvas.before:
+                Color:
+                    rgba: 1,1,1,1
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+            size: self.parent.size
+            orientation: "horizontal"
+
+            spacing: 5
+
+            Widget:
+                size_hint: .05, 1
+
+            BoxLayout:
+                size_hint: .9, 1
+                orientation: "vertical"
+
+                Label:
+                    size_hint: 1, .1
+                    text_size: self.size
+                    markup: True
+                    halign: "left"
+                    font_size: self.height * .55
+                    color: 0,0,0,1
+                    text: "[b]Sensor Purchase[/b]"
+
+                Widget:
+                    size_hint: 1, .02
+
+                Label:
+                    size_hint: 1, .6
+                    text_size: self.size
+                    halign: "left"
+                    markup: True
+                    color: 0,0,0,1
+                    text: "We understand that it's more traditional to purchase the sensors outright and take on the risk of them breaking or becoming outdated. We do offer a 1 year warranty on all our hardware but need to let sites know that at the speed technology changes, they should expect to replace sensors every 5 years or so.\n\nIf they need replacement sensors and/or probes for compliance reasons, they will need to purchase that hardware again.\n\nWe also should let sites know that we're planning our next generation sensor with greater functionality and control from OneVue (getting an immediate reading rather than the scheduled ones, having a larger local display, having additional use cases) and to get access to those next generation sensors, they'd be looking at an additional purchase. (Note that hardware subscribers would be replaced as part of their package.)"
+
+                Widget:
+                    size_hint: 1, .39
+
+                BoxLayout:
+                    size_hint: 1, .07
+
+                    orientation: "horizontal"
+
+                    Widget:
+                        size_hint: .01, 1
+
+                    Button:
+                        size_hint: .64, 1
+                        background_normal: ""
+                        background_down: ""
+                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                        text: "Confirm - I understand the risks and want to purchase hardware"
+                        on_release:
+                            app.root.get_screen("SensorHardwareScreen").ids.background.ids.interface.setSiteInfo()
+                            app.root.current = "SensorHardwareScreen"
+
+                    Widget:
+                        size_hint: .01, 1
+
+                    Button:
+                        size_hint: .32, 1
+                        background_normal: ""
+                        background_down: ""
+                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                        text: "Show me Sensor Subscription"
+                        on_release:
+                            app.root.current = "SensorSubscriptionScreen"
+
+                    Widget:
+                        size_hint: .01, 1
+
+                Widget:
+                    size_hint: 1, .1
+
+            Widget:
+                size_hint: .05, 1
+
+<SensorPurchaseBackground>:
+    AnchorLayout:
+        canvas.before:
+            Color:
+                rgba: 0.23921568627450981, 0.5137254901960784, 0.7254901960784313, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        size: self.parent.size
+        anchor_x: 'center'
+        anchor_y: 'center'
+        SensorPurchaseInterface:
+            id: interface
+            size_hint: .9,.9
+
+<SensorPurchaseScreen>:
+    name: "SensorPurchaseScreen"
+    FloatLayout:
+        SensorPurchaseBackground:
             id: background
             center: 0.5, 0.5
 

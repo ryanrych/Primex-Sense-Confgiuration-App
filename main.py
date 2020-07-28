@@ -477,6 +477,18 @@ class SensorSubscriptionScreen(Screen):
 
 
 
+class SensorPurchaseInterface(Widget):
+    pass
+
+class SensorPurchaseBackground(Widget):
+    pass
+
+class SensorPurchaseScreen(Screen):
+    pass
+
+
+
+
 class SensorHardwareInterface(Widget):
 
     def setSiteInfo(self):
