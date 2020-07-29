@@ -505,6 +505,18 @@ class SensorHardwareScreen(Screen):
     pass
 
 
+
+class ProbeDetailsInterface(Widget):
+    pass
+
+class ProbeDetailsBackground(Widget):
+    pass
+
+class ProbeDetailsScreen(Screen):
+    pass
+
+
+
 class SenseConfiguration(App):
     def build(self):
         Window.size=(850,650)
