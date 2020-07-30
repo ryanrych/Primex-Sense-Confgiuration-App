@@ -3802,9 +3802,10 @@ WindowManager:
                     Label:
                         size_hint: .5, 1
                         text_size: self.size
-                        halign: "center"
+                        markup: True
+                        halign: "left"
                         color: 0,0,0,1
-                        text: "Number of Thermobuffers                         "
+                        text: "[b]Number of Thermobuffers[/b]"
 
                 GridLayout:
                     size_hint: 1, .26
@@ -3813,7 +3814,7 @@ WindowManager:
                     spacing: 5
 
                     Widget:
-                        size_hint: .15, .25
+                        size_hint: .1, .25
 
                     CheckBox:
                         size_hint: .05, .25
@@ -3838,10 +3839,10 @@ WindowManager:
                         size_hint: .15, .25
 
                     Widget:
-                        size_hint: .1, .25
+                        size_hint: .15, .25
 
                     Widget:
-                        size_hint: .15, .25
+                        size_hint: .1, .25
 
                     CheckBox:
                         size_hint: .05, .25
@@ -3866,10 +3867,10 @@ WindowManager:
                         size_hint: .15, .25
 
                     Widget:
-                        size_hint: .1, .25
+                        size_hint: .15, .25
 
                     Widget:
-                        size_hint: .15, .25
+                        size_hint: .1, .25
 
                     CheckBox:
                         size_hint: .05, .25
@@ -3894,16 +3895,20 @@ WindowManager:
                         size_hint: .15, .25
 
                     Widget:
-                        size_hint: .1, .25
+                        size_hint: .15, .25
 
                     Widget:
-                        size_hint: .15, .25
+                        size_hint: .1, .25
 
                     Widget:
                         size_hint: .05, .25
 
-                    Widget:
+                    Label:
                         size_hint: .4, .25
+                        text_size: self.size
+                        halign: "right"
+                        color: 0,0,0,1
+                        text: "Total Entered"
 
                     TextInput:
                         size_hint: .15, .25
@@ -3921,7 +3926,7 @@ WindowManager:
                         text: "Total Needed"
 
                     TextInput:
-                        size_hint: .1, .25
+                        size_hint: .15, .25
                         multiline: False
                         background_normal: "White.png"
                         background_active: "White.png"
