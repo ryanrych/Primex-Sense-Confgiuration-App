@@ -528,6 +528,17 @@ class PowerSupplyScreen(Screen):
 
 
 
+class TempHumidDetailsInterface(Widget):
+    pass
+
+class TempHumidDetailsBackground(Widget):
+    pass
+
+class TempHumidDetailsScreen(Screen):
+    pass
+
+
+
 class SenseConfiguration(App):
     def build(self):
         Window.size=(850,650)
