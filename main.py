@@ -517,6 +517,17 @@ class ProbeDetailsScreen(Screen):
 
 
 
+class PowerSupplyInterface(Widget):
+    pass
+
+class PowerSupplyBackground(Widget):
+    pass
+
+class PowerSupplyScreen(Screen):
+    pass
+
+
+
 class SenseConfiguration(App):
     def build(self):
         Window.size=(850,650)
