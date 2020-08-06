@@ -68,6 +68,20 @@ class WelcomeInterface(Widget):
         else:
             self.cSuite.active = True
 
+    def checkAnswers(self):
+        pass
+        if self.ids.siteName.text == "" or self.ids.bedSize == "" or self.ids.keySiteContact == "":
+            self.errorMessageStart()
+            Clock.schedule_once(self.errorMessageEnd, 3)
+        else:
+            App.get_running_app().root.current = "SitePrioritiesScreen"
+
+    def errorMessageStart(self):
+        self.ids.errorMessage.text = "Please Answer All Sections"
+
+    def errorMessageEnd(self, dt):
+        self.ids.errorMessage.text = ""
+
 class WelcomeBackground(Widget):
     pass
 
