@@ -560,5 +560,15 @@ class SenseConfiguration(App):
         self.title = "Sense Configuration"
         return Builder.load_file("Style.kv")
 
+    def changeDetailsScreens(self):
+        sm = App.get_running_app().root
+        hardwareScreen = sm.get_screen("SensorHardwareScreen").ids.background.ids.interface
+
+        if int(hardwareScreen.ids.t101Input.text) + int(hardwareScreen.ids.t102Input.text) > 0 and sm.current == "SensorHardwareScreen":
+            sm.current = "ProbeDetailsScreen"
+
+        if int(hardwareScreen.ids.a100Input.text) > 0 and (sm.current == "PowerSupplyScreen" or sm.current == "SensorHardwareScreen"):
+            sm.current = "TempHumidDetailsScreen"
+
 if __name__=="__main__":
     SenseConfiguration().run()
