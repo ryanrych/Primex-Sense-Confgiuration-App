@@ -553,6 +553,17 @@ class TempHumidDetailsScreen(Screen):
 
 
 
+class PressureDetailsInterface(Widget):
+    pass
+
+class PressureDetailsBackground(Widget):
+    pass
+
+class PressureDetailsScreen(Screen):
+    pass
+
+
+
 class SenseConfiguration(App):
     def build(self):
         Window.size=(850,650)
