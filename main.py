@@ -564,6 +564,17 @@ class PressureDetailsScreen(Screen):
 
 
 
+class LeakDetailsInterface(Widget):
+    pass
+
+class LeakDetailsBackground(Widget):
+    pass
+
+class LeakDetailsScreen(Screen):
+    pass
+
+
+
 class SenseConfiguration(App):
     def build(self):
         Window.size=(850,650)

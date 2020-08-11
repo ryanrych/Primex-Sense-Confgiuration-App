@@ -18,7 +18,7 @@
 
 
 WindowManager:
-    PressureDetailsScreen:
+    LeakDetailsScreen:
     WelcomeScreen:
     PackageSelectionScreen:
     Package1Screen:
@@ -39,7 +39,7 @@ WindowManager:
     ProbeDetailsScreen:
     PowerSupplyScreen
     TempHumidDetailsScreen:
-
+    PressureDetailsScreen:
 
 
 
@@ -4575,5 +4575,275 @@ WindowManager:
     name: "PressureDetailsScreen"
     FloatLayout:
         PressureDetailsBackground:
+            id: background
+            center: 0.5, 0.5
+
+
+
+<LeakDetailsInterface>:
+    size_hint: None, None
+
+    RelativeLayout:
+        pos: self.parent.pos
+        size: self.parent.size
+
+        BoxLayout:
+            canvas.before:
+                Color:
+                    rgba: 1,1,1,1
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+            size: self.parent.size
+            orientation: "horizontal"
+
+            spacing: 5
+
+            Widget:
+                size_hint: .05, 1
+
+            BoxLayout:
+                size_hint: .9, 1
+                orientation: "vertical"
+
+                Label:
+                    size_hint: 1, .1
+                    text_size: self.size
+                    markup: True
+                    halign: "left"
+                    font_size: self.height * .47
+                    color: 0,0,0,1
+                    text: "[b]Differential Pressure Details[/b]"
+
+                Widget:
+                    size_hint: 1, .05
+
+                GridLayout:
+                    size_hint: 1, .25
+
+                    cols: 4
+                    spacing: 5
+
+                    Label:
+                        size_hint: .15, .25
+                        text_size: self.size
+                        halign: "center"
+                        markup: True
+                        color: 0,0,0,1
+                        text: "[b]Number of Sensors[/b]"
+
+                    Widget:
+                        size_hint: .55, .25
+
+                    Label:
+                        size_hint: .15, .25
+                        text_size: self.size
+                        halign: "center"
+                        markup: True
+                        color: 0,0,0,1
+                        text: "[b]AC Power[/b]"
+
+                    Label:
+                        size_hint: .15, .25
+                        text_size: self.size
+                        halign: "center"
+                        markup: True
+                        color: 0,0,0,1
+                        text: "[b]POE[/b]"
+
+                    TextInput:
+                        size_hint: .15, .25
+                        multiline: False
+                        background_normal: "White.png"
+                        background_active: "White.png"
+                        cursor_color: 0,0,0,1
+                        foreground_color: 0,0,0,1
+
+                    Label:
+                        size_hint: .55, .25
+                        text_size: self.size
+                        halign: "left"
+                        color: 0,0,0,1
+                        text: "E121 - Water Leak"
+
+                    TextInput:
+                        size_hint: .15, .25
+                        multiline: False
+                        background_normal: "White.png"
+                        background_active: "White.png"
+                        cursor_color: 0,0,0,1
+                        foreground_color: 0,0,0,1
+
+                    TextInput:
+                        size_hint: .15, .25
+                        multiline: False
+                        background_normal: "White.png"
+                        background_active: "White.png"
+                        cursor_color: 0,0,0,1
+                        foreground_color: 0,0,0,1
+
+                    TextInput:
+                        size_hint: .15, .25
+                        multiline: False
+                        background_normal: "White.png"
+                        background_active: "White.png"
+                        cursor_color: 0,0,0,1
+                        foreground_color: 0,0,0,1
+
+                    Label:
+                        size_hint: .55, .25
+                        text_size: self.size
+                        halign: "left"
+                        color: 0,0,0,1
+                        text: "E122 - Contact Closure"
+
+                    TextInput:
+                        size_hint: .15, .25
+                        multiline: False
+                        background_normal: "White.png"
+                        background_active: "White.png"
+                        cursor_color: 0,0,0,1
+                        foreground_color: 0,0,0,1
+
+                    TextInput:
+                        size_hint: .15, .25
+                        multiline: False
+                        background_normal: "White.png"
+                        background_active: "White.png"
+                        cursor_color: 0,0,0,1
+                        foreground_color: 0,0,0,1
+
+                    TextInput:
+                        size_hint: .15, .25
+                        multiline: False
+                        background_normal: "White.png"
+                        background_active: "White.png"
+                        cursor_color: 0,0,0,1
+                        foreground_color: 0,0,0,1
+
+                    Label:
+                        size_hint: .55, .25
+                        text_size: self.size
+                        halign: "left"
+                        color: 0,0,0,1
+                        text: "E123 - Water Leak & Contact Closure"
+
+                    TextInput:
+                        size_hint: .15, .25
+                        multiline: False
+                        background_normal: "White.png"
+                        background_active: "White.png"
+                        cursor_color: 0,0,0,1
+                        foreground_color: 0,0,0,1
+
+                    TextInput:
+                        size_hint: .15, .25
+                        multiline: False
+                        background_normal: "White.png"
+                        background_active: "White.png"
+                        cursor_color: 0,0,0,1
+                        foreground_color: 0,0,0,1
+
+                Label:
+                    size_hint: 1, .18
+                    text_size: self.size
+                    halign: "left"
+                    color: 0,0,0,1
+                    text: "Our newest sensors come in full bundles - with power supplies or POE cables and the associated water leak detector and/or contact closure to plug in. You can chain multiple water leak detectors (up to 4) into a single water leak sensor. Do you want additional water leak detectors to provide additional coverage?"
+
+                Widget:
+                    size_hint: 1, .05
+
+                GridLayout:
+                    size_hint: 1, .1
+
+                    cols: 4
+                    spacing: 10
+
+                    CheckBox:
+                        size_hint: .03, .5
+                        color: 0,0,0,1
+
+                    Label:
+                        size_hint: .6, .5
+                        text_size: self.size
+                        halign: "left"
+                        color: 0,0,0,1
+                        text: "Additional water leak detectors are needed"
+
+                    TextInput:
+                        size_hint: .15, .5
+                        multiline: False
+                        background_normal: "White.png"
+                        background_active: "White.png"
+                        cursor_color: 0,0,0,1
+                        foreground_color: 0,0,0,1
+
+                    Widget:
+                        size_hint: .22, .5
+
+                    CheckBox:
+                        size_hint: .03, .5
+                        color: 0,0,0,1
+
+                    Label:
+                        size_hint: .6, .5
+                        text_size: self.size
+                        halign: "left"
+                        color: 0,0,0,1
+                        text: "No - Customer wants 1 detector per water sensor"
+
+                    Widget:
+                        size_hint: .15, .5
+
+                    Widget:
+                        size_hint: .22, .5
+
+                Widget:
+                    size_hint: 1, .16
+
+                BoxLayout:
+                    size_hint: 1, .06
+
+                    orientation: "horizontal"
+
+                    Widget:
+                        size_hint: .45, 1
+
+                    Button:
+                        size_hint: .1, 1
+                        background_normal: ""
+                        background_down: ""
+                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                        text: "Next"
+
+                    Widget:
+                        size_hint: .45, 1
+
+                Widget:
+                    size_hint: 1, .05
+
+            Widget:
+                size_hint: .05, 1
+
+<LeakDetailsBackground>:
+    AnchorLayout:
+        canvas.before:
+            Color:
+                rgba: 0.23921568627450981, 0.5137254901960784, 0.7254901960784313, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        size: self.parent.size
+        anchor_x: 'center'
+        anchor_y: 'center'
+        LeakDetailsInterface:
+            id: interface
+            size_hint: .9,.9
+
+<LeakDetailsScreen>:
+    name: "LeakDetailsScreen"
+    FloatLayout:
+        LeakDetailsBackground:
             id: background
             center: 0.5, 0.5
