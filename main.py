@@ -521,7 +521,55 @@ class SensorHardwareScreen(Screen):
 
 
 class ProbeDetailsInterface(Widget):
-    pass
+
+    def checkAnswers(self):
+
+        try:
+            if int(self.ids.t101ACInput) + int(self.ids.t101POEInput) != int(self.ids.t101Input) or int(self.ids.t102ACInput) + int(self.ids.t102POEInput) != int(self.ids.t102Input):
+                raise Exception()
+
+            if self.ids.primexProbesCB.active:
+                if self.ids.primexProbesInput.text == "":
+                    raise Exception()
+
+            if self.ids.cryogenicProbesCB.active:
+                if self.ids.cryogenicProbesInput.text == "":
+                    raise Exception()
+
+            if self.ids.glycolCB.active:
+                if self.ids.glycolInput.text == "":
+                    raise Exception()
+
+            if self.ids.waxCB.active:
+                if self.ids.waxInput.text == "":
+                    raise Exception()
+
+            if self.ids.noneCB.active:
+                if self.ids.noneInput.text == "":
+                    raise Exception()
+
+            if int(self.ids.glycolInput.text) + int(self.ids.waxInput.text) + int(self.ids.noneInput.text) != int(self.ids.totalEnteredInput.text):
+                raise Exception()
+
+            App.get_running_app().root.current = "PowerSupplyScreen"
+
+        except:
+            self.errorMessageStart()
+            Clock.schedule_once(self.errorMessageEnd, 3)
+
+    def errorMessageStart(self):
+        self.ids.errorMessage.text = "Invalid Input"
+
+    def errorMessageEnd(self, dt):
+        self.ids.errorMessage.text = ""
+
+    def fillDefaultAnswers(self):
+        self.ids.t101Input.text = App.get_running_app().root.get_screen("SensorHardwareScreen").ids.background.ids.interface.ids.t101Input.text
+        self.ids.t102Input.text = App.get_running_app().root.get_screen("SensorHardwareScreen").ids.background.ids.interface.ids.t102Input.text
+        self.ids.t101ACInput.text = self.ids.t101Input.text
+        self.ids.t102ACInput.text = self.ids.t102Input.text
+        self.ids.t101POEInput.text = "0"
+        self.ids.t102POEInput.text = "0"
 
 class ProbeDetailsBackground(Widget):
     pass
