@@ -580,7 +580,31 @@ class ProbeDetailsScreen(Screen):
 
 
 class PowerSupplyInterface(Widget):
-    pass
+
+    def checkAnswers(self):
+        try:
+            if self.ids.powerSuppliesInput.text == "":
+                raise Exception()
+            int(self.ids.powerSuppliesInput.text)
+        except:
+            self.errorMessageStart()
+            Clock.schedule_once(self.errorMessageEnd, 3)
+
+        App.get_running_app().changeDetailsScreens()
+
+
+    def errorMessageStart(self):
+        self.ids.errorMessage.text = "Invalid Input"
+
+    def errorMessageEnd(self, dt):
+        self.ids.errorMessage.text = ""
+
+    def fillDefaultAnswers(self):
+        try:
+            self.ids.powersuppliesInput.text = int(App.get_running_app().root.get_screen("ProbeDetailsScreen").ids.background.ids.interface.t101Input.text) + int(App.get_running_app().root.get_screen("ProbeDetailsScreen").ids.background.ids.interface.t102Input.text)
+        except:
+            self.errorMessageStart()
+            Clock.schedule_once(self.errorMessageEnd, 3)
 
 class PowerSupplyBackground(Widget):
     pass

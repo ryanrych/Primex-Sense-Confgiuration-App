@@ -18,6 +18,7 @@
 
 
 WindowManager:
+    PowerSupplyScreen:
     WelcomeScreen:
     PackageSelectionScreen:
     Package1Screen:
@@ -36,7 +37,7 @@ WindowManager:
     SensorPurchaseScreen:
     SensorHardwareScreen:
     ProbeDetailsScreen:
-    PowerSupplyScreen
+    PowerSupplyScreen:
     TempHumidDetailsScreen:
     PressureDetailsScreen:
     LeakDetailsScreen:
@@ -3943,7 +3944,6 @@ WindowManager:
                         background_active: "White.png"
                         cursor_color: 0,0,0,1
                         foreground_color: 0,0,0,1
-                        readonly: True
 
                     Label:
                         size_hint: .15, .25
@@ -3982,6 +3982,7 @@ WindowManager:
                         background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
                         text: "Next"
                         on_release:
+                            app.root.get_screen("PowerSupplyScreen").ids.background.ids.interface.fillDefaultAnswers()
                             root.checkAnswers()
 
                     Widget:
@@ -4075,6 +4076,7 @@ WindowManager:
                         text: "Number of Power Supplies"
 
                     TextInput:
+                        id: powerSuppliesInput
                         size_hint: .2, 1
                         multiline: False
                         background_normal: "White.png"
@@ -4085,8 +4087,13 @@ WindowManager:
                     Widget:
                         size_hint: .3, 1
 
+                Label:
+                    id: errorMessage
+                    size_hint: 1, .05
+                    color: 1,0,0,1
+
                 Widget:
-                    size_hint: 1, .5
+                    size_hint: 1, .45
 
                 BoxLayout:
                     size_hint: 1, .06
@@ -4103,7 +4110,7 @@ WindowManager:
                         background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
                         text: "Next"
                         on_release:
-                            app.changeDetailsScreens()
+                            root.checkAnswers()
 
                     Widget:
                         size_hint: .45, 1
