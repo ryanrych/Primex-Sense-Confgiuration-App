@@ -615,7 +615,28 @@ class PowerSupplyScreen(Screen):
 
 
 class TempHumidDetailsInterface(Widget):
-    pass
+
+    def checkAnswers(self):
+        try:
+            if int(self.ids.sensorsInput.text) != int(self.ids.acInput.text):
+                raise Exception()
+
+            int(self.ids.powerSupplyInput.text)
+
+            App.get_running_app().root.current = "PressureDetailsScreen"
+        except:
+            self.errorMessageStart()
+            Clock.schedule_once(self.errorMessageEnd, 3)
+
+    def errorMessageStart(self):
+        self.ids.errorMessage.text = "Invalid Input"
+
+    def errorMessageEnd(self, dt):
+        self.ids.errorMessage.text = ""
+
+    def fillDefaultAnswers(self):
+        self.ids.sensorsInput.text = App.get_running_app().root.get_screen("SensorHardwareScreen").ids.background.ids.interface.ids.a100Input.text
+        self.ids.acInput.text = self.ids.sensorsInput.text
 
 class TempHumidDetailsBackground(Widget):
     pass
