@@ -623,7 +623,7 @@ class TempHumidDetailsInterface(Widget):
 
             int(self.ids.powerSupplyInput.text)
 
-            App.get_running_app().root.current = "PressureDetailsScreen"
+            App.get_running_app().changeDetailsScreens()
         except:
             self.errorMessageStart()
             Clock.schedule_once(self.errorMessageEnd, 3)
@@ -647,7 +647,39 @@ class TempHumidDetailsScreen(Screen):
 
 
 class PressureDetailsInterface(Widget):
-    pass
+
+    def fillDefaultAnswers(self):
+        self.ids.sensorsInput.text = App.get_running_app().root.get_screen("SensorHardwareScreen").ids.background.ids.interface.ids.a120Input.text
+        self.ids.acInput.text = App.get_running_app().root.get_screen("SensorHardwareScreen").ids.background.ids.interface.ids.a120Input.text
+
+    def checkAnswers(self):
+
+        try:
+            if int(self.ids.acInput.text) + int(self.ids.poeInput.text) != int(self.ids.sensorsInput.text):
+                raise Exception()
+
+            if self.ids.installationCB.active and self.ids.installationInput.text != "":
+                int(self.ids.installationInput.text)
+            else:
+                raise Exception()
+
+            if self.ids.noInstallationCB.active and self.ids.noInstallationInput.text != "":
+                int(self.ids.noInstallationInput.text)
+            else:
+                raise Exception()
+
+            App.get_running_app().changeDetailsScreens()
+
+        except:
+            self.errorMessageStart()
+            Clock.schedule_once(self.errorMessageEnd, 3)
+
+    def errorMessageStart(self):
+        self.ids.errorMessage.text = "Invalid Input"
+
+    def errorMessageEnd(self, dt):
+        self.ids.errorMessage.text = ""
+
 
 class PressureDetailsBackground(Widget):
     pass

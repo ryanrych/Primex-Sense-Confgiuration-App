@@ -18,7 +18,7 @@
 
 
 WindowManager:
-    TempHumidDetailsScreen:
+    PressureDetailsScreen:
     WelcomeScreen:
     PackageSelectionScreen:
     Package1Screen:
@@ -4428,6 +4428,7 @@ WindowManager:
                         text: "[b]POE[/b]"
 
                     TextInput:
+                        id: sensorsInput
                         size_hint: .2, .5
                         multiline: False
                         background_normal: "White.png"
@@ -4443,6 +4444,7 @@ WindowManager:
                         text: "A120 - Differential Pressure"
 
                     TextInput:
+                        id: acInput
                         size_hint: .2, .5
                         multiline: False
                         background_normal: "White.png"
@@ -4451,14 +4453,13 @@ WindowManager:
                         foreground_color: 0,0,0,1
 
                     TextInput:
+                        id: poeInput
                         size_hint: .2, .5
                         multiline: False
                         background_normal: "White.png"
                         background_active: "White.png"
                         cursor_color: 0,0,0,1
                         foreground_color: 0,0,0,1
-                        text: "Not Available"
-                        readonly: True
 
                 Widget:
                     size_hint: 1, .1
@@ -4466,17 +4467,17 @@ WindowManager:
                 GridLayout:
                     size_hint: 1, .27
 
-                    cols: 5
+                    cols: 4
                     spacing: 5
 
                     Widget:
-                        size_hint: .2, .25
+                        size_hint: .23, .25
 
                     Widget:
                         size_hint: .03, .25
 
                     Widget:
-                        size_hint: .52, .25
+                        size_hint: .6, .25
 
                     Label:
                         size_hint: .14, .25
@@ -4486,30 +4487,29 @@ WindowManager:
                         color: 0,0,0,1
                         text: "Number of Installation Kits"
 
-                    Widget:
-                        size_hint: .11, .25
-
                     Label:
-                        size_hint: .2, .25
+                        size_hint: .23, .25
                         text_size: self.size
-                        font_size: self.height * .4
+                        font_size: self.height * .45
                         halign: "left"
                         color: 0,0,0,1
                         text: "Installation kit for A120"
 
                     CheckBox:
+                        id: installationCB
                         size_hint: .03, .25
                         color: 0,0,0,1
 
                     Label:
-                        size_hint: .52, .25
+                        size_hint: .6, .25
                         text_size: self.size
-                        font_size: self.height * .44
+
                         halign: "left"
                         color: 0,0,0,1
                         text: "Include installing kits to 'finish' the tube through the wall"
 
                     TextInput:
+                        id: installationInput
                         size_hint: .14, .25
                         multiline: False
                         background_normal: "White.png"
@@ -4518,23 +4518,22 @@ WindowManager:
                         foreground_color: 0,0,0,1
 
                     Widget:
-                        size_hint: .11, .25
-
-                    Widget:
-                        size_hint: .2, .25
+                        size_hint: .23, .25
 
                     CheckBox:
+                        id: noInstallationCB
                         size_hint: .03, .25
                         color: 0,0,0,1
 
                     Label:
-                        size_hint: .52, .25
+                        size_hint: .6, .25
                         text_size: self.size
                         halign: "left"
                         color: 0,0,0,1
                         text: "Do not need installation kits"
 
                     TextInput:
+                        id: noInstallationInput
                         size_hint: .14, .25
                         multiline: False
                         background_normal: "White.png"
@@ -4543,27 +4542,27 @@ WindowManager:
                         foreground_color: 0,0,0,1
 
                     Widget:
-                        size_hint: .11, .25
-
-                    Widget:
-                        size_hint: .2, .25
+                        size_hint: .23, .25
 
                     Widget:
                         size_hint: .03, .25
 
-                    Widget:
-                        size_hint: .52, .25
-
-                    Widget:
-                        size_hint: .14, .25
-
                     Label:
-                        size_hint: .11, .25
+                        size_hint: .6, .25
                         text_size: self.size
-                        font_size: self.height * .35
-                        halign: "center"
+                        halign: "right"
                         color: 0,0,0,1
-                        text: "Total needed"
+                        text: "Total Entered"
+
+                    TextInput:
+                        id: totalEntered
+                        size_hint: .14, .25
+                        multiline: False
+                        background_normal: "White.png"
+                        background_active: "White.png"
+                        cursor_color: 0,0,0,1
+                        foreground_color: 0,0,0,1
+                        readonly: True
 
                 Label:
                     size_hint: 1, .12
@@ -4572,8 +4571,13 @@ WindowManager:
                     color: 0,0,0,1
                     text: "For some historical reason, all A120 sensors come with an AC power supply. So you don't have to decide whether you want them or not - you just get them!"
 
+                Label:
+                    id: errorMessage
+                    size_hint: 1, .05
+                    color: 1,0,0,1
+
                 Widget:
-                    size_hint: 1, .18
+                    size_hint: 1, .13
 
                 BoxLayout:
                     size_hint: 1, .06
