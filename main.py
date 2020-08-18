@@ -525,11 +525,13 @@ class ProbeDetailsInterface(Widget):
     def checkAnswers(self):
 
         try:
-            if int(self.ids.t101ACInput) + int(self.ids.t101POEInput) != int(self.ids.t101Input) or int(self.ids.t102ACInput) + int(self.ids.t102POEInput) != int(self.ids.t102Input):
+            print(1)
+            if int(self.ids.t101ACInput.text) + int(self.ids.t101POEInput.text) != int(self.ids.t101Input.text) or int(self.ids.t102ACInput.text) + int(self.ids.t102POEInput.text) != int(self.ids.t102Input.text):
                 raise Exception()
 
             if self.ids.primexProbesCB.active:
                 if self.ids.primexProbesInput.text == "":
+                    int(self.ids.primexProbesInput.text)
                     raise Exception()
 
             if self.ids.cryogenicProbesCB.active:
@@ -547,9 +549,6 @@ class ProbeDetailsInterface(Widget):
             if self.ids.noneCB.active:
                 if self.ids.noneInput.text == "":
                     raise Exception()
-
-            if int(self.ids.glycolInput.text) + int(self.ids.waxInput.text) + int(self.ids.noneInput.text) != int(self.ids.totalEnteredInput.text):
-                raise Exception()
 
             App.get_running_app().root.current = "PowerSupplyScreen"
 
@@ -570,6 +569,7 @@ class ProbeDetailsInterface(Widget):
         self.ids.t102ACInput.text = self.ids.t102Input.text
         self.ids.t101POEInput.text = "0"
         self.ids.t102POEInput.text = "0"
+        self.ids.probesNeededInput.text = str(int(self.ids.t101Input.text) + (int(self.ids.t102Input.text) * 2))
 
 class ProbeDetailsBackground(Widget):
     pass
@@ -600,11 +600,7 @@ class PowerSupplyInterface(Widget):
         self.ids.errorMessage.text = ""
 
     def fillDefaultAnswers(self):
-        try:
-            self.ids.powersuppliesInput.text = int(App.get_running_app().root.get_screen("ProbeDetailsScreen").ids.background.ids.interface.t101Input.text) + int(App.get_running_app().root.get_screen("ProbeDetailsScreen").ids.background.ids.interface.t102Input.text)
-        except:
-            self.errorMessageStart()
-            Clock.schedule_once(self.errorMessageEnd, 3)
+        self.ids.powerSuppliesInput.text = str(int(App.get_running_app().root.get_screen("ProbeDetailsScreen").ids.background.ids.interface.ids.t101Input.text) + int(App.get_running_app().root.get_screen("ProbeDetailsScreen").ids.background.ids.interface.ids.t102Input.text))
 
 class PowerSupplyBackground(Widget):
     pass
@@ -637,6 +633,7 @@ class TempHumidDetailsInterface(Widget):
     def fillDefaultAnswers(self):
         self.ids.sensorsInput.text = App.get_running_app().root.get_screen("SensorHardwareScreen").ids.background.ids.interface.ids.a100Input.text
         self.ids.acInput.text = self.ids.sensorsInput.text
+        self.ids.powerSupplyInput.text = self.ids.sensorsInput.text
 
 class TempHumidDetailsBackground(Widget):
     pass
@@ -655,18 +652,15 @@ class PressureDetailsInterface(Widget):
     def checkAnswers(self):
 
         try:
+
             if int(self.ids.acInput.text) + int(self.ids.poeInput.text) != int(self.ids.sensorsInput.text):
                 raise Exception()
 
-            if self.ids.installationCB.active and self.ids.installationInput.text != "":
+            if self.ids.installationCB.active:
                 int(self.ids.installationInput.text)
-            else:
-                raise Exception()
 
-            if self.ids.noInstallationCB.active and self.ids.noInstallationInput.text != "":
+            if self.ids.noInstallationCB.active:
                 int(self.ids.noInstallationInput.text)
-            else:
-                raise Exception()
 
             App.get_running_app().changeDetailsScreens()
 
@@ -712,10 +706,8 @@ class LeakDetailsInterface(Widget):
             if int(self.ids.e123ACInput.text) + int(self.ids.e123POEInput.text) != int(self.ids.e123Input.text):
                 raise Exception()
 
-            if self.ids.additionalSensorsCB.active and self.ids.additionalSensorsInput.text != "":
+            if self.ids.additionalSensorsCB.active:
                 int(self.ids.additionalSensorsInput.text)
-            else:
-                raise Exception()
 
         except:
             self.errorMessageStart()
@@ -749,39 +741,49 @@ class SenseConfiguration(App):
         if sm.current == "SensorHardwareScreen":
 
             if int(hardwareScreen.ids.t101Input.text) + int(hardwareScreen.ids.t102Input.text) > 0:
+                sm.get_screen("ProbeDetailsScreen").ids.background.ids.interface.fillDefaultAnswers()
                 sm.current = "ProbeDetailsScreen"
 
             elif int(hardwareScreen.ids.a100Input.text) > 0:
+                sm.get_screen("TempHumidDetailsScreen").ids.background.ids.interface.fillDefaultAnswers()
                 sm.current = "TempHumidDetailsScreen"
 
             elif int(hardwareScreen.ids.a120Input.text) > 0:
+                sm.get_screen("PressureDetailsScreen").ids.background.ids.interface.fillDefaultAnswers()
                 sm.current = "PressureDetailsScreen"
 
             elif int(hardwareScreen.ids.e121Input.text) + int(hardwareScreen.ids.e122Input.text) + int(hardwareScreen.ids.e123Input.text) > 0:
+                sm.get_screen("LeakDetailsScreen").ids.background.ids.interface.fillDefaultAnswers()
                 sm.current = "LeakDetailsScreen"
 
         elif sm.current == "PowerSupplyScreen": #this is in place of the Probe Details Screen because that screen was split into 2
 
             if int(hardwareScreen.ids.a100Input.text) > 0:
+                sm.get_screen("TempHumidDetailsScreen").ids.background.ids.interface.fillDefaultAnswers()
                 sm.current = "TempHumidDetailsScreen"
 
             elif int(hardwareScreen.ids.a120Input.text) > 0:
+                sm.get_screen("PressureDetailsScreen").ids.background.ids.interface.fillDefaultAnswers()
                 sm.current = "PressureDetailsScreen"
 
             elif int(hardwareScreen.ids.e121Input.text) + int(hardwareScreen.ids.e122Input.text) + int(hardwareScreen.ids.e123Input.text) > 0:
+                sm.get_screen("LeakDetailsScreen").ids.background.ids.interface.fillDefaultAnswers()
                 sm.current = "LeakDetailsScreen"
 
         elif sm.current == "TempHumidDetailsScreen":
 
             if int(hardwareScreen.ids.a120Input.text) > 0:
+                sm.get_screen("PressureDetailsScreen").ids.background.ids.interface.fillDefaultAnswers()
                 sm.current = "PressureDetailsScreen"
 
             elif int(hardwareScreen.ids.e121Input.text) + int(hardwareScreen.ids.e122Input.text) + int(hardwareScreen.ids.e123Input.text) > 0:
+                sm.get_screen("LeakDetailsScreen").ids.background.ids.interface.fillDefaultAnswers()
                 sm.current = "LeakDetailsScreen"
 
         elif sm.current == "PressureDetailsScreen":
 
             if int(hardwareScreen.ids.e121Input.text) + int(hardwareScreen.ids.e122Input.text) + int(hardwareScreen.ids.e123Input.text) > 0:
+                sm.get_screen("LeakDetailsScreen").ids.background.ids.interface.fillDefaultAnswers()
                 sm.current = "LeakDetailsScreen"
 
 if __name__=="__main__":
