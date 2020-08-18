@@ -690,7 +690,42 @@ class PressureDetailsScreen(Screen):
 
 
 class LeakDetailsInterface(Widget):
-    pass
+
+    def fillDefaultAnswers(self):
+        self.ids.e121Input.text = App.get_running_app().root.get_screen("SensorHardwareScreen").ids.background.ids.interface.ids.e121Input.text
+        self.ids.e122Input.text = App.get_running_app().root.get_screen("SensorHardwareScreen").ids.background.ids.interface.ids.e122Input.text
+        self.ids.e123Input.text = App.get_running_app().root.get_screen("SensorHardwareScreen").ids.background.ids.interface.ids.e123Input.text
+
+        self.ids.e121ACInput.text = App.get_running_app().root.get_screen("SensorHardwareScreen").ids.background.ids.interface.ids.e121Input.text
+        self.ids.e122ACInput.text = App.get_running_app().root.get_screen("SensorHardwareScreen").ids.background.ids.interface.ids.e122Input.text
+        self.ids.e123ACInput.text = App.get_running_app().root.get_screen("SensorHardwareScreen").ids.background.ids.interface.ids.e123Input.text
+
+    def checkAnswers(self):
+
+        try:
+            if int(self.ids.e121ACInput.text) + int(self.ids.e121POEInput.text) != int(self.ids.e121Input.text):
+                raise Exception()
+
+            if int(self.ids.e122ACInput.text) + int(self.ids.e122POEInput.text) != int(self.ids.e122Input.text):
+                raise Exception()
+
+            if int(self.ids.e123ACInput.text) + int(self.ids.e123POEInput.text) != int(self.ids.e123Input.text):
+                raise Exception()
+
+            if self.ids.additionalSensorsCB.active and self.ids.additionalSensorsInput.text != "":
+                int(self.ids.additionalSensorsInput.text)
+            else:
+                raise Exception()
+
+        except:
+            self.errorMessageStart()
+            Clock.schedule_once(self.errorMessageEnd, 3)
+
+    def errorMessageStart(self):
+        self.ids.errorMessage.text = "Invalid Input"
+
+    def errorMessageEnd(self, dt):
+        self.ids.errorMessage.text = ""
 
 class LeakDetailsBackground(Widget):
     pass

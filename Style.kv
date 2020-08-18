@@ -18,7 +18,7 @@
 
 
 WindowManager:
-    PressureDetailsScreen:
+    LeakDetailsScreen:
     WelcomeScreen:
     PackageSelectionScreen:
     Package1Screen:
@@ -4699,6 +4699,7 @@ WindowManager:
                         text: "[b]POE[/b]"
 
                     TextInput:
+                        id: e121Input
                         size_hint: .15, .25
                         multiline: False
                         background_normal: "White.png"
@@ -4714,6 +4715,7 @@ WindowManager:
                         text: "E121 - Water Leak"
 
                     TextInput:
+                        id: e121ACInput
                         size_hint: .15, .25
                         multiline: False
                         background_normal: "White.png"
@@ -4722,6 +4724,7 @@ WindowManager:
                         foreground_color: 0,0,0,1
 
                     TextInput:
+                        id: e121POEInput
                         size_hint: .15, .25
                         multiline: False
                         background_normal: "White.png"
@@ -4730,6 +4733,7 @@ WindowManager:
                         foreground_color: 0,0,0,1
 
                     TextInput:
+                        id: e122Input
                         size_hint: .15, .25
                         multiline: False
                         background_normal: "White.png"
@@ -4745,6 +4749,7 @@ WindowManager:
                         text: "E122 - Contact Closure"
 
                     TextInput:
+                        id: e122ACInput
                         size_hint: .15, .25
                         multiline: False
                         background_normal: "White.png"
@@ -4753,6 +4758,7 @@ WindowManager:
                         foreground_color: 0,0,0,1
 
                     TextInput:
+                        id: e122POEInput
                         size_hint: .15, .25
                         multiline: False
                         background_normal: "White.png"
@@ -4761,6 +4767,7 @@ WindowManager:
                         foreground_color: 0,0,0,1
 
                     TextInput:
+                        id: e123Input
                         size_hint: .15, .25
                         multiline: False
                         background_normal: "White.png"
@@ -4776,6 +4783,7 @@ WindowManager:
                         text: "E123 - Water Leak & Contact Closure"
 
                     TextInput:
+                        id: e123ACInput
                         size_hint: .15, .25
                         multiline: False
                         background_normal: "White.png"
@@ -4784,6 +4792,7 @@ WindowManager:
                         foreground_color: 0,0,0,1
 
                     TextInput:
+                        id: e123POEInput
                         size_hint: .15, .25
                         multiline: False
                         background_normal: "White.png"
@@ -4808,6 +4817,7 @@ WindowManager:
                     spacing: 10
 
                     CheckBox:
+                        id: additionalSensorsCB
                         size_hint: .03, .5
                         color: 0,0,0,1
 
@@ -4819,6 +4829,7 @@ WindowManager:
                         text: "Additional water leak detectors are needed"
 
                     TextInput:
+                        id: additionalSensorsInput
                         size_hint: .15, .5
                         multiline: False
                         background_normal: "White.png"
@@ -4830,6 +4841,7 @@ WindowManager:
                         size_hint: .22, .5
 
                     CheckBox:
+                        id: noAdditionalSensorsCB
                         size_hint: .03, .5
                         color: 0,0,0,1
 
@@ -4846,8 +4858,13 @@ WindowManager:
                     Widget:
                         size_hint: .22, .5
 
+                Label:
+                    id: errorMessage
+                    size_hint: 1, .05
+                    color: 1,0,0,1
+
                 Widget:
-                    size_hint: 1, .16
+                    size_hint: 1, .11
 
                 BoxLayout:
                     size_hint: 1, .06
@@ -4863,6 +4880,8 @@ WindowManager:
                         background_down: ""
                         background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
                         text: "Next"
+                        on_release:
+                            root.checkAnswers()
 
                     Widget:
                         size_hint: .45, 1
