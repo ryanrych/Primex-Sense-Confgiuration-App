@@ -18,6 +18,7 @@
 
 
 WindowManager:
+    LeakDetailsScreen:
     WelcomeScreen:
     PackageSelectionScreen:
     Package1Screen:
@@ -3716,6 +3717,9 @@ WindowManager:
                         id: primexProbesCB
                         size_hint: .05, .2
                         color: 0,0,0,1
+                        on_release:
+                            root.ids.primexProbesInput.text = ""
+                            root.ids.primexProbesInput.visible = not root.ids.primexProbesInput.visible
 
                     Label:
                         size_hint: .4, .2
@@ -3725,6 +3729,8 @@ WindowManager:
                         text: "Primex Probes (-40 F to 221 F)"
 
                     TextInput:
+                        visible: False
+                        opacity: 1 if self.visible else 0
                         id: primexProbesInput
                         size_hint: .2, .2
                         multiline: False
@@ -3746,6 +3752,9 @@ WindowManager:
                         id: cryogenicProbesCB
                         size_hint: .05, .2
                         color: 0,0,0,1
+                        on_release:
+                            root.ids.cryogenicProbesInput.text = ""
+                            root.ids.cryogenicProbesInput.visible = not root.ids.cryogenicProbesInput.visible
 
                     Label:
                         size_hint: .4, .2
@@ -3755,6 +3764,8 @@ WindowManager:
                         text: "Cryogenic Probes (-328 F to 238 F)"
 
                     TextInput:
+                        visible: False
+                        opacity: 1 if self.visible else 0
                         id: cryogenicProbesInput
                         size_hint: .2, .2
                         multiline: False
@@ -3841,6 +3852,9 @@ WindowManager:
                         id: glycolCB
                         size_hint: .05, .25
                         color: 0,0,0,1
+                        on_release:
+                            root.ids.glycolInput.text = ""
+                            root.ids.glycolInput.visible = not root.ids.glycolInput.visible
 
                     Label:
                         size_hint: .4, .25
@@ -3850,6 +3864,8 @@ WindowManager:
                         text: "Glycol (recommended by CDC)"
 
                     TextInput:
+                        visible: False
+                        opacity: 1 if self.visible else 0
                         id: glycolInput
                         size_hint: .15, .25
                         multiline: False
@@ -3871,6 +3887,9 @@ WindowManager:
                         id: waxCB
                         size_hint: .05, .25
                         color: 0,0,0,1
+                        on_release:
+                            root.ids.waxInput.text = ""
+                            root.ids.waxInput.visible = not root.ids.waxInput.visible
 
                     Label:
                         size_hint: .4, .25
@@ -3880,6 +3899,8 @@ WindowManager:
                         text: "Wax"
 
                     TextInput:
+                        visible: False
+                        opacity: 1 if self.visible else 0
                         id: waxInput
                         size_hint: .15, .25
                         multiline: False
@@ -3901,6 +3922,9 @@ WindowManager:
                         id: noneCB
                         size_hint: .05, .25
                         color: 0,0,0,1
+                        on_release:
+                            root.ids.noneInput.text = ""
+                            root.ids.noneInput.visible = not root.ids.noneInput.visible
 
                     Label:
                         size_hint: .4, .25
@@ -3910,6 +3934,8 @@ WindowManager:
                         text: "None"
 
                     TextInput:
+                        visible: False
+                        opacity: 1 if self.visible else 0
                         id: noneInput
                         size_hint: .15, .25
                         multiline: False
@@ -4500,6 +4526,9 @@ WindowManager:
                         id: installationCB
                         size_hint: .03, .25
                         color: 0,0,0,1
+                        on_release:
+                            root.ids.installationInput.text = ""
+                            root.ids.installationInput.visible = not root.ids.installationInput.visible
 
                     Label:
                         size_hint: .6, .25
@@ -4510,6 +4539,8 @@ WindowManager:
                         text: "Include installing kits to 'finish' the tube through the wall"
 
                     TextInput:
+                        visible: False
+                        opacity: 1 if self.visible else 0
                         id: installationInput
                         size_hint: .14, .25
                         multiline: False
@@ -4525,6 +4556,9 @@ WindowManager:
                         id: noInstallationCB
                         size_hint: .03, .25
                         color: 0,0,0,1
+                        on_release:
+                            root.ids.noInstallationInput.text = ""
+                            root.ids.noInstallationInput.visible = not root.ids.noInstallationInput.visible
 
                     Label:
                         size_hint: .6, .25
@@ -4534,6 +4568,8 @@ WindowManager:
                         text: "Do not need installation kits"
 
                     TextInput:
+                        visible: False
+                        opacity: 1 if self.visible else 0
                         id: noInstallationInput
                         size_hint: .14, .25
                         multiline: False
@@ -4565,6 +4601,32 @@ WindowManager:
                         foreground_color: 0,0,0,1
                         readonly: True
 
+                BoxLayout:
+                    size_hint: 1, .06
+
+                    orientation: "horizontal"
+                    spacing: 5
+
+                    Widget:
+                        size_hint: .72, 1
+
+                    Label:
+                        size_hint: .14, 1
+                        text_size: self.size
+                        halign: "right"
+                        color: 0,0,0,1
+                        text: "Total Needed"
+
+                    TextInput:
+                        id: totalNeeded
+                        size_hint: .14, 1
+                        multiline: False
+                        background_normal: "White.png"
+                        background_active: "White.png"
+                        cursor_color: 0,0,0,1
+                        foreground_color: 0,0,0,1
+                        readonly: True
+
                 Label:
                     size_hint: 1, .12
                     text_size: self.size
@@ -4578,7 +4640,7 @@ WindowManager:
                     color: 1,0,0,1
 
                 Widget:
-                    size_hint: 1, .13
+                    size_hint: 1, .07
 
                 BoxLayout:
                     size_hint: 1, .06
@@ -4826,6 +4888,9 @@ WindowManager:
                         id: additionalSensorsCB
                         size_hint: .03, .5
                         color: 0,0,0,1
+                        on_release:
+                            root.ids.additionalSensorsInput.visible = not root.ids.additionalSensorsInput.visible
+                            root.ids.noAdditionalSensorsCB.active = False
 
                     Label:
                         size_hint: .6, .5
@@ -4835,6 +4900,8 @@ WindowManager:
                         text: "Additional water leak detectors are needed"
 
                     TextInput:
+                        visible: False
+                        opacity: 1 if self.visible else 0
                         id: additionalSensorsInput
                         size_hint: .15, .5
                         multiline: False
@@ -4850,6 +4917,10 @@ WindowManager:
                         id: noAdditionalSensorsCB
                         size_hint: .03, .5
                         color: 0,0,0,1
+                        on_release:
+                            root.ids.additionalSensorsCB.active = False
+                            root.ids.additionalSensorsInput.visible = False
+                            root.ids.additionalSensorsInput.text = ""
 
                     Label:
                         size_hint: .6, .5

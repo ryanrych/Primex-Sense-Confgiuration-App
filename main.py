@@ -525,7 +525,6 @@ class ProbeDetailsInterface(Widget):
     def checkAnswers(self):
 
         try:
-            print(1)
             if int(self.ids.t101ACInput.text) + int(self.ids.t101POEInput.text) != int(self.ids.t101Input.text) or int(self.ids.t102ACInput.text) + int(self.ids.t102POEInput.text) != int(self.ids.t102Input.text):
                 raise Exception()
 
@@ -648,6 +647,7 @@ class PressureDetailsInterface(Widget):
     def fillDefaultAnswers(self):
         self.ids.sensorsInput.text = App.get_running_app().root.get_screen("SensorHardwareScreen").ids.background.ids.interface.ids.a120Input.text
         self.ids.acInput.text = App.get_running_app().root.get_screen("SensorHardwareScreen").ids.background.ids.interface.ids.a120Input.text
+        self.ids.totalNeeded.text = App.get_running_app().root.get_screen("SensorHardwareScreen").ids.background.ids.interface.ids.a120Input.text
 
     def checkAnswers(self):
 
