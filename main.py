@@ -549,6 +549,12 @@ class ProbeDetailsInterface(Widget):
                 if self.ids.noneInput.text == "":
                     raise Exception()
 
+            if self.ids.probesEnteredInput.text != self.ids.probesNeededInput.text:
+                raise Exception()
+
+            if self.ids.buffersEnteredInput.text != self.ids.buffersNeededInput.text:
+                raise Exception()
+
             App.get_running_app().root.current = "PowerSupplyScreen"
 
         except:
@@ -661,6 +667,9 @@ class PressureDetailsInterface(Widget):
 
             if self.ids.noInstallationCB.active:
                 int(self.ids.noInstallationInput.text)
+
+            if self.ids.totalEntered.text != self.ids.totalNeeded.text:
+                raise Exception()
 
             App.get_running_app().changeDetailsScreens()
 
