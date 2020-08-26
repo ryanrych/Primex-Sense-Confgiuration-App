@@ -737,11 +737,17 @@ class LeakDetailsScreen(Screen):
 
 
 class SenseConfiguration(App):
+
+
+
     def build(self):
         Window.size=(850,650)
         self.icon = "favicon.png"
         self.title = "Sense Configuration"
         return Builder.load_file("Style.kv")
+
+    def openConfirmWindow(self):
+        print("hi")
 
     def changeDetailsScreens(self):
         sm = App.get_running_app().root
