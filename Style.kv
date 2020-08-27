@@ -22,11 +22,16 @@
         size_hint: .5, .5
         pos_hint: {"x":0, "top": 1}
         text: "Restart App"
+        on_release:
+            root.test()
+
 
     Button:
         size_hint: .5, .5
         pos_hint: {"x":.5, "top": 1}
         text: "Close App"
+        on_release:
+            app.stop()
 
 
 

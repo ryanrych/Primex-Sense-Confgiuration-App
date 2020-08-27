@@ -739,11 +739,17 @@ class LeakDetailsScreen(Screen):
 
 
 class ConfirmWindow(FloatLayout):
-    pass
+
+    def test(self):
+        App.get_running_app().root.current = "WelcomeScreen"
+        App.get_running_app().popupWindow.dismiss()
 
 
 
 class SenseConfiguration(App):
+
+    show = ConfirmWindow()
+    popupWindow = Popup(title="Restart App?", content=show, size_hint=(None, None), size=(200, 150))
 
     def build(self):
         Window.size=(850,650)
@@ -754,10 +760,10 @@ class SenseConfiguration(App):
 
     def on_request_close(self,other): #this needed another argument to work, I have no clue why
         show = ConfirmWindow()
-        popupWindow = Popup(title = "Restart App?", content = show, size_hint = (None,None), size = (200,150))
-        popupWindow.open()
+        SenseConfiguration.popupWindow = Popup(title="Restart App?", content=show, size_hint=(None, None), size=(200, 150))
+        SenseConfiguration.popupWindow.open()
 
-        return True
+        return True #False closes window, True leaves it open
 
     def changeDetailsScreens(self):
         sm = App.get_running_app().root
