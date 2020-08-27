@@ -5,6 +5,8 @@ from kivy.core.window import Window
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.uix.widget import Widget
 from kivy.clock import Clock
+from kivy.uix.floatlayout import FloatLayout
+from kivy.uix.popup import Popup
 
 from SitePriorities import SitePriorities
 
@@ -736,18 +738,26 @@ class LeakDetailsScreen(Screen):
 
 
 
+class ConfirmWindow(FloatLayout):
+    pass
+
+
+
 class SenseConfiguration(App):
-
-
 
     def build(self):
         Window.size=(850,650)
         self.icon = "favicon.png"
         self.title = "Sense Configuration"
+        Window.bind(on_request_close=self.on_request_close)
         return Builder.load_file("Style.kv")
 
-    def openConfirmWindow(self):
-        print("hi")
+    def on_request_close(self,other): #this needed another argument to work, I have no clue why
+        show = ConfirmWindow()
+        popupWindow = Popup(title = "Restart App?", content = show, size_hint = (None,None), size = (200,150))
+        popupWindow.open()
+
+        return True
 
     def changeDetailsScreens(self):
         sm = App.get_running_app().root
