@@ -521,6 +521,7 @@ class SensorHardwareScreen(Screen):
     pass
 
 
+# The following 5 screens are unfinished and to be implemented later
 
 class ProbeDetailsInterface(Widget):
 
@@ -765,57 +766,57 @@ class SenseConfiguration(App):
 
         return True #False closes window, True leaves it open
 
-    def changeDetailsScreens(self):
-        sm = App.get_running_app().root
-        hardwareScreen = sm.get_screen("SensorHardwareScreen").ids.background.ids.interface
-
-        if sm.current == "SensorHardwareScreen":
-
-            if int(hardwareScreen.ids.t101Input.text) + int(hardwareScreen.ids.t102Input.text) > 0:
-                sm.get_screen("ProbeDetailsScreen").ids.background.ids.interface.fillDefaultAnswers()
-                sm.current = "ProbeDetailsScreen"
-
-            elif int(hardwareScreen.ids.a100Input.text) > 0:
-                sm.get_screen("TempHumidDetailsScreen").ids.background.ids.interface.fillDefaultAnswers()
-                sm.current = "TempHumidDetailsScreen"
-
-            elif int(hardwareScreen.ids.a120Input.text) > 0:
-                sm.get_screen("PressureDetailsScreen").ids.background.ids.interface.fillDefaultAnswers()
-                sm.current = "PressureDetailsScreen"
-
-            elif int(hardwareScreen.ids.e121Input.text) + int(hardwareScreen.ids.e122Input.text) + int(hardwareScreen.ids.e123Input.text) > 0:
-                sm.get_screen("LeakDetailsScreen").ids.background.ids.interface.fillDefaultAnswers()
-                sm.current = "LeakDetailsScreen"
-
-        elif sm.current == "PowerSupplyScreen": #this is in place of the Probe Details Screen because that screen was split into 2
-
-            if int(hardwareScreen.ids.a100Input.text) > 0:
-                sm.get_screen("TempHumidDetailsScreen").ids.background.ids.interface.fillDefaultAnswers()
-                sm.current = "TempHumidDetailsScreen"
-
-            elif int(hardwareScreen.ids.a120Input.text) > 0:
-                sm.get_screen("PressureDetailsScreen").ids.background.ids.interface.fillDefaultAnswers()
-                sm.current = "PressureDetailsScreen"
-
-            elif int(hardwareScreen.ids.e121Input.text) + int(hardwareScreen.ids.e122Input.text) + int(hardwareScreen.ids.e123Input.text) > 0:
-                sm.get_screen("LeakDetailsScreen").ids.background.ids.interface.fillDefaultAnswers()
-                sm.current = "LeakDetailsScreen"
-
-        elif sm.current == "TempHumidDetailsScreen":
-
-            if int(hardwareScreen.ids.a120Input.text) > 0:
-                sm.get_screen("PressureDetailsScreen").ids.background.ids.interface.fillDefaultAnswers()
-                sm.current = "PressureDetailsScreen"
-
-            elif int(hardwareScreen.ids.e121Input.text) + int(hardwareScreen.ids.e122Input.text) + int(hardwareScreen.ids.e123Input.text) > 0:
-                sm.get_screen("LeakDetailsScreen").ids.background.ids.interface.fillDefaultAnswers()
-                sm.current = "LeakDetailsScreen"
-
-        elif sm.current == "PressureDetailsScreen":
-
-            if int(hardwareScreen.ids.e121Input.text) + int(hardwareScreen.ids.e122Input.text) + int(hardwareScreen.ids.e123Input.text) > 0:
-                sm.get_screen("LeakDetailsScreen").ids.background.ids.interface.fillDefaultAnswers()
-                sm.current = "LeakDetailsScreen"
+    # def changeDetailsScreens(self):
+    #     sm = App.get_running_app().root
+    #     hardwareScreen = sm.get_screen("SensorHardwareScreen").ids.background.ids.interface
+    #
+    #     if sm.current == "SensorHardwareScreen":
+    #
+    #         if int(hardwareScreen.ids.t101Input.text) + int(hardwareScreen.ids.t102Input.text) > 0:
+    #             sm.get_screen("ProbeDetailsScreen").ids.background.ids.interface.fillDefaultAnswers()
+    #             sm.current = "ProbeDetailsScreen"
+    #
+    #         elif int(hardwareScreen.ids.a100Input.text) > 0:
+    #             sm.get_screen("TempHumidDetailsScreen").ids.background.ids.interface.fillDefaultAnswers()
+    #             sm.current = "TempHumidDetailsScreen"
+    #
+    #         elif int(hardwareScreen.ids.a120Input.text) > 0:
+    #             sm.get_screen("PressureDetailsScreen").ids.background.ids.interface.fillDefaultAnswers()
+    #             sm.current = "PressureDetailsScreen"
+    #
+    #         elif int(hardwareScreen.ids.e121Input.text) + int(hardwareScreen.ids.e122Input.text) + int(hardwareScreen.ids.e123Input.text) > 0:
+    #             sm.get_screen("LeakDetailsScreen").ids.background.ids.interface.fillDefaultAnswers()
+    #             sm.current = "LeakDetailsScreen"
+    #
+    #     elif sm.current == "PowerSupplyScreen": #this is in place of the Probe Details Screen because that screen was split into 2
+    #
+    #         if int(hardwareScreen.ids.a100Input.text) > 0:
+    #             sm.get_screen("TempHumidDetailsScreen").ids.background.ids.interface.fillDefaultAnswers()
+    #             sm.current = "TempHumidDetailsScreen"
+    #
+    #         elif int(hardwareScreen.ids.a120Input.text) > 0:
+    #             sm.get_screen("PressureDetailsScreen").ids.background.ids.interface.fillDefaultAnswers()
+    #             sm.current = "PressureDetailsScreen"
+    #
+    #         elif int(hardwareScreen.ids.e121Input.text) + int(hardwareScreen.ids.e122Input.text) + int(hardwareScreen.ids.e123Input.text) > 0:
+    #             sm.get_screen("LeakDetailsScreen").ids.background.ids.interface.fillDefaultAnswers()
+    #             sm.current = "LeakDetailsScreen"
+    #
+    #     elif sm.current == "TempHumidDetailsScreen":
+    #
+    #         if int(hardwareScreen.ids.a120Input.text) > 0:
+    #             sm.get_screen("PressureDetailsScreen").ids.background.ids.interface.fillDefaultAnswers()
+    #             sm.current = "PressureDetailsScreen"
+    #
+    #         elif int(hardwareScreen.ids.e121Input.text) + int(hardwareScreen.ids.e122Input.text) + int(hardwareScreen.ids.e123Input.text) > 0:
+    #             sm.get_screen("LeakDetailsScreen").ids.background.ids.interface.fillDefaultAnswers()
+    #             sm.current = "LeakDetailsScreen"
+    #
+    #     elif sm.current == "PressureDetailsScreen":
+    #
+    #         if int(hardwareScreen.ids.e121Input.text) + int(hardwareScreen.ids.e122Input.text) + int(hardwareScreen.ids.e123Input.text) > 0:
+    #             sm.get_screen("LeakDetailsScreen").ids.background.ids.interface.fillDefaultAnswers()
+    #             sm.current = "LeakDetailsScreen"
 
 if __name__=="__main__":
     SenseConfiguration().run()
