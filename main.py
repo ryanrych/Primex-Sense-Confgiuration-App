@@ -739,6 +739,17 @@ class LeakDetailsScreen(Screen):
 
 
 
+class SummaryInterface(Widget):
+    pass
+
+class SummaryBackground(Widget):
+    pass
+
+class SummaryScreen(Screen):
+    pass
+
+
+
 class ConfirmWindow(FloatLayout):
 
     def test(self):
