@@ -36,7 +36,6 @@
 
 
 WindowManager:
-    SummaryScreen:
     WelcomeScreen:
     PackageSelectionScreen:
     Package1Screen:
@@ -59,6 +58,7 @@ WindowManager:
     TempHumidDetailsScreen:
     PressureDetailsScreen:
     LeakDetailsScreen:
+    SummaryScreen:
 
 
 
@@ -2856,6 +2856,7 @@ WindowManager:
                         background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
                         text: "Confirm - This is the Right Package!"
                         on_release:
+                            root.setOnboarding()
                             app.root.current = "SensorSubscriptionScreen"
 
                     Widget:
@@ -2966,6 +2967,7 @@ WindowManager:
                         background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
                         text: "Confirm - This is the Right Package!"
                         on_release:
+                            root.setOnboarding()
                             app.root.current = "SensorSubscriptionScreen"
 
                     Widget:
@@ -3341,7 +3343,7 @@ WindowManager:
                     text: "[b]Number of Sensors[/b]"
 
                 GridLayout:
-                    size_hint: 1, .55
+                    size_hint: 1, .5
 
                     cols: 2
                     spacing: 5
@@ -3479,6 +3481,12 @@ WindowManager:
                     Widget:
                         size_hint: .9, .23
 
+                Label:
+                    id: errorMessage
+                    size_hint: 1, .05
+                    text: ""
+                    color: 1,0,0,1
+
                 Widget:
                     size_hint: 1, .03
 
@@ -3497,8 +3505,10 @@ WindowManager:
                         background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
                         text: "Next"
                         on_release:
-                            app.root.get_screen("ProbeDetailsScreen").ids.background.ids.interface.fillDefaultAnswers()
+                            root.confirmAnswers()
+                            app.root.get_screen("SummaryScreen").ids.background.ids.interface.fillSiteInformation()
                             #below is an unfinished section that will be implemented later
+                            #app.root.get_screen("ProbeDetailsScreen").ids.background.ids.interface.fillDefaultAnswers()
                             #app.changeDetailsScreens()
 
                     Widget:
@@ -5080,6 +5090,7 @@ WindowManager:
                     spacing: 5
 
                     RoundedButton:
+                        id: packageButton
                         size_hint: .33, 1
                         text_size : self.width, None
                         height: self.texture_size[1]
@@ -5088,9 +5099,9 @@ WindowManager:
                         valign: "center"
                         backgroundColorNormal: 0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1
                         backgroundColorActive: 0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1
-                        text: "Package Selection Summary:\nTest"
 
                     RoundedButton:
+                        id: onboardingButton
                         size_hint: .33, 1
                         text_size : self.width, None
                         height: self.texture_size[1]
@@ -5099,9 +5110,9 @@ WindowManager:
                         valign: "center"
                         backgroundColorNormal: 0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1
                         backgroundColorActive: 0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1
-                        text: "Package Selection Summary:\nTest"
 
                     RoundedButton:
+                        id: hardwareButton
                         size_hint: .33, 1
                         text_size : self.width, None
                         height: self.texture_size[1]
@@ -5110,20 +5121,19 @@ WindowManager:
                         valign: "center"
                         backgroundColorNormal: 0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1
                         backgroundColorActive: 0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1
-                        text: "Package Selection Summary:\nTest"
 
                     Widget:
                         size_hint: .01, 1
 
-                Widget:
-                    size_hint: 1, .03
-
                 Label:
-                    size_hint: 1, .1
+                    size_hint: 1, .15
                     text_size: self.size
                     halign: "left"
                     color: 0,0,0,1
                     text: "Onboarding is charged up front.\nSoftware package and sensor subscriptions are recurring fees.\nHow do you want to be billed for recurring fees?"
+
+                Widget:
+                    size_hint: 1, .03
 
                 Label:
                     size_hint: 1, .05
@@ -5140,6 +5150,9 @@ WindowManager:
                     color: 0,0,0,1
                     text: "T101 + A120 + E121 + E122 + 2(T102 + A100 + E123)"
 
+                Widget:
+                    size_hint: 1, .03
+
                 BoxLayout:
                     size_hint: 1, .06
 
@@ -5147,7 +5160,8 @@ WindowManager:
                     spacing: 1
 
                     TextInput:
-                        size_hint: .05, 1
+                        id: totalPointsInput
+                        size_hint: .15, 1
                         multiline: False
                         background_normal: "White.png"
                         background_active: "White.png"
@@ -5163,14 +5177,39 @@ WindowManager:
                         text: "TOTAL MONITORS POINTS"
 
                     Widget:
-                        size_hint: .65, 1
+                        size_hint: .55, 1
 
-                Label:
-                    size_hint: 1, .05
-                    text_size: self.size
-                    halign: "left"
-                    color: 0,0,0,1
-                    text: "Price total order/year:"
+                Widget:
+                    size_hint: 1, .03
+
+                BoxLayout:
+                    size_hint: 1, .06
+
+                    orientation: "horizontal"
+                    spacing: 1
+
+                    Label:
+                        size_hint: .22, 1
+                        text_size: self.size
+                        halign: "left"
+                        color: 0,0,0,1
+                        text: "Price total order/year:"
+
+                    TextInput:
+                        id: totalPriceInput
+                        size_hint: .15, 1
+                        multiline: False
+                        background_normal: "White.png"
+                        background_active: "White.png"
+                        readonly: True
+                        cursor_color: 0,0,0,1
+                        foreground_color: 0,0,0,1
+
+                    Widget:
+                        size_hint: .63, 1
+
+                Widget:
+                    size_hint: 1, .03
 
                 Label:
                     size_hint: 1, .05
@@ -5194,7 +5233,8 @@ WindowManager:
                         text: "Price:"
 
                     TextInput:
-                        size_hint: .1, 1
+                        id: onboardingPriceInput
+                        size_hint: .15, 1
                         multiline: False
                         background_normal: "White.png"
                         background_active: "White.png"
@@ -5203,7 +5243,10 @@ WindowManager:
                         foreground_color: 0,0,0,1
 
                     Widget:
-                        size_hint: .83, 1
+                        size_hint: .78, 1
+
+                Widget:
+                    size_hint: 1, .03
 
                 Label:
                     size_hint: 1, .05
@@ -5227,7 +5270,8 @@ WindowManager:
                         text: "Up front: $"
 
                     TextInput:
-                        size_hint: .1, 1
+                        id: initialPriceInput
+                        size_hint: .15, 1
                         multiline: False
                         background_normal: "White.png"
                         background_active: "White.png"
@@ -5236,7 +5280,10 @@ WindowManager:
                         foreground_color: 0,0,0,1
 
                     Widget:
-                        size_hint: .79, 1
+                        size_hint: .74, 1
+
+                Widget:
+                    size_hint: 1, .03
 
                 BoxLayout:
                     size_hint: 1, .06
@@ -5252,7 +5299,8 @@ WindowManager:
                         text: "Year 2 onward: $"
 
                     TextInput:
-                        size_hint: .1, 1
+                        id: futurePriceInput
+                        size_hint: .15, 1
                         multiline: False
                         background_normal: "White.png"
                         background_active: "White.png"
@@ -5261,10 +5309,10 @@ WindowManager:
                         foreground_color: 0,0,0,1
 
                     Widget:
-                        size_hint: .73, 1
+                        size_hint: .68, 1
 
                 Widget:
-                    size_hint: 1, .33
+                    size_hint: 1, .12
 
             Widget:
                 size_hint: .05, 1

@@ -9,6 +9,7 @@ from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.popup import Popup
 
 from SitePriorities import SitePriorities
+from Hardware import Hardware
 
 class WindowManager(ScreenManager):
     pass
@@ -16,7 +17,19 @@ class WindowManager(ScreenManager):
 
 
 sitePriorities = SitePriorities()
+siteHardware = Hardware()
 package = ""
+onboarding = ""
+
+#Algorithm for reading the lookup table into a 2d list
+lookupTable = []
+
+file = open("LookUpTable.txt","r")
+
+for x in file:
+    lookupTable.append(x.split(" "))
+
+file.close()
 
 
 
@@ -461,7 +474,11 @@ class FeaturesScreen(Screen):
 
 
 class SelfStartOnboardingInterface(Widget):
-    pass
+
+    def setOnboarding(self):
+        global onboarding
+
+        onboarding = "Self-Start"
 
 class SelfStartOnboardingBackground(Widget):
     pass
@@ -472,7 +489,11 @@ class SelfStartOnboardingScreen(Screen):
 
 
 class WhiteGloveOnboardingInterface(Widget):
-    pass
+
+    def setOnboarding(self):
+        global onboarding
+
+        onboarding = "White Glove"
 
 class WhiteGloveOnboardingBackground(Widget):
     pass
@@ -513,6 +534,38 @@ class SensorHardwareInterface(Widget):
 
         self.ids.siteName.text = screen.ids.background.ids.interface.ids.siteName.text
         self.ids.bedSize.text = screen.ids.background.ids.interface.ids.bedSize.text
+
+    def setHardwareData(self):
+        global siteHardware
+
+        siteHardware.t101=int(self.ids.t101Input.text)
+        siteHardware.t102=int(self.ids.t102Input.text)
+        siteHardware.a100=int(self.ids.a100Input.text)
+        siteHardware.a120=int(self.ids.a120Input.text)
+        siteHardware.e121=int(self.ids.e121Input.text)
+        siteHardware.e122=int(self.ids.e122Input.text)
+        siteHardware.e123=int(self.ids.e123Input.text)
+
+    def confirmAnswers(self):
+        try:
+            int(self.ids.t101Input.text)
+            int(self.ids.t102Input.text)
+            int(self.ids.a100Input.text)
+            int(self.ids.a120Input.text)
+            int(self.ids.e121Input.text)
+            int(self.ids.e122Input.text)
+            int(self.ids.e123Input.text)
+            self.setHardwareData() #data is cleared to move on
+            App.get_running_app().root.current = "SummaryScreen"
+        except:
+            self.errorMessageStart()
+            Clock.schedule_once(self.errorMessageEnd,3)
+
+    def errorMessageStart(self):
+        self.ids.errorMessage.text = "Invalid Answer"
+
+    def errorMessageEnd(self, dt):
+        self.ids.errorMessage.text = ""
 
 class SensorHardwareBackground(Widget):
     pass
@@ -740,7 +793,62 @@ class LeakDetailsScreen(Screen):
 
 
 class SummaryInterface(Widget):
-    pass
+
+    def fillSiteInformation(self):
+        global package
+        global onboarding
+        global siteHardware
+
+        pricePerPoint = self.calculatePricePerMonitoringPoint()
+
+        self.ids.packageButton.text = "Package Selection Summary:\n%s" % (package)
+        self.ids.onboardingButton.text = "Onboarding Selection Summary:\n%s" % (onboarding)
+        self.ids.hardwareButton.text = "Sensor Hardware Summary:\nSubscribe"
+
+        self.ids.totalPointsInput.text = str(siteHardware.totalPoints)
+
+        softwarePrice = siteHardware.totalPoints * pricePerPoint
+
+        self.ids.totalPriceInput.text = "$" + str(softwarePrice)
+
+        if onboarding == "Self-Start":
+            onboardingPrice = 5600
+            self.ids.onboardingPriceInput.text = "$5,600"
+        else:
+            onboardingPrice = 18750
+            self.ids.onboardingPriceInput.text = "$18,750"
+
+        self.ids.initialPriceInput.text = "$" + str(softwarePrice + onboardingPrice)
+        self.ids.futurePriceInput.text = "$" + str(softwarePrice)
+
+    def calculatePricePerMonitoringPoint(self):
+        global package
+        global siteHardware
+        global lookupTable
+
+        totalPoints = siteHardware.t101 + siteHardware.a120 + siteHardware.e121 + siteHardware.e122 + 2 * (siteHardware.t102 + siteHardware.a100 + siteHardware.e123)
+        siteHardware.totalPoints = totalPoints
+
+        #this loop sets the correct row of the lookup table (rounds points up to nearest 100 or to 50)
+        lookupRow = 0
+        if totalPoints > 50:
+            for i in range(1, 21):
+                if totalPoints <= i * 100:
+                    i += 1
+                    break
+                else:
+                    totalPoints += 1
+
+        #set lookup column based on the site package
+        if package == "Basic":
+            lookupColumn = 0
+        elif package == "Advanced":
+            lookupColumn = 1
+        else:
+            lookupColumn = 1
+
+        #remove dollar sign and return float value of the price
+        return float(lookupTable[lookupRow][lookupColumn][1:])
 
 class SummaryBackground(Widget):
     pass
