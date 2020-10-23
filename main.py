@@ -360,16 +360,16 @@ class EfficiencyInterface(Widget):
             Clock.schedule_once(self.errorMessageEnd, 3)
             return
 
-        if self.ids.teamButtons.selected == 1:
+        if self.ids.teamButtonList.selected == 1:
             sitePriorities.oneVueTeamSize = int(self.ids.teamSizeInput.text)
         else:
             sitePriorities.oneVueTeamSize = 1
 
-        if self.ids.frequencyButtons.selected != -1:
-            sitePriorities.oneVueTime = self.ids.frequencyButtons.selected
+        if self.ids.frequencyButtonList.selected != -1:
+            sitePriorities.oneVueTime = self.ids.frequencyButtonList.selected
 
-            if self.ids.experienceButtons.selected != -1:
-                sitePriorities.experiencedTeam = not self.ids.experienceButtons.selected
+            if self.ids.experienceButtonList.selected != -1:
+                sitePriorities.experiencedTeam = not self.ids.experienceButtonList.selected
                 try:
                     sitePriorities.alertsPerWeek = int(self.ids.alertsPerWeekInput.text)
                 except:
@@ -806,18 +806,26 @@ class SummaryInterface(Widget):
         global package
         global onboarding
         global siteHardware
+        global hardwareType
 
         pricePerPoint = self.calculatePricePerMonitoringPoint()
 
         self.ids.packageButton.text = "Package Selection Summary:\n%s" % (package)
         self.ids.onboardingButton.text = "Onboarding Selection Summary:\n%s" % (onboarding)
-        self.ids.hardwareButton.text = "Sensor Hardware Summary:\nSubscribe"
+        self.ids.hardwareButton.text = "Sensor Hardware Summary:\n%s" % (hardwareType)
+
+        if hardwareType == "Subscription":
+            self.ids.priceLayout.visible = False
+        else:
+            self.ids.priceLayout.visible = True
 
         self.ids.totalPointsInput.text = str(siteHardware.totalPoints)
 
         softwarePrice = siteHardware.totalPoints * pricePerPoint
+        hardwarePrice = (siteHardware.t101 * 446) + (siteHardware.t102 * 605) + (siteHardware.a100 * 315) + (siteHardware.a120 * 749) + (siteHardware.e121 * 304) + (siteHardware.e122 * 338) + (siteHardware.e123 * 439)
 
         self.ids.totalPriceInput.text = "$" + str(softwarePrice)
+        self.ids.hardwarePriceInput.text = "$" + str(hardwarePrice)
 
         if onboarding == "Self-Start":
             onboardingPrice = 5600
@@ -857,6 +865,12 @@ class SummaryInterface(Widget):
 
         #remove dollar sign and return float value of the price
         return float(lookupTable[lookupRow][lookupColumn][1:])
+
+    def changeHardwareButton(self):
+        if self.ids.hardwareButton.text == "Sensor Hardware Summary:\nPurchase":
+            self.ids.hardwareButton.text = "Sensor Hardware Summary:\nSubscription"
+        else:
+            self.ids.hardwareButton.text = "Sensor Hardware Summary:\nPurchase"
 
 class SummaryBackground(Widget):
     pass
