@@ -11,6 +11,8 @@ from kivy.uix.popup import Popup
 from SitePriorities import SitePriorities
 from Hardware import Hardware
 
+from datetime import datetime
+
 class WindowManager(ScreenManager):
     pass
 
@@ -18,6 +20,7 @@ class WindowManager(ScreenManager):
 
 sitePriorities = SitePriorities()
 siteHardware = Hardware()
+hardwareType = ""
 package = ""
 onboarding = ""
 
@@ -35,57 +38,56 @@ file.close()
 
 class WelcomeInterface(Widget):
 
-    def facilitiesBox(self):
-        if self.facilities.active:
-            self.facilities.active = False
+    def facilitiesBoxClick(self):
+        if self.ids.facilitiesBox.active:
+            self.ids.facilitiesBox.active = False
         else:
-            self.facilities.active = True
+            self.ids.facilitiesBox.active = True
 
-    def biomedBox(self):
-        if self.biomed.active:
-            self.biomed.active = False
+    def biomedBoxClick(self):
+        if self.ids.biomedBox.active:
+            self.ids.biomedBox.active = False
         else:
-            self.biomed.active = True
+            self.ids.biomedBox.active = True
 
-    def clinicalServicesBox(self):
-        if self.clinicalServices.active:
-            self.clinicalServices.active = False
+    def clinicalServicesBoxClick(self):
+        if self.ids.clinicalServicesBox.active:
+            self.ids.clinicalServicesBox.active = False
         else:
-            self.clinicalServices.active = True
+            self.ids.clinicalServicesBox.active = True
 
-    def pharmacyBox(self):
-        if self.pharmacy.active:
-            self.pharmacy.active = False
+    def pharmacyBoxClick(self):
+        if self.ids.pharmacyBox.active:
+            self.ids.pharmacyBox.active = False
         else:
-            self.pharmacy.active = True
+            self.ids.pharmacyBox.active = True
 
-    def nursingBox(self):
-        if self.nursing.active:
-            self.nursing.active = False
+    def nursingBoxClick(self):
+        if self.ids.nursingBox.active:
+            self.ids.nursingBox.active = False
         else:
-            self.nursing.active = True
+            self.ids.nursingBox.active = True
 
-    def labBox(self):
-        if self.lab.active:
-            self.lab.active = False
+    def labBoxClick(self):
+        if self.ids.labBox.active:
+            self.ids.labBox.active = False
         else:
-            self.lab.active = True
+            self.ids.labBox.active = True
 
-    def itBox(self):
-        if self.it.active:
-            self.it.active = False
+    def itBoxClick(self):
+        if self.ids.itBox.active:
+            self.ids.itBox.active = False
         else:
-            self.it.active = True
+            self.ids.itBox.active = True
 
-    def cSuiteBox(self):
-        if self.cSuite.active:
-            self.cSuite.active = False
+    def cSuiteBoxClick(self):
+        if self.ids.cSuiteBox.active:
+            self.ids.cSuiteBox.active = False
         else:
-            self.cSuite.active = True
+            self.ids.cSuiteBox.active = True
 
     def checkAnswers(self):
-        pass
-        if self.ids.siteName.text == "" or self.ids.bedSize == "" or self.ids.keySiteContact == "":
+        if self.ids.siteNameInput.text == "" or self.ids.bedSizeInput == "" or self.ids.keySiteContactInput == "":
             self.errorMessageStart()
             Clock.schedule_once(self.errorMessageEnd, 3)
         else:
@@ -504,7 +506,10 @@ class WhiteGloveOnboardingScreen(Screen):
 
 
 class SensorSubscriptionInterface(Widget):
-    pass
+
+    def setHardware(self):
+        global hardwareType
+        hardwareType = "Subscription"
 
 class SensorSubscriptionBackground(Widget):
     pass
@@ -515,7 +520,10 @@ class SensorSubscriptionScreen(Screen):
 
 
 class SensorPurchaseInterface(Widget):
-    pass
+
+    def setHardware(self):
+        global hardwareType
+        hardwareType = "Purchase"
 
 class SensorPurchaseBackground(Widget):
     pass
@@ -532,8 +540,8 @@ class SensorHardwareInterface(Widget):
         sm = App.get_running_app().root
         screen = sm.get_screen("WelcomeScreen")
 
-        self.ids.siteName.text = screen.ids.background.ids.interface.ids.siteName.text
-        self.ids.bedSize.text = screen.ids.background.ids.interface.ids.bedSize.text
+        self.ids.siteName.text = screen.ids.background.ids.interface.ids.siteNameInput.text
+        self.ids.bedSize.text = screen.ids.background.ids.interface.ids.bedSizeInput.text
 
     def setHardwareData(self):
         global siteHardware
@@ -845,7 +853,7 @@ class SummaryInterface(Widget):
         elif package == "Advanced":
             lookupColumn = 1
         else:
-            lookupColumn = 1
+            lookupColumn = 2
 
         #remove dollar sign and return float value of the price
         return float(lookupTable[lookupRow][lookupColumn][1:])
@@ -936,6 +944,172 @@ class SenseConfiguration(App):
     #         if int(hardwareScreen.ids.e121Input.text) + int(hardwareScreen.ids.e122Input.text) + int(hardwareScreen.ids.e123Input.text) > 0:
     #             sm.get_screen("LeakDetailsScreen").ids.background.ids.interface.fillDefaultAnswers()
     #             sm.current = "LeakDetailsScreen"
+
+    #Method to generate text file of the sites information
+    def generateTxt(self):
+        global package
+        global hardwareType
+        global siteHardware
+        global onboarding
+        global sitePriorities
+
+        siteName = App.get_running_app().root.get_screen("WelcomeScreen").ids.background.ids.interface.ids.siteNameInput.text
+        bedSize = App.get_running_app().root.get_screen("WelcomeScreen").ids.background.ids.interface.ids.bedSizeInput.text
+        keySite = App.get_running_app().root.get_screen("WelcomeScreen").ids.background.ids.interface.ids.keySiteContactInput.text
+
+        departments = []
+        if App.get_running_app().root.get_screen("WelcomeScreen").ids.background.ids.interface.ids.facilitiesBox.active:
+            departments.append("facilities")
+        if App.get_running_app().root.get_screen("WelcomeScreen").ids.background.ids.interface.ids.biomedBox.active:
+            departments.append("biomed")
+        if App.get_running_app().root.get_screen("WelcomeScreen").ids.background.ids.interface.ids.clinicalServicesBox.active:
+            departments.append("clinical services")
+        if App.get_running_app().root.get_screen("WelcomeScreen").ids.background.ids.interface.ids.pharmacyBox.active:
+            departments.append("pharmacy")
+        if App.get_running_app().root.get_screen("WelcomeScreen").ids.background.ids.interface.ids.nursingBox.active:
+            departments.append("nursing")
+        if App.get_running_app().root.get_screen("WelcomeScreen").ids.background.ids.interface.ids.labBox.active:
+            departments.append("lab")
+        if App.get_running_app().root.get_screen("WelcomeScreen").ids.background.ids.interface.ids.itBox.active:
+            departments.append("it")
+        if App.get_running_app().root.get_screen("WelcomeScreen").ids.background.ids.interface.ids.cSuiteBox.active:
+            departments.append("c suite")
+
+        auditCompanies = []
+        if App.get_running_app().root.get_screen("AuditsScreen").ids.background.ids.interface.ids.button0.selected:
+            auditCompanies.append("joint commission or dnv")
+        if App.get_running_app().root.get_screen("AuditsScreen").ids.background.ids.interface.ids.button1.selected:
+            auditCompanies.append("fda")
+        if App.get_running_app().root.get_screen("AuditsScreen").ids.background.ids.interface.ids.button2.selected:
+            auditCompanies.append("cdc")
+        if App.get_running_app().root.get_screen("AuditsScreen").ids.background.ids.interface.ids.button3.selected:
+            auditCompanies.append("state's vaccine program")
+        if App.get_running_app().root.get_screen("AuditsScreen").ids.background.ids.interface.ids.button4.selected:
+            auditCompanies.append("health and human services")
+        auditCompanies.append(App.get_running_app().root.get_screen("AuditsScreen").ids.background.ids.interface.ids.otherCompanyInput.text)
+        auditPrepTime = App.get_running_app().root.get_screen("AuditsScreen").ids.background.ids.interface.ids.auditPrepTimeInput.text
+
+        if App.get_running_app().root.get_screen("LossScreen").ids.background.ids.interface.ids.lossButtonList.selected == -1:
+            lossFrequency = "not answered"
+        if App.get_running_app().root.get_screen("LossScreen").ids.background.ids.interface.ids.lossButtonList.selected == 0:
+            lossFrequency = "less than once per year"
+        if App.get_running_app().root.get_screen("LossScreen").ids.background.ids.interface.ids.lossButtonList.selected == 1:
+            lossFrequency = "about once per year"
+        if App.get_running_app().root.get_screen("LossScreen").ids.background.ids.interface.ids.lossButtonList.selected == 2:
+            lossFrequency = "2-3 times a year"
+        if App.get_running_app().root.get_screen("LossScreen").ids.background.ids.interface.ids.lossButtonList.selected == 3:
+            lossFrequency = "4-6 times a year"
+        if App.get_running_app().root.get_screen("LossScreen").ids.background.ids.interface.ids.lossButtonList.selected == 4:
+            lossFrequency = "6-11 times a year"
+        if App.get_running_app().root.get_screen("LossScreen").ids.background.ids.interface.ids.lossButtonList.selected == 5:
+            lossFrequency = "once a month"
+        if App.get_running_app().root.get_screen("LossScreen").ids.background.ids.interface.ids.lossButtonList.selected == 6:
+            lossFrequency = "once a week"
+
+        averageLoss = App.get_running_app().root.get_screen("LossScreen").ids.background.ids.interface.ids.averageLossInput.text
+
+        if App.get_running_app().root.get_screen("LossScreen").ids.background.ids.interface.ids.valueButtonList.selected == -1:
+            primexGaurunteeValue = "not answered"
+        if App.get_running_app().root.get_screen("LossScreen").ids.background.ids.interface.ids.valueButtonList.selected == 0:
+            primexGaurunteeValue = "high value"
+        if App.get_running_app().root.get_screen("LossScreen").ids.background.ids.interface.ids.valueButtonList.selected == 1:
+            primexGaurunteeValue = "low value"
+
+        departmentsUsed = App.get_running_app().root.get_screen("EfficiencyScreen").ids.background.ids.interface.ids.oneVueDepartmentsInput.text
+        if App.get_running_app().root.get_screen("EfficiencyScreen").ids.background.ids.interface.ids.teamButtonList.selected == -1:
+            onevueAdmins = "not answered"
+        if App.get_running_app().root.get_screen("EfficiencyScreen").ids.background.ids.interface.ids.teamButtonList.selected == 0:
+            onevueAdmins = "one person"
+        if App.get_running_app().root.get_screen("EfficiencyScreen").ids.background.ids.interface.ids.teamButtonList.selected == 1:
+            onevueAdmins = App.get_running_app().root.get_screen("EfficiencyScreen").ids.background.ids.interface.ids.teamSizeInput.text
+
+        if App.get_running_app().root.get_screen("EfficiencyScreen").ids.background.ids.interface.ids.frequencyButtonList.selected == -1:
+            onevueFTE = "not answered"
+        if App.get_running_app().root.get_screen("EfficiencyScreen").ids.background.ids.interface.ids.frequencyButtonList.selected == 0:
+            onevueFTE = "<10%"
+        if App.get_running_app().root.get_screen("EfficiencyScreen").ids.background.ids.interface.ids.frequencyButtonList.selected == 1:
+            onevueFTE = "11-25%"
+        if App.get_running_app().root.get_screen("EfficiencyScreen").ids.background.ids.interface.ids.frequencyButtonList.selected == 2:
+            onevueFTE = "26-50%"
+        if App.get_running_app().root.get_screen("EfficiencyScreen").ids.background.ids.interface.ids.frequencyButtonList.selected == 3:
+            onevueFTE = ">50%"
+
+        if App.get_running_app().root.get_screen("EfficiencyScreen").ids.background.ids.interface.ids.experienceButtonList.selected == -1:
+            staffExperience = "not answered"
+        if App.get_running_app().root.get_screen("EfficiencyScreen").ids.background.ids.interface.ids.experienceButtonList.selected == 0:
+            staffExperience = "yes"
+        if App.get_running_app().root.get_screen("EfficiencyScreen").ids.background.ids.interface.ids.experienceButtonList.selected == 1:
+            staffExperience = "no"
+
+        alertsPerWeek = App.get_running_app().root.get_screen("EfficiencyScreen").ids.background.ids.interface.ids.alertsPerWeekInput.text
+
+        if App.get_running_app().root.get_screen("EfficiencyScreen").ids.background.ids.interface.ids.laborRateInput.text != "":
+            laborRate = App.get_running_app().root.get_screen("EfficiencyScreen").ids.background.ids.interface.ids.laborRateInput.text
+        else:
+            laborRate = 15
+
+        reportsPerWeek = App.get_running_app().root.get_screen("EfficiencyScreen").ids.background.ids.interface.ids.reportsPerWeekInput.text
+
+        if App.get_running_app().root.get_screen("EfficiencyScreen").ids.background.ids.interface.ids.managementRateInput.text != "":
+            managementRate = App.get_running_app().root.get_screen("EfficiencyScreen").ids.background.ids.interface.ids.managementRateInput.text
+        else:
+            managementRate = 50
+
+        otherComment = App.get_running_app().root.get_screen("OtherScreen").ids.background.ids.interface.ids.criteriaInput.text
+
+        subscriptionPrice = App.get_running_app().root.get_screen("SummaryScreen").ids.background.ids.interface.ids.totalPriceInput.text
+
+        if onboarding == "Self-Start":
+            onboardingPrice = 18750
+        else:
+            onboardingPrice = 5600
+
+        upFrontPrice = App.get_running_app().root.get_screen("SummaryScreen").ids.background.ids.interface.ids.initialPriceInput.text
+        perYearPrice = App.get_running_app().root.get_screen("SummaryScreen").ids.background.ids.interface.ids.futurePriceInput.text
+
+        file = open("%s-Site-Information.txt" % (siteName),"w")
+
+        file.write("Sense Configuration App:\n")
+        file.write("Date/time stamp: %s\n" % (datetime.now()))
+        file.write("Bed size of site: %s" % (bedSize))
+        file.write("Key site contact: %s" % (keySite))
+        file.write("Departments involved:\n")
+        for x in departments:
+            file.write(x + "\n")
+        file.write("Audit Companies:\n")
+        for x in auditCompanies:
+            file.write(x + "\n")
+        file.write("Time spent preparing: %s\n" % (auditPrepTime))
+        file.write("Loss Frequency: %s\n" % (lossFrequency))
+        file.write("Average value of loss: %s\n" % (averageLoss))
+        file.write("Guarantee value: %s\n" % (primexGaurunteeValue))
+        file.write("Number of departments: %s\n" % (departmentsUsed))
+        file.write("OneVue admins: %s\n" % (onevueAdmins))
+        file.write("OneVue FTE: %s\n" % (onevueFTE))
+        file.write("Staff experience: %s\n" % (staffExperience))
+        file.write("Alerts per week: %s\n" % (alertsPerWeek))
+        file.write("Labor rate per hour: %s\n" % (laborRate))
+        file.write("Reports per week: %s\n" % (reportsPerWeek))
+        file.write("Management rate per hour: %s\n" % (managementRate))
+        file.write("Other priorities: %s\n" % (otherComment))
+        file.write("Package confirmed: %s\n" % (package))
+        file.write("Onboarding confirmed: %s\n" % (onboarding))
+        file.write("Hardware confirmed: %s\n" % (hardwareType))
+        file.write("Quantity T101: %s\n" % (siteHardware.t101))
+        file.write("Quantity T102: %s\n" % (siteHardware.t102))
+        file.write("Quantity A100: %s\n" % (siteHardware.a100))
+        file.write("Quantity A120: %s\n" % (siteHardware.a120))
+        file.write("Quantity E121: %s\n" % (siteHardware.e121))
+        file.write("Quantity E122: %s\n" % (siteHardware.e122))
+        file.write("Quantity E123: %s\n" % (siteHardware.e123))
+        file.write("Total monitoring points: %s\n" % (siteHardware.totalPoints))
+        file.write("Price total order per year: %s\n" % (subscriptionPrice))
+        file.write("Onboarding Price: %s\n" % (onboardingPrice))
+        file.write("Payment up front: %s\n" % (upFrontPrice))
+        file.write("Payment year 2 onward: %s\n" % (perYearPrice))
+
+        file.close()
+
 
 if __name__=="__main__":
     SenseConfiguration().run()

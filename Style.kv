@@ -64,15 +64,6 @@ WindowManager:
 <WelcomeInterface>:
     size_hint: None, None
 
-    facilities: facilities
-    biomed: biomed
-    clinicalServices: clinicalServices
-    pharmacy: pharmacy
-    nursing: nursing
-    lab: lab
-    it: it
-    cSuite: cSuite
-
     RelativeLayout:
         pos: self.parent.pos
         size: self.parent.size
@@ -123,7 +114,7 @@ WindowManager:
                             color: 0,0,0,1
 
                         TextInput:
-                            id: siteName
+                            id: siteNameInput
                             multiline: False
                             background_normal: "White.png"
                             background_active: "White.png"
@@ -137,7 +128,7 @@ WindowManager:
                             color: 0,0,0,1
 
                         TextInput:
-                            id: bedSize
+                            id: bedSizeInput
                             text_size: self.size
                             multiline: False
                             background_normal: "White.png"
@@ -152,7 +143,7 @@ WindowManager:
                             color: 0,0,0,1
 
                         TextInput:
-                            id: keySiteContact
+                            id: keySiteContactInput
                             multiline: False
                             background_normal: "White.png"
                             background_active: "White.png"
@@ -186,7 +177,7 @@ WindowManager:
 
                         CheckBox:
                             size_hint: .1, 1
-                            id: facilities
+                            id: facilitiesBox
                             color: 0,0,0,1
 
                         Label:
@@ -197,11 +188,11 @@ WindowManager:
                             halign: "left"
                             color: 0,0,0,1
                             on_ref_press:
-                                root.facilitiesBox()
+                                root.facilitiesBoxClick()
 
                         CheckBox:
                             size_hint: .1, 1
-                            id: biomed
+                            id: biomedBox
                             color: 0,0,0,1
 
                         Label:
@@ -212,11 +203,11 @@ WindowManager:
                             halign: "left"
                             color: 0,0,0,1
                             on_ref_press:
-                                root.biomedBox()
+                                root.biomedBoxClick()
 
                         CheckBox:
                             size_hint: .1, 1
-                            id: clinicalServices
+                            id: clinicalServicesBox
                             color: 0,0,0,1
 
                         Label:
@@ -227,11 +218,11 @@ WindowManager:
                             halign: "left"
                             color: 0,0,0,1
                             on_ref_press:
-                                root.clinicalServicesBox()
+                                root.clinicalServicesBoxClick()
 
                         CheckBox:
                             size_hint: .1, 1
-                            id: pharmacy
+                            id: pharmacyBox
                             color: 0,0,0,1
 
                         Label:
@@ -242,11 +233,11 @@ WindowManager:
                             halign: "left"
                             color: 0,0,0,1
                             on_ref_press:
-                                root.pharmacyBox()
+                                root.pharmacyBoxClick()
 
                         CheckBox:
                             size_hint: .1, 1
-                            id: nursing
+                            id: nursingBox
                             color: 0,0,0,1
 
                         Label:
@@ -257,11 +248,11 @@ WindowManager:
                             halign: "left"
                             color: 0,0,0,1
                             on_ref_press:
-                                root.nursingBox()
+                                root.nursingBoxClick()
 
                         CheckBox:
                             size_hint: .1, 1
-                            id: lab
+                            id: labBox
                             color: 0,0,0,1
 
                         Label:
@@ -272,11 +263,11 @@ WindowManager:
                             halign: "left"
                             color: 0,0,0,1
                             on_ref_press:
-                                root.labBox()
+                                root.labBoxClick()
 
                         CheckBox:
                             size_hint: .1, 1
-                            id: it
+                            id: itBox
                             color: 0,0,0,1
 
                         Label:
@@ -287,11 +278,11 @@ WindowManager:
                             halign: "left"
                             color: 0,0,0,1
                             on_ref_press:
-                                root.itBox()
+                                root.itBoxClick()
 
                         CheckBox:
                             size_hint: .1, 1
-                            id: cSuite
+                            id: cSuiteBox
                             color: 0,0,0,1
 
                         Label:
@@ -302,7 +293,7 @@ WindowManager:
                             halign: "left"
                             color: 0,0,0,1
                             on_ref_press:
-                                root.cSuiteBox()
+                                root.cSuiteBoxClick()
 
                     Label:
                         size_hint: .55, 1
@@ -1999,7 +1990,7 @@ WindowManager:
                     size_hint: 1, .01
 
                 BoxLayout:
-                    id: teamButtons
+                    id: teamButtonList
                     size_hint: 1, .04
                     orientation: "horizontal"
                     spacing: 10
@@ -2076,7 +2067,7 @@ WindowManager:
                     size_hint: 1, .01
 
                 GridLayout:
-                    id: frequencyButtons
+                    id: frequencyButtonList
                     size_hint: 1, .2
                     cols: 2
                     spacing: 7
@@ -2151,7 +2142,7 @@ WindowManager:
                     text: "Have the staff managed a system like OneVue before?"
 
                 BoxLayout:
-                    id: experienceButtons
+                    id: experienceButtonList
                     size_hint: 1, .04
                     orientation: "horizontal"
                     spacing: 10
@@ -3078,6 +3069,7 @@ WindowManager:
                         background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
                         text: "Confirm - We'll Subscribe to the Hardware!"
                         on_release:
+                            root.setHardware()
                             app.root.get_screen("SensorHardwareScreen").ids.background.ids.interface.setSiteInfo()
                             app.root.current = "SensorHardwareScreen"
 
@@ -3203,6 +3195,7 @@ WindowManager:
                         background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
                         text: "Show me Sensor Subscription"
                         on_release:
+                            root.setHardware()
                             app.root.current = "SensorSubscriptionScreen"
 
                     Widget:
@@ -5119,7 +5112,8 @@ WindowManager:
                         halign: "center"
                         valign: "center"
                         backgroundColorNormal: 0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1
-                        backgroundColorActive: 0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1
+                        backgroundColorActive: 0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1
+                        text: "Sensor Hardware Summary:\nPurchase"
 
                     Widget:
                         size_hint: .01, 1
@@ -5129,7 +5123,7 @@ WindowManager:
                     text_size: self.size
                     halign: "left"
                     color: 0,0,0,1
-                    text: "Onboarding is charged up front.\nSoftware package and sensor subscriptions are recurring fees.\nHow do you want to be billed for recurring fees?"
+                    text: "Onboarding is charged up front.\nSoftware package and sensor subscriptions are recurring fees."
 
                 Widget:
                     size_hint: 1, .03
@@ -5173,7 +5167,7 @@ WindowManager:
                         text_size: self.size
                         halign: "left"
                         color: 0,0,0,1
-                        text: "TOTAL MONITORS POINTS"
+                        text: "TOTAL MONITORING POINTS"
 
                     Widget:
                         size_hint: .55, 1
@@ -5182,10 +5176,14 @@ WindowManager:
                     size_hint: 1, .03
 
                 BoxLayout:
+                    id: priceLayout
+
                     size_hint: 1, .06
 
                     orientation: "horizontal"
                     spacing: 1
+
+                    visible: False
 
                     Label:
                         size_hint: .22, 1
@@ -5205,7 +5203,27 @@ WindowManager:
                         foreground_color: 0,0,0,1
 
                     Widget:
-                        size_hint: .63, 1
+                        size_hint: .03, 1
+
+                    Label:
+                        size_hint: .22, 1
+                        text_size: self.size
+                        halign: "left"
+                        color: 0,0,0,1
+                        text: "Sensor Hardware:"
+
+                    TextInput:
+                        id: hardwarePriceInput
+                        size_hint: .15, 1
+                        multiline: False
+                        background_normal: "White.png"
+                        background_active: "White.png"
+                        readonly: True
+                        cursor_color: 0,0,0,1
+                        foreground_color: 0,0,0,1
+
+                    Widget:
+                        size_hint: .23, 1
 
                 Widget:
                     size_hint: 1, .03
@@ -5266,7 +5284,7 @@ WindowManager:
                         text_size: self.size
                         halign: "left"
                         color: 0,0,0,1
-                        text: "Up front: $"
+                        text: "Up front: "
 
                     TextInput:
                         id: initialPriceInput
@@ -5295,7 +5313,7 @@ WindowManager:
                         text_size: self.size
                         halign: "left"
                         color: 0,0,0,1
-                        text: "Year 2 onward: $"
+                        text: "Year 2 onward: "
 
                     TextInput:
                         id: futurePriceInput
@@ -5311,7 +5329,30 @@ WindowManager:
                         size_hint: .68, 1
 
                 Widget:
-                    size_hint: 1, .12
+                    size_hint: 1, .03
+
+                BoxLayout:
+                    size_hint: 1, .06
+
+                    orientation: "horizontal"
+
+                    Widget:
+                        size_hint: .4, 1
+
+                    Button:
+                        size_hint: .2, 1
+                        background_normal: ""
+                        background_down: ""
+                        background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
+                        text: "Finish"
+                        on_release:
+                            app.generateTxt()
+
+                    Widget:
+                        size_hint: .4, 1
+
+                Widget:
+                    size_hint: 1, .03
 
             Widget:
                 size_hint: .05, 1
