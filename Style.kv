@@ -585,6 +585,7 @@ WindowManager:
                         background_down: ""
                         background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
                         on_release:
+                            root.setPackage()
                             app.root.transition = NoTransition()
                             app.root.current = "FeaturesScreen"
 
@@ -778,6 +779,7 @@ WindowManager:
                         background_down: ""
                         background_color: (0.3803921568627451, 0.6784313725490196, 0.2627450980392157, 1) if self.state == "normal" else (0.2803921568627451, 0.5784313725490196, 0.1627450980392157, 1)
                         on_release:
+                            root.setPackage()
                             app.root.transition = NoTransition()
                             app.root.current = "WhiteGloveOnboardingScreen"
 

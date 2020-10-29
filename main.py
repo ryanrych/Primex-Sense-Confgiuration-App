@@ -200,7 +200,10 @@ class SitePrioritiesScreen(Screen):
 
 
 class Package1Interface(Widget):
-    pass
+
+    def setPackage(self):
+        global package
+        package = "Basic"
 
 class Package1Background(Widget):
     pass
@@ -211,7 +214,10 @@ class Package1Screen(Screen):
 
 
 class Package2Interface(Widget):
-    pass
+
+    def setPackage(self):
+        global package
+        package = "Advanced"
 
 class Package2Background(Widget):
     pass
@@ -222,7 +228,10 @@ class Package2Screen(Screen):
 
 
 class Package3Interface(Widget):
-    pass
+
+    def setPackage(self):
+        global package
+        package = "Preferred"
 
 class Package3Background(Widget):
     pass
@@ -459,7 +468,7 @@ class FeaturesInterface(Widget):
             self.errorMessageStart()
             Clock.schedule_once(self.errorMessageEnd, 3)
         else:
-            App.get_running_app().root.current = "SensorSubscriptionScreen"
+            App.get_running_app().root.current = "SelfStartOnboardingScreen"
 
     def errorMessageStart(self):
         self.ids.errorMessage.text = "Please Answer All Sections"
@@ -850,10 +859,10 @@ class SummaryInterface(Widget):
         if totalPoints > 50:
             for i in range(1, 21):
                 if totalPoints <= i * 100:
-                    i += 1
+                    lookupRow += 1
                     break
                 else:
-                    totalPoints += 1
+                    lookupRow += 1
 
         #set lookup column based on the site package
         if package == "Basic":
